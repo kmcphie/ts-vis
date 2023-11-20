@@ -1,3 +1,9 @@
+
+.title {
+    font-family: Georgia;
+    font-size: 24px;
+}
+
 #globe-vis {
     height: 71vh;
     width: 100%
@@ -6,9 +12,4 @@
 #map-vis {
     height: 400px;
     width:400px;
-}
-
-.title {
-    font-family: Georgia;
-    font-size: 24px;
 }
