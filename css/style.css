@@ -84,3 +84,8 @@ body {
     height: 400px;
     width:400px;
 }
+
+#ny-vis {
+    width: 100%;
+    height: 600px;
+}
