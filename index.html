@@ -6,12 +6,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>Swift Soundscape</title>
 
-		<!-- Load CSS libraries -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-		<link rel="stylesheet" href="css/style.css">
-
 		<!-- GOOGLE FONTS -->
 		<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,400italic,300italic' rel='stylesheet' type='text/css'>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+		<!-- Load CSS libraries -->
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/leaflet.css">
+
 	</head>
 	<body>
 
@@ -51,6 +53,12 @@
 		<!-- PLACES SHE LIKES TO SING ABOUT VISUALIZATION -->
 		<div class="container">
 			<h1>New York City Visualization</h1>
+			<p>
+				More than any other place, Taylor Swift references New York in her lyrics. There's the obvious
+				"Welcome to New York," but songs such as "Mean," "Come Back," "Holy Ground," "False God,"
+				"Daylight" and "Hoax" all include a general New York reference as well. The map below shows some
+				specific places within New York that Taylor Swift has referenced, along with the song.
+			</p>
 			<div id="ny-vis"></div>
 		</div>
 
@@ -134,11 +142,17 @@
 	<script src="http://cdn.leafletjs.com/leaflet-0.4/leaflet.js"></script>
 
 	<!-- own js files -->
+	<!-- tour vis -->
 	<script src="js/tour-vis/main.js"></script>
 	<script src="js/tour-vis/globe.js"></script>
 	<script src="js/tour-vis/map.js"></script>
+
+	<!-- radial vis -->
 	<script src="js/radial-vis/radial.js"></script>
-	<script src="js/ny-vis/main.js"></script>
+
+	<!-- new york vis -->
+	<script src="js/ny-vis/leaflet.js"></script>
 	<script src="js/ny-vis/ny.js"></script>
+	<script src="js/ny-vis/main.js"></script>
 	</body>
 </html>
