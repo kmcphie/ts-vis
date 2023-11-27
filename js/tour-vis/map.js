@@ -42,7 +42,7 @@ class MapVis {
 
         // projection
         vis.projection = d3.geoMercator()
-            .translate([vis.width * 2.1, vis.height])
+            .translate([vis.width * 2.4 - 110, vis.height * 1.05 - 30])
             .scale(340);
 
         // color scale for which tour

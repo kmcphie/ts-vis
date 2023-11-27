@@ -17,10 +17,15 @@ fetch('https://gbfs.bluebikes.com/gbfs/en/station_information.json', function (d
     console.log(d)
 })
     .then(response => response.json())
-    .then(data => {
-        initVis(data)
+    .then(stationData => {
+        fetch('data/ny_lyrics.json')
+            .then(response => response.json())
+            .then(lyricsData => {
+                initVis(stationData, lyricsData);
+            })
+            .catch(error => console.error('Error fetching lyrics data:', error));
     });
 
-function initVis(data) {
-    myNYMap = new NYMap("ny-vis", data, [40.758896, -73.985130]);
+function initVis(stationData, lyricsData) {
+    myNYMap = new NYMap("ny-vis", lyricsData, [40.758896, -73.985130]);
 }
