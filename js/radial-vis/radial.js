@@ -1,11 +1,10 @@
 let width = 1500;
-let height = 1000;
+let height = 800;
 let maxVisiblePaths = 3;
 
 let svg = d3.select("#radial-vis").append("svg")
 	.attr("width", width )
 	.attr("height", height);
-
 
 
 let radialScale = d3.scaleLinear()
@@ -127,79 +126,159 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 					.attr("stroke-opacity", 0)
 					.attr("opacity", 0);
 
-				// Append title for tooltip to the path
-				path.append("title")
-					.text(d => d.Song_Name);
-
 				return path;
 			}
 		);
 
-		console.log("hi")
+
+	console.log("hi")
+
+	// Add a reset button click event listener
+	document.getElementById("reset-button").addEventListener("click", function () {
+		clearPreviousPaths();
+		resetRectangles();
+	});
+
+	function resetRectangles() {
+		// Reset the fill color of all rectangles to the original color
+		svg.selectAll(".song-label rect")
+			.attr("fill", "#ffd3da");
+	}
+
+	const sanitizeId = (id) => id.replace(/[^\w-]/g, '_'); // Replace non-word characters with underscores
+
 	const songLabels = songGroups.selectAll(".song-label")
-		.data(data)  // Use the entire data array
+		.data(data)
 		.join(
 			enter => {
 				const group = enter.append("g")
 					.attr("class", "song-label");
 
-				// Add an id to the rectangle based on the Song_Name
+				// Add a sanitized id to the rectangle based on the Song_Name
 				group.append("rect")
-					.attr("id", d => "rect")
-					.attr("x", 140)  // Adjust the x-coordinate for label placement
-					.attr("y", (d, i) => i * 30 + 15)  // Center vertically around the chart and adjust vertical spacing
-					.attr("width", 370)  // Adjust the width of the rectangle
-					.attr("height", 25)  // Adjust the height of the rectangle
+					.attr("id", d => "rect-" + sanitizeId(d.Song_Name))
+					.attr("x", 140)
+					.attr("y", (d, i) => i * 30 + 15)
+					.attr("width", 370)
+					.attr("height", 25)
 					.attr("fill", "#ffd3da");
 
-				// Add an id to the text based on the Song_Name
+				// Add a sanitized id to the text based on the Song_Name
 				group.append("text")
-					.attr("id", d => "text")
-					.attr("x", 149)  // Adjust the x-coordinate for label placement inside the rectangle
-					.attr("y", (d, i) => i * 30 + 33)  // Center vertically around the chart and adjust vertical spacing
+					.attr("id", d => "text-" + sanitizeId(d.Song_Name))
+					.attr("x", 149)
+					.attr("y", (d, i) => i * 30 + 33)
 					.text(d => d.Song_Name);
 
 				group.on("click", (event, d) => {
-					// When a label is clicked, toggle the visibility of the corresponding path
+					// Toggle opacity of the path
 					const path = paths.filter(song => song === d);
 					const currentOpacity = parseFloat(path.style("opacity"));
 					const newOpacity = currentOpacity === 0.5 ? 0 : 0.5;
 					path.attr("opacity", newOpacity);
 
-					const rect = group.select("rect[data-song='" + d.Song_Name + "']");
-					const text = group.select("text");
+					// Change the color of the corresponding rectangle
+					const rect = group.select("rect#rect-" + sanitizeId(d.Song_Name));
+					rect.attr("fill", newOpacity === 0.5 ? colorScale(d.Playlist_ID) : "#ffd3da");
 
-					// rect.attr("fill", newOpacity === 0.5 ? colorScale(d.Playlist_ID) : "lightgray")
-					// 	.attr("stroke", newOpacity === 0.5 ? "yellow" : "none")
-					// 	.attr("stroke-width", newOpacity === 0.5 ? 2 : 0)
-					// 	.attr("data-song", newOpacity === 0.5 ? d.Song_Name : null);
-					//
-					// text.attr("fill", newOpacity === 0.5 ? colorScale(d.Playlist_ID) : "black");
+					// Update the information box with the selected paths
+					const pathsForSong = songGroups.filter(song => song === d).selectAll("path");
 
-					// Clear previous paths if the number of visible paths exceeds the maximum
-					const visiblePathCount = svg.selectAll(".song-group path[opacity='0.5']").size();
-					if (visiblePathCount > maxVisiblePaths) {
-						clearPreviousPaths();
+					// Check if any paths are found
+					if (!pathsForSong.empty()) {
+						const selectedPaths = svg.selectAll(".song-group path").filter(function () {
+							return parseFloat(d3.select(this).style("opacity")) === 0.5;
+						}).data();
+						updateInfoBox(selectedPaths);
+
+						// Generate sentences about the vibe based on average values
+						const vibeSentences = generateVibeSentences(selectedPaths);
+						console.log(vibeSentences);
+					} else {
+						console.error("No paths found for the selected song group.", d);
 					}
-
 				});
 
-				// Add tooltip to the rectangles
-				group.on("mouseover", function (event, d) {
-					// Select the corresponding path
-					const path = paths.filter(song => song === d);
-
-					// Display the tooltip with the song name
-					path.select("title").style("visibility", "visible");
-				});
-
-				group.on("mouseout", function () {
-					// Hide the tooltip when the mouse leaves the rectangle
-					paths.select("title").style("visibility", "hidden");
-				});
-
-				return group;
 			}
 		);
+
+
+	// Update the SVG container for the information box
+	let infoBox = d3.select("#info-box").append("svg")
+		.attr("width", "100%");
+
+// Add a group to the information box for better organization
+	let infoBoxGroup = infoBox.append("g")
+		.attr("transform", "translate(10, 10)");
+
+// Now you can append text and other elements to the infoBoxGroup
+	infoBoxGroup.append("text")
+		.attr("id", "infoBoxHeading")
+		.attr("x", 0)
+		.attr("y", 20);
+
+// Function to generate sentences about the vibe based on average values
+	function generateVibeSentences(selectedPaths) {
+		if (selectedPaths.length > 0) {
+			const avgValence = d3.mean(selectedPaths, d => d.Valence);
+			const avgEnergy = d3.mean(selectedPaths, d => d.Energy);
+			const avgDanceability = d3.mean(selectedPaths, d => d.Danceability);
+			const avgAcousticness = d3.mean(selectedPaths, d => d.Acousticness);
+
+			// Example sentences, you can customize these based on your preferences
+			const valenceSentence = `The selected songs exude a ${avgValence > 0.5 ? 'positive' : 'mellow'} valence.`;
+			const energySentence = `With an average energy level of ${avgEnergy.toFixed(2)}, these songs offer ${avgEnergy > 0.5 ? 'high energy' : 'a relaxed vibe'}.`;
+
+			return [valenceSentence, energySentence];
+		} else {
+			return ["No songs selected.", ""];
+		}
+	}
+
+	function updateInfoBox(selectedPaths) {
+		// Calculate average values for selected paths
+		let avgValence = d3.mean(selectedPaths, d => d.Valence);
+		let avgAcousticness = d3.mean(selectedPaths, d => d.Acousticness);
+		let avgDanceability = d3.mean(selectedPaths, d => d.Danceability);
+		let avgEnergy = d3.mean(selectedPaths, d => d.Energy);
+
+		// Remove previous content in the information box
+		infoBox.selectAll("*").remove();
+
+		// Add text elements to display average values
+		infoBox.append("text")
+			.attr("x", 10)
+			.attr("y", 20)
+			.text("Average Valence: " + avgValence.toFixed(2));
+
+		infoBox.append("text")
+			.attr("x", 10)
+			.attr("y", 40)
+			.text("Average Acousticness: " + avgAcousticness.toFixed(2));
+
+		infoBox.append("text")
+			.attr("x", 10)
+			.attr("y", 60)
+			.text("Average Danceability: " + avgDanceability.toFixed(2));
+
+		infoBox.append("text")
+			.attr("x", 10)
+			.attr("y", 80)
+			.text("Average Energy: " + avgEnergy.toFixed(2));
+
+		// Generate sentences about the vibe based on average values
+		const vibeSentences = generateVibeSentences(selectedPaths);
+
+		// Add text elements for vibe sentences
+		infoBox.selectAll(".vibe-sentence")
+			.data(vibeSentences)
+			.enter()
+			.append("text")
+			.attr("class", "vibe-sentence")
+			.attr("x", 10)
+			.attr("y", (d, i) => 100 + i * 20)
+			.text(d => d);
+
+	}
 
 });
