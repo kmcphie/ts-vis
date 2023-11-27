@@ -162,7 +162,7 @@ class NYMap {
         // note: coordinates from latlong.net
         vis.locationData.push({ name: "The High Line", latlng: [40.747991, -74.004765] });
         vis.locationData.push({ name: "Coney Island", latlng: [40.5755, -73.9700] });
-        vis.locationData.push({ name: "Cornelia street", latlng: [40.7328, -74.0020]});
+        vis.locationData.push({ name: "Cornelia Street", latlng: [40.7328, -74.0020]});
         vis.locationData.push({ name: "Dive bar on the East Side", latlng: [40.7265, -73.9840]});
         vis.locationData.push({ name: "Madison Square", latlng: [40.7486, -73.9857]});
         vis.locationData.push({ name: "Garden", latlng: [40.7505, -73.9934]});
