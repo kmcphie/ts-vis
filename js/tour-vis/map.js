@@ -119,8 +119,10 @@ class MapVis {
         // data structure with information for each city
         vis.cityInfo = {};
 
+        vis.displayData = vis.tourData.filter()
+
         // Count the number of tours for each U.S. city
-        vis.tourData.forEach(d => {
+        vis.displayData.forEach(d => {
             const cityName = d.City;
             const cityData = vis.cityData.find(c => c.city === cityName);
             if (cityData) {
