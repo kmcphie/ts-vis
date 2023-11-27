@@ -2,7 +2,7 @@ let width = 1500;
 let height = 1000;
 let maxVisiblePaths = 3;
 
-let svg = d3.select("body").append("svg")
+let svg = d3.select("#radial-vis").append("svg")
 	.attr("width", width )
 	.attr("height", height);
 
