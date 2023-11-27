@@ -45,9 +45,15 @@ class MapVis {
             .translate([vis.width * 2.1, vis.height])
             .scale(340);
 
-        // Create a color scale
-        vis.colorScale = d3.scaleLinear()
-            .range(["#FFFFFF", "#136D70"]);
+        // color scale for which tour
+        vis.colorScale = d3.scaleOrdinal()
+            .domain([...new Set(vis.displayData.flatMap(d => d.tours))])
+            .range(d => d === 'multiple' ? 'green' : d3.schemeCategory10);
+
+        // radius scale for number of tours
+        vis.radiusScale = d3.scaleLinear()
+            .domain([0, d3.max(Object.values(vis.cityInfo), d => d.numTours)])
+            .range([3, 10]);
 
         vis.map = vis.svg.append("g")
             .attr("class", "states")
@@ -65,20 +71,8 @@ class MapVis {
             .attr("fill", "transparent")
             .attr("stroke-width", 1)
 
-        // vis.path = d3.geoPath()
-        //     .projection(vis.projection);
-        //
-        // vis.world = topojson.feature(vis.worldGeoData, vis.worldGeoData.objects.countries).features;
-        //
-        // vis.svg.append("path")
-        //     .datum({ type: "Sphere" })
-        //     .attr("class", "graticule")
-        //     .attr('fill', '#8fa8e5')
-        //     .attr("stroke", "rgba(129,129,129,0.35)")
-        //     .attr("d", vis.path);
-
         vis.cities = vis.svg.selectAll(".city")
-            .data(vis.tourData)
+            .data(vis.displayData)
             .enter().append("circle")
             .attr('class', 'city')
             .attr("cx", d => {
@@ -110,7 +104,7 @@ class MapVis {
                 }
             })
             .attr("r", 5)
-            .style("fill", "#c91441");
+            .style("fill", d => vis.colorScale(d.tours));
     }
 
     wrangleData() {
@@ -119,7 +113,8 @@ class MapVis {
         // data structure with information for each city
         vis.cityInfo = {};
 
-        vis.displayData = vis.tourData.filter()
+        // Filter the tourData to include only tours in the United States
+        vis.displayData = vis.tourData.filter(d => d.Country === 'United States');
 
         // Count the number of tours for each U.S. city
         vis.displayData.forEach(d => {
@@ -128,12 +123,14 @@ class MapVis {
             if (cityData) {
                 if (vis.cityInfo[cityName]) {
                     vis.cityInfo[cityName].numTours++;
+                    vis.cityInfo[cityName].tours.push(d.Tour)
                 } else {
                     vis.cityInfo[cityName] = {
                         name: cityName,
                         numTours: 1, // Initialize the count
                         latitude: parseFloat(cityData.lat),
-                        longitude: parseFloat(cityData.lng)
+                        longitude: parseFloat(cityData.lng),
+                        tours: [d.Tour]
                     };
                 }
             }
@@ -145,15 +142,60 @@ class MapVis {
     updateVis() {
         let vis = this;
 
-        vis.cities.style("fill", '#6488e3');
+        // Color and radius size based on tour info
+        vis.cities.style("fill", d => {
+            const mostFrequentTour = getMostFrequentTour(vis.cityInfo[d.City].tours);
+            return mostFrequentTour === 'multiple' ? 'gray' : getColorForTour(mostFrequentTour);
+        });
+        function getMostFrequentTour(tours) {
+            if (!Array.isArray(tours) || tours.length === 0) {
+                return 'No tours available';
+            }
 
+            const tourCounts = {};
+            tours.forEach(tour => {
+                tourCounts[tour] = (tourCounts[tour] || 0) + 1;
+            });
+
+            let maxCount = 0;
+            let mostFrequentTour = 'No tours available';
+
+            Object.keys(tourCounts).forEach(tour => {
+                if (tourCounts[tour] > maxCount) {
+                    maxCount = tourCounts[tour];
+                    mostFrequentTour = tour;
+                }
+            });
+
+            return mostFrequentTour;
+        }
+        function getColorForTour(tour) {
+            switch (tour) {
+                case 'The_Red_Tour':
+                    return "#9D1111";
+                case 'Speak_Now_World_Tour':
+                    return "#FFE381";
+                case 'The_1989_World_Tour':
+                    return "#41337A";
+                case 'Fearless_Tour':
+                    return '#5DA271';
+                case 'Reputation_Stadium_Tour':
+                    return "#FFA5B0";
+                default:
+                    return "#59656F";
+            }
+        }
+        vis.cities.attr("r", d => vis.radiusScale(vis.cityInfo[d.City].numTours));
+
+        // Display information about tour in tooltip
         vis.cities.on("mouseover", function (event, d) {
             d3.select(this)
-                .attr('r', 8)
-                .style('fill', '#c91441');
+                .attr("r", d => vis.radiusScale(vis.cityInfo[d.City].numTours) + 3);
 
             const cityName = d.City;
             const numTours = vis.cityInfo[cityName] ? vis.cityInfo[cityName].numTours : 0;
+            const tours = vis.cityInfo[cityName] ? vis.cityInfo[cityName].tours : [];
+            vis.city
             vis.tooltip
                 .style("opacity", 1)
                 .style("left", event.pageX + 20 + "px")
@@ -162,12 +204,23 @@ class MapVis {
                 <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
                     <h3>${cityName}<h3>
                     <h4> Number of Tours: ${numTours}</h4>  
+                    <h4> Tours: 
+                    ${Array.isArray(tours) ?
+                    (tours.length > 0 ?
+                        `<ul>${tours.map(t => `<li>${t}</li>`).join('')}</ul>` :
+                        'No tours available') :
+                    `<p>${tours}</p>`}
+                    </h4>
                 </div>`);
         })
             .on('mouseout', function (event, d) {
                 d3.select(this)
-                    .attr('r', 5)
-                    .style('fill', '#6488e3');
+                    .attr("r", d => vis.radiusScale(vis.cityInfo[d.City].numTours))
+                    .style("fill", d => {
+                        const mostFrequentTour = getMostFrequentTour(vis.cityInfo[d.City].tours);
+                        return mostFrequentTour === 'multiple' ? 'gray' : getColorForTour(mostFrequentTour);
+                    });
+
 
                 vis.tooltip
                     .style("opacity", 0)
@@ -177,125 +230,3 @@ class MapVis {
             });
     }
 }
-
-
-
-/*
-    wrangleData() {
-        let vis = this
-
-        // init empty array
-        let filteredData = [];
-
-        // iterate over all rows the csv
-        vis.tourData.forEach(d => {
-            if (d.Country === "United States") {
-                filteredData.push(d);
-            }
-        });
-
-
-        // prepare data by grouping all rows by state
-        let toursByState = Array.from(d3.group(filteredData, d => d.state), ([key, value]) => ({key, value}))
-
-        // have a look
-        // console.log(covidDataByState)
-
-        // init final data structure in which both data sets will be merged into
-        vis.stateInfo = []
-
-        // merge
-        covidDataByState.forEach(state => {
-
-            // get full state name
-            let stateName = nameConverter.getFullName(state.key)
-
-            // init counters
-            let newCasesSum = 0;
-            let newDeathsSum = 0;
-            let population = 0;
-
-            // look up population for the state in the census data set
-            vis.usaData.forEach(row => {
-                if (row.state === stateName) {
-                    population += +row["2020"].replaceAll(',', '');
-                }
-            })
-
-            // calculate new cases by summing up all the entries for each state
-            state.value.forEach(entry => {
-                newCasesSum += +entry['new_case'];
-                newDeathsSum += +entry['new_death'];
-            });
-
-            // populate the final data structure
-            vis.stateInfo.push(
-                {
-                    state: stateName,
-                    population: population,
-                    absCases: newCasesSum,
-                    absDeaths: newDeathsSum,
-                    relCases: (newCasesSum / population * 100),
-                    relDeaths: (newDeathsSum / population * 100)
-                }
-            )
-        })
-
-        vis.updateVis();
-
-    }
-
-
-    updateVis() {
-        let vis = this;
-
-        vis.colorScale.domain([0, d3.max(vis.stateInfo, d => d[selectedCategory])]);
-
-        vis.states
-            .attr("fill", (d) => {
-                // console.log(d);
-                let stateName = d.properties.name;
-                let color = "";
-                vis.stateInfo.forEach (state => {
-                    if (state.state === stateName) {
-                        color = vis.colorScale(state[selectedCategory]);
-                    }
-                })
-                return color;
-            });
-
-        // Tooltip mouseover
-        vis.states.on('mouseover', function (event, d) {
-            d3.select(this)
-                .attr('stroke-width', '3px');
-            vis.tooltip.transition()
-                .duration(200)
-                .style("opacity", 1);
-
-            let stateInfo = vis.stateInfo.find(state => state.state === d.properties.name);
-
-            let tooltipContent = `
-                <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
-                    <h3>${d.properties.name}</h3>
-                    <h4>Population: ${stateInfo.population}</h4>
-                    <h4>Absolute Cases: ${stateInfo.absCases}</h4>
-                    <h4>Absolute Deaths: ${stateInfo.absDeaths}</h4>
-                    <h4>Relative Cases: ${stateInfo.relCases.toFixed(2)}%</h4>
-                    <h4>Relative Deaths: ${stateInfo.relDeaths.toFixed(2)}%</h4>
-                </div>`;
-
-            vis.tooltip.html(tooltipContent)
-                .style("left", (event.pageX - 100) + "px")
-                .style("top", (event.pageY - 50) + "px");
-        }).on('mouseout', function (event, d) {
-            d3.select(this)
-                .attr('stroke-width', '1px');
-            vis.tooltip.transition()
-                .duration(500)
-                .style("opacity", 0);
-        });
-
-    }
-
-}
-*/

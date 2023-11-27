@@ -26,13 +26,13 @@ class GlobeVis {
             .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`);
 
         // add title
-        vis.svg.append('g')
-            .attr('class', 'title')
-            .attr('id', 'map-title')
-            .append('text')
-            .text('Where Has Taylor Swift Toured?')
-            .attr('transform', `translate(${vis.width / 2}, ${vis.margin.top * 3})`)
-            .attr('text-anchor', 'middle');
+        // vis.svg.append('g')
+        //     .attr('class', 'title')
+        //     .attr('id', 'map-title')
+        //     .append('text')
+        //     .text('Where Has Taylor Swift Toured?')
+        //     .attr('transform', `translate(${vis.width / 2}, ${vis.margin.top * 3})`)
+        //     .attr('text-anchor', 'middle');
 
         // projection
         vis.projection = d3.geoOrthographic()
@@ -126,9 +126,13 @@ class GlobeVis {
         });
 
         // Color scale definition
-        vis.colorScale = d3.scaleQuantize()
-            .domain([0, 314])
-            .range(["#CBD5C0", "#9CAF88", "#707e62", "#606e56"]);
+        // vis.colorScale = d3.scaleQuantize()
+        //     .domain([0, 314])
+        //     .range(["#CBD5C0", "#9CAF88", "#707e62", "#606e56"]);
+        vis.colorScale = d3.scaleOrdinal()
+            .domain(["0", "1", "<50", "50+"])
+            .range(["#CBD5C0", "#9CAF88", "#79886b", "#54604b"]);
+
 
         vis.updateVis();
     }
@@ -139,7 +143,15 @@ class GlobeVis {
         vis.countries.style("fill", d => {
             const countryName = d.properties.name;
             const numTours = vis.countryInfo[countryName] ? vis.countryInfo[countryName].numTours : 0;
-            return vis.colorScale(numTours);
+            if (numTours === 0) {
+                return vis.colorScale("0");
+            } else if (numTours === 1) {
+                return vis.colorScale("1")
+            } else if (numTours < 50) {
+                return vis.colorScale("<50");
+            } else {
+                return vis.colorScale("50+");
+            }
         });
 
         vis.countries.on("mouseover", function (event, d){
