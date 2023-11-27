@@ -15,18 +15,25 @@ midnights: #050947
 array of colors: ["#5DA271", "#88D9E6", "#41337A", "#775B59", "#9D1111", "#050947", "#59656F", "#FFA5B0", "#191919", "#FFE381"]
 */
 
-
-
-
-body {
-    font-family: 'Lato', sans-serif;
+body, html {
+    font-family: 'Century Gothic', sans-serif;
     background-color: #f7f7f7;
     text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.container {
+    height: 100vh;
+    width: 100%;
+    overflow: auto; /* Add this line to enable scrolling within the containers if content overflows */
 }
 
 h1 {
-    font-weight: 100;
+    font-weight: 300;
     margin-top: 50px;
+    color: #FFA5B0;
 }
 
 h2 {
@@ -86,12 +93,8 @@ h2 {
     margin-top: 5vh;
 }
 
-body {
-    background-color: #e5d6c3; /* Cream color */
-}
-
 .title {
-    font-family: Georgia;
+    font-family: 'Century Gothic', 'sans-serif';
     font-size: 24px;
 }
 
@@ -108,4 +111,9 @@ body {
 #ny-vis {
     width: 100%;
     height: 600px;
+}
+
+#theme-count-vis {
+    height: 900px;
+    width: 100%;
 }
