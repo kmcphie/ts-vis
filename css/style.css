@@ -15,10 +15,12 @@ midnights: #050947
 array of colors: ["#5DA271", "#88D9E6", "#41337A", "#775B59", "#9D1111", "#050947", "#59656F", "#FFA5B0", "#191919", "#FFE381"]
 */
 
+/* General CSS */
+
 body, html {
     font-family: 'Century Gothic', sans-serif;
     background-color: #f7f7f7;
-    text-align: center;
+    text-align: left;
     margin: 0;
     padding: 0;
     height: 100%;
@@ -27,12 +29,13 @@ body, html {
 .container {
     height: 100vh;
     width: 100%;
-    overflow: auto; /* Add this line to enable scrolling within the containers if content overflows */
+    overflow: auto; /* enable scrolling within the containers if content overflows */
 }
 
 h1 {
     font-weight: 300;
     margin-top: 50px;
+    font-size: 42px;
     color: #FFA5B0;
 }
 
@@ -45,6 +48,177 @@ h2 {
 .container-fluid {
     padding-right: 30px;
     padding-left: 30px;
+}
+
+
+/* Introduction/Landing Page */
+
+#landing-bg {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+}
+
+#landing-bg img {
+    width: 100vw;
+    height: auto;
+}
+
+#title-swift {
+    font-size: 160px;
+    font-weight: bold;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    color: #15151B;
+}
+
+#title-soundscape {
+    font-size: 120px;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #15151B;
+    padding: 20px;
+    z-index: 1;
+}
+
+#scroll-img {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 20vh;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1.2s ease;
+}
+
+.intro {
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+    margin-top: 20px;
+}
+
+
+/*!* Introduction/Landing Page *!*/
+
+/*#landing-bg {*/
+/*    position: relative;*/
+/*    overflow: hidden;*/
+/*    height: 100vh;*/
+/*}*/
+
+/*#landing-bg img {*/
+/*    width: 100vw;*/
+/*    height: auto;*/
+/*}*/
+
+/*#title-swift {*/
+/*    font-size: 160px;*/
+/*    font-weight: bold;*/
+/*    position: relative;*/
+/*    padding-left: 75px;*/
+/*    top: -825px;*/
+/*}*/
+
+/*#title-soundscape {*/
+/*    font-size: 120px;*/
+/*    position: relative;*/
+/*    padding-left: 180px;*/
+/*    padding-bottom: 25px;*/
+/*    top: -900px;*/
+/*    background-color: #15151B;*/
+/*}*/
+
+/*#scroll-img {*/
+/*    position: absolute;*/
+/*    bottom: -10px;*/
+/*    left: 50%;*/
+/*    transform: translateX(-50%);*/
+/*    height: 20vh;*/
+/*    z-index: 1;*/
+/*    opacity: 0;*/
+/*    transition: opacity 1.2s ease;*/
+/*}*/
+
+
+/* Taylor Swift At Large Visualization */
+
+#at-large {
+    height: 80vh;
+    width: 100%;
+}
+
+
+/* Lyric Themes Visualization */
+
+#lyric-themes {
+    height: 120vh;
+    width: 100%;
+}
+
+#theme-count-vis {
+    height: 900px;
+    width: 100%;
+}
+
+
+/* Places Taylor Likes to Sing About Visualization */
+
+#places {
+    height: 100%;
+    width: 100%;
+}
+
+#ny-vis {
+    width: 100%;
+    height: 600px;
+}
+
+
+/* Times Taylor Likes To Sing About Visualization */
+
+#times {
+    height: 80vh;
+    width: 100%;
+}
+
+#timeline-placeholder {
+    height: 450px;
+}
+
+
+/* Tour Visualization */
+
+#tour {
+    height: 100%;
+    width: 100%;
+}
+
+#globe-vis {
+    height: 71vh;
+    width: 100%
+}
+
+#map-vis {
+    height: 400px;
+    width:400px;
+}
+
+
+/* Radial Chart Visualization */
+
+#radial {
+    height: 100%;
+    width: 100%;
 }
 
 .axis path,
@@ -96,24 +270,4 @@ h2 {
 .title {
     font-family: 'Century Gothic', 'sans-serif';
     font-size: 24px;
-}
-
-#globe-vis {
-    height: 71vh;
-    width: 100%
-}
-
-#map-vis {
-    height: 400px;
-    width:400px;
-}
-
-#ny-vis {
-    width: 100%;
-    height: 600px;
-}
-
-#theme-count-vis {
-    height: 900px;
-    width: 100%;
 }

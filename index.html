@@ -15,14 +15,22 @@
 		<link rel="stylesheet" href="css/style.css">
 		<link rel="stylesheet" href="css/leaflet.css">
 
+		<!-- AOS -->
+		<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 	</head>
 	<body>
 
-	<div class="container">
-		<!--	TAYLOR SWIFT AT LARGE VISUALIZATION	-->
-		<div class="container">
+		<!--	INTRODUCTION/LANDING PAGE	-->
+		<div id="landing-bg">
+			<img src="img/landing-page-1.webp" style="width:100vw">
+		</div>
+		<h1 id="title-swift" data-aos="fade-right" data-aos-duration="2000">Swift</h1>
+		<h1 id="title-soundscape" data-aos="fade-right" data-aos-duration="2000">Soundscape</h1>
+		<img src="img/scroll-down.png" id="scroll-img">
+
+		<div id="intro">
 			<div class="flex col">
-				<h1 class="pb-3" style="font-size: 64px;">Swift Soundscape</h1>
+<!--				<h1 class="pb-3" style="font-size: 64px;">Swift Soundscape</h1>-->
 				<p class="left">
 					Taylor Alison Swift released her self-titled debut album in 2006.
 					Nearly two decades later, it seems she is still climbing up to the peak of her career.
@@ -31,16 +39,21 @@
 					In other words, Taylor Swift <i>is</i> the music industry.
 				</p>
 			</div>
+		</div>
+
+		<!--	TAYLOR SWIFT AT LARGE VISUALIZATION	-->
+		<div id="at-large" data-aos="fade-up">
 			<h1>Taylor Swift at Large</h1>
 			<p>Visualization looking at the success of Taylor's discography in the broader music scene.</p>
 			<p>
 				Swift has obviously made a name for herself amongst giants, let's take a deeper look into
 				how she has been able to achieve and maintain this level of success for nearly two decades.
 			</p>
+			<img id="timeline-placeholder" src="data/timeline-vis.png">
 		</div>
 
-		<!-- TAYLOR SWIFT LYRIC THEMES	-->
-		<div class="container">
+		<!-- LYRIC THEMES VISUALIZATION	-->
+		<div id="lyric-themes" data-aos="fade-up">
 			<p>
 				Swift's mark as a musician has always been the fact that she writes all of her own music, both with and without other co-writers.
 				In fact, following her 2010 Grammy Album of the Year win for her album Fearless, critics claimed that she would not have been able to win without the help of her co-writers.
@@ -53,8 +66,8 @@
 		</div>
 
 
-		<!-- PLACES SHE LIKES TO SING ABOUT VISUALIZATION -->
-		<div class="container">
+		<!-- PLACES TAYLOR LIKES TO SING ABOUT VISUALIZATION -->
+		<div id="places" data-aos="fade-up">
 			<h1>New York City Visualization</h1>
 			<p>
 				More than any other place, Taylor Swift references New York in her lyrics. There's the obvious
@@ -64,7 +77,7 @@
 			</p>
 			<div class="row">
 				<div class="col-md-6">
-					<div id="ny-vis"></div>
+					<div id="ny-vis" data-aos="fade-right"></div>
 				</div>
 				<div class="col-md-6">
 					<div id="ny-lyrics">
@@ -76,13 +89,16 @@
 
 
 		<!-- TIMES TAYLOR LIKES TO SING ABOUT -->
-		<div class="container">
-			<h1>What time is it, Taylor?</h1>
-		</div>
+<!--		<div id="times" data-aos="fade-up">-->
+<!--			<h1>What time is it, Taylor?</h1>-->
+<!--			<div id="time-vis">-->
+<!--				<img src="img/Taylor_Swift.jpg">-->
+<!--			</div>-->
+<!--		</div>-->
 
 
 		<!--	TOUR VISUALIZATION	-->
-		<div class="container">
+		<div id="tour" data-aos="fade-up">
 			<p>
 				Over the span of her career, the parallels in her storytelling and lyrics over time have amassed her an incredible fan base.
 				Swifties clamor over the opportunity to hear Taylor Swift live in concert. She is currently on The Eras Tour, the highest grossing tour in history.
@@ -93,7 +109,7 @@
 				<br>
 				<br>
 				<p>Where has Taylor Swift performed on tour? Scroll around the globe to find out!</p>
-				<div class="col-md-6">
+				<div class="col-md-6" data-aos="fade-right">
 					<div class="tour-vis" id="globe-vis"></div>
 				</div>
 				<div class="col-md-6">
@@ -110,8 +126,8 @@
 
 		<p>Now, it's your turn to look behind the curtain and break down the production features of some of your favorite songs.</p>
 
-		<!-- TAYLOR SWIFT RADIAL CHART VISUALIZATION -->
-		<div class="container">
+		<!-- RADIAL CHART VISUALIZATION -->
+		<div id="radial" data-aos="fade-up">
 			<h1>Compare the Production Features of Your Favorite Taylor Swift Songs</h1>
 			<h2 class="text-center">Select up to 3 songs and compare their audio features.</h2>
 			<div class="container-fluid">
@@ -134,9 +150,6 @@
 			</div>
 
 		</div>
-
-	</div>
-
 
 
 
@@ -171,6 +184,25 @@
 
 	<!-- lyric theme vis -->
 	<script src="js/lyric-theme-count-vis/cluster.js"></script>
+
+	<!-- AOS -->
+	<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
+
+	<!-- scroll down icon -->
+	<script>
+		document.addEventListener("DOMContentLoaded", function() {
+			setTimeout(function() {
+				document.getElementById("scroll-img").style.opacity = "0.9";
+			}, 2000);
+			window.addEventListener("scroll", function() {
+				document.getElementById("scroll-img").style.opacity = "0";
+			});
+		});
+	</script>
+
 
 	</body>
 </html>
