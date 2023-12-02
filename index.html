@@ -29,13 +29,21 @@
 		<img src="img/scroll-down.png" id="scroll-img">
 
 		<div id="intro">
-			<div class="flex col">
+			<div class="flex-col left">
 <!--				<h1 class="pb-3" style="font-size: 64px;">Swift Soundscape</h1>-->
-				<p class="left">
+				<p class="text-box" data-aos="fade-right" data-aos-duration="2000">
 					Taylor Alison Swift released her self-titled debut album in 2006.
 					Nearly two decades later, it seems she is still climbing up to the peak of her career.
+				</p>
+			</div>
+			<div class="flex-col right">
+				<p class="text-box" data-aos="fade-left" data-aos-duration="2000">
 					With 12 Grammy awards (including 3 Album of the Year awards), she is the most-streamed woman on Spotify and Apple Music,
 					the highest-grossing female performer ever, and the first billionaire with music as the main source of income.
+				</p>
+			</div>
+			<div class="flex-col left">
+				<p class="text-box larger-text" data-aos="fade-right" data-aos-duration="2000">
 					In other words, Taylor Swift <i>is</i> the music industry.
 				</p>
 			</div>
@@ -44,32 +52,32 @@
 		<!--	TAYLOR SWIFT AT LARGE VISUALIZATION	-->
 		<div id="at-large" data-aos="fade-up">
 			<h1>Taylor Swift at Large</h1>
-			<p>Visualization looking at the success of Taylor's discography in the broader music scene.</p>
-			<p>
+			<p class="plain-text">Visualization looking at the success of Taylor's discography in the broader music scene.</p>
+			<p class="plain-text">
 				Swift has obviously made a name for herself amongst giants, let's take a deeper look into
 				how she has been able to achieve and maintain this level of success for nearly two decades.
 			</p>
-			<img id="timeline-placeholder" src="data/timeline-vis.png">
+			<img id="timeline-placeholder" src="data/timeline-vis.png" data-aos="fade-up">
 		</div>
 
 		<!-- LYRIC THEMES VISUALIZATION	-->
-		<div id="lyric-themes" data-aos="fade-up">
-			<p>
+		<div id="lyric-themes">
+			<p class="plain-text" data-aos="fade-up">
 				Swift's mark as a musician has always been the fact that she writes all of her own music, both with and without other co-writers.
 				In fact, following her 2010 Grammy Album of the Year win for her album Fearless, critics claimed that she would not have been able to win without the help of her co-writers.
 				In response, Swift penned her next album, Speak Now, entirely by herself.
 				Her lyricism and storytelling has always been what connected Swift to her fans.
 				Let's take a deeper look into the worlds Swift creates through her music.
 			</p>
-			<h1>Lyric Theme Visualization</h1>
-			<div id="theme-count-vis"></div>
+			<h1 data-aos="fade-up">Lyric Theme Visualization</h1>
+			<div id="theme-count-vis" data-aos="fade-up"></div>
 		</div>
 
 
 		<!-- PLACES TAYLOR LIKES TO SING ABOUT VISUALIZATION -->
 		<div id="places" data-aos="fade-up">
 			<h1>New York City Visualization</h1>
-			<p>
+			<p class="plain-text">
 				More than any other place, Taylor Swift references New York in her lyrics. There's the obvious
 				"Welcome to New York," but songs such as "Mean," "Come Back," "Holy Ground," "False God,"
 				"Daylight" and "Hoax" all include a general New York reference as well. The map below shows some
@@ -124,13 +132,13 @@
 			</div>
 		</div>
 
-		<p>Now, it's your turn to look behind the curtain and break down the production features of some of your favorite songs.</p>
 
 		<!-- RADIAL CHART VISUALIZATION -->
 		<div id="radial" data-aos="fade-up">
+			<p class="plain-text">Now, it's your turn to look behind the curtain and break down the production features of some of your favorite songs.</p>
 			<h1>Compare the Production Features of Your Favorite Taylor Swift Songs</h1>
 			<h2 class="text-center">Select up to 3 songs and compare their audio features.</h2>
-			<div class="container-fluid">
+			<div class="container-fluid" data-aos="fade-up">
 				<div class="row mt-4">
 					<div class="col-md-8 offset-2 explanation-box">
 						<!-- Rectangle with explanations -->

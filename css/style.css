@@ -20,6 +20,7 @@ array of colors: ["#5DA271", "#88D9E6", "#41337A", "#775B59", "#9D1111", "#05094
 body, html {
     font-family: 'Century Gothic', sans-serif;
     background-color: #f7f7f7;
+    font-size: 30px;
     text-align: left;
     margin: 0;
     padding: 0;
@@ -33,8 +34,9 @@ body, html {
 }
 
 h1 {
-    font-weight: 300;
+    font-weight: bold;
     margin-top: 50px;
+    margin-left: 50px;
     font-size: 42px;
     color: #FFA5B0;
 }
@@ -48,6 +50,44 @@ h2 {
 .container-fluid {
     padding-right: 30px;
     padding-left: 30px;
+}
+
+.flex-col {
+    display: flex;
+    justify-content: center;
+    /*align-items: center;*/
+    /*height: 100vh;*/
+}
+
+.left {
+    align-items: flex-start;
+    padding-right: 10%;
+}
+
+.right {
+    align-items: flex-end;
+    padding-left: 10%;
+}
+
+.text-box {
+    box-sizing: border-box;
+    width: 90%;
+    background: #FFA5B0;
+    border-radius: 2px;
+    margin: 12vh 0;
+    padding: 30px;
+    border-radius: 20px;
+}
+
+.larger-text {
+    font-size: 38px;
+    font-weight: bold;
+}
+
+.plain-text {
+    margin-left: 50px;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 
@@ -91,7 +131,7 @@ h2 {
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    height: 20vh;
+    height: 10vh;
     z-index: 1;
     opacity: 0;
     transition: opacity 1.2s ease;
@@ -157,11 +197,16 @@ h2 {
     width: 100%;
 }
 
+#timeline-placeholder {
+    height: 450px;
+    padding: 50px;
+}
+
 
 /* Lyric Themes Visualization */
 
 #lyric-themes {
-    height: 120vh;
+    height: 150vh;
     width: 100%;
 }
 
@@ -174,7 +219,7 @@ h2 {
 /* Places Taylor Likes to Sing About Visualization */
 
 #places {
-    height: 100%;
+    height: 120vh;
     width: 100%;
 }
 
@@ -191,15 +236,11 @@ h2 {
     width: 100%;
 }
 
-#timeline-placeholder {
-    height: 450px;
-}
-
 
 /* Tour Visualization */
 
 #tour {
-    height: 100%;
+    height: 140vh;
     width: 100%;
 }
 
