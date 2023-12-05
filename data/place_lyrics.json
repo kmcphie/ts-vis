@@ -1,0 +1,468 @@
+[
+	{
+		"index": 0,
+		"song": "cardigan",
+		"album": "folklore",
+		"location": "The High Line",
+		"gen_location": "New York",
+		"lyric": "Your heartbeat on the High Line, Once in 20 lifetimes"
+	},
+	{
+		"index": 1,
+		"song": "coney island",
+		"album": "evermore",
+		"location": "Coney Island",
+		"gen_location": "New York",
+		"lyric": "And I’m sitting on a bench in Coney Island, Wondering, Where did my baby go?"
+	},
+	{
+		"index": 2,
+		"song": "Cornelia Street",
+		"album": "Lover",
+		"location": "Cornelia Street",
+		"gen_location": "New York",
+		"lyric": "I rent a place on Cornelia Street, I say casually in the car ... I’d never walk Cornelia Street again"
+	},
+	{
+		"index": 3,
+		"song": "Delicate",
+		"album": "reputation",
+		"location": "Dive bar on the East Side",
+		"gen_location": "New York",
+		"lyric": "Dive bar on the East Side, where you at?"
+	},
+	{
+		"index": 4,
+		"song": "The Lucky One",
+		"album": "Red",
+		"location": "Madison Square",
+		"gen_location": "New York",
+		"lyric": "They say you bought a bunch of land somewhere, Chose the Rose Garden over Madison Square"
+	},
+	{
+		"index": 5,
+		"song": "Cruel Summer",
+		"album": "Lover",
+		"location": "Garden",
+		"gen_location": "New York",
+		"lyric": "And I snuck in through the garden gate, Every night last summer just to seal my fate (oh)"
+	},
+	{
+		"index": 6,
+		"song": "You Are in Love",
+		"album": "1989",
+		"location": "Office downtown",
+		"gen_location": "New York",
+		"lyric": "And he keeps the picture of you in his office downtown"
+	},
+	{
+		"index": 7,
+		"song": "All Too Well",
+		"album": "Red",
+		"location": "Upstate",
+		"gen_location": "New York",
+		"lyric": "We’re singing in the car, getting lost upstate, Autumn leaves falling down like pieces into place"
+	},
+	{
+		"index": 8,
+		"song": "Tim McGraw",
+		"album": "Taylor Swift",
+		"gen_location": "Georgia",
+		"lyric": "He said the way my blue eyes shined put those Georgia stars to shame that night"
+	},
+	{
+		"index": 9,
+		"song": "White Horse",
+		"album": "Fearless",
+		"location": "Hollywood",
+		"gen_location": "Los Angeles",
+		"lyric": "This ain’t Hollywood, this is a small town"
+	},
+	{
+		"index": 10,
+		"song": "The Lucky One",
+		"album": "Red",
+		"gen_location": "Los Angeles",
+		"lyric": "New to town with a made up name in the angels’ city chasing fortune and fame"
+	},
+	{
+		"index": 11,
+		"song": "I Bet You Think About Me",
+		"album": "Red",
+		"location": "Beverly Hills",
+		"gen_location": "Los Angeles",
+		"lyric": "You grew up in a silver spoon gated community, glamorous, shiny, bright Beverly Hills"
+	},
+	{
+		"index": 12,
+		"song": "The Very First Night",
+		"album": "Red",
+		"gen_location": "Los Angeles",
+		"lyric": "But don’t forget about the night out in L.A."
+	},
+	{
+		"index": 13,
+		"song": "Gorgeous",
+		"album": "reputation",
+		"location": "Sunset and Vine",
+		"gen_location": "Los Angeles",
+		"lyric": "Whiskey on ice, Sunset and Vine"
+	},
+	{
+		"index": 14,
+		"song": "tis the damn season",
+		"album": "evermore",
+		"gen_location": "Los Angeles",
+		"lyric": "So I’ll go back to L.A. and the so-called friends who’ll write books about me if I ever make it"
+	},
+	{
+		"index": 15,
+		"song": "London Boy",
+		"album": "Lover",
+		"gen_location": "Los Angeles",
+		"lyric": "I love my hometown as much as Motown, I love SoCal"
+	},
+	{
+		"index": 16,
+		"song": "invisible string",
+		"album": "folklore",
+		"gen_location": "Los Angeles",
+		"lyric": "Bad was the blood of the song in the cab on your first trip to L.A."
+	},
+	{
+		"index": 17,
+		"song": "When Emma Falls in Love",
+		"album": "Speak Now",
+		"gen_location": "Los Angeles",
+		"lyric": "Well, she's so New York when she's in L.A."
+	},
+	{
+		"index": 18,
+		"song": "When Emma Falls in Love",
+		"album": "Speak Now",
+		"gen_location": "New York",
+		"lyric": "Well, she's so New York when she's in L.A."
+	},
+	{
+		"index": 19,
+		"song": "Holy Ground",
+		"album": "Red",
+		"gen_location": "New York",
+		"lyric": "Back to a first-glance feeling on New York time"
+	},
+	{
+		"index": 20,
+		"song": "Come Back...Be Here",
+		"album": "Red",
+		"gen_location": "New York",
+		"lyric": "I guess you’re in New York today"
+	},
+	{
+		"index": 20,
+		"song": "Come Back...Be Here",
+		"album": "Red",
+		"gen_location": "New York",
+		"lyric": "I guess you’re in New York today"
+	},
+	{
+		"index": 21,
+		"song": "All Too Well",
+		"album": "Red",
+		"location": "Brooklyn",
+		"gen_location": "New York",
+		"lyric": "From when your Brooklyn broke my skin and bones"
+	},
+	{
+		"index": 22,
+		"song": "Welcome to New York",
+		"album": "1989",
+		"gen_location": "New York",
+		"lyric": "Welcome to New York, it’s been waiting for you"
+	},
+	{
+		"index": 23,
+		"song": "False God",
+		"album": "Lover",
+		"gen_location": "New York",
+		"lyric": "I’m New York City, I still do it for you, babe"
+	},
+	{
+		"index": 24,
+		"song": "False God",
+		"album": "Lover",
+		"location": "West Village",
+		"gen_location": "New York",
+		"lyric": "You’re the West Village, you still do it for me, babe"
+	},
+	{
+		"index": 25,
+		"song": "Daylight",
+		"album": "Lover",
+		"gen_location": "New York",
+		"lyric": "Back and forth from New York, sneaking in your bed"
+	},
+	{
+		"index": 26,
+		"song": "hoax",
+		"album": "folklore",
+		"gen_location": "New York",
+		"lyric": "You know I left a part of me back in New York"
+	},
+	{
+		"index": 27,
+		"song": "Maroon",
+		"album": "Midnights",
+		"gen_location": "New York",
+		"lyric": "And I chose you, the one I was dancing with in New York"
+	},
+	{
+		"index": 28,
+		"song": "London Boy",
+		"album": "Lover",
+		"gen_location": "Tennessee",
+		"lyric": "And you know I love Springsteen, faded blue jeans, Tennessee whiskey"
+	},
+	{
+		"index": 29,
+		"song": "invisible string",
+		"album": "folklore",
+		"location": "Centennial Park",
+		"gen_location": "Tennessee",
+		"lyric": "Green was the color of the grass where I used to read at Centennial Park"
+	},
+	{
+		"index": 30,
+		"song": "I Think He Knows",
+		"album": "Lover",
+		"location": "16th Avenue",
+		"gen_location": "Tennessee",
+		"lyric": "He got my heartbeat skipping down 16th Avenue"
+	},
+	{
+		"index": 31,
+		"song": "Come Back...Be Here",
+		"album": "Red",
+		"gen_location": "London",
+		"lyric": "I guess you’re in London today"
+	},
+	{
+		"index": 32,
+		"song": "Message in a Bottle",
+		"album": "Red",
+		"gen_location": "London",
+		"lyric": "How is it in London? Where were you while I’m wondering if I’ll ever see you again?"
+	},
+	{
+		"index": 33,
+		"song": "London Boy",
+		"album": "Lover",
+		"gen_location": "London",
+		"lyric": "You know I love a London boy"
+	},
+	{
+		"index": 34,
+		"song": "London Boy",
+		"album": "Lover",
+		"location": "Camden Market",
+		"gen_location": "London",
+		"lyric": "I enjoy walking Camden Market in the afternoon"
+	},
+	{
+		"index": 35,
+		"song": "London Boy",
+		"album": "Lover",
+		"location": "Highgate",
+		"gen_location": "London",
+		"lyric": "Took me back to Highgate, met all of his best mates"
+	},
+	{
+		"index": 36,
+		"song": "London Boy",
+		"album": "Lover",
+		"location": "West End",
+		"gen_location": "London",
+		"lyric": "And now I love high tea, stories from uni, and the West End"
+	},
+	{
+		"index": 37,
+		"song": "London Boy",
+		"album": "Lover",
+		"location": "Brixton",
+		"gen_location": "London",
+		"lyric": "I enjoy nights in Brixton, Shoreditch in the afternoon"
+	},
+	{
+		"index": 38,
+		"song": "London Boy",
+		"album": "Lover",
+		"location": "Shoreditch",
+		"gen_location": "London",
+		"lyric": "I enjoy nights in Brixton, Shoreditch in the afternoon"
+	},
+	{
+		"index": 39,
+		"song": "London Boy",
+		"album": "Lover",
+		"location": "Hackney",
+		"gen_location": "London",
+		"lyric": "So please show me Hackney"
+	},
+	{
+		"index": 40,
+		"song": "London Boy",
+		"album": "Lover",
+		"location": "Bond Street",
+		"gen_location": "London",
+		"lyric": "Doesn’t have to be Louis V up on Bond Street"
+	},
+	{
+		"index": 41,
+		"song": "Beautiful Ghosts",
+		"album": "Cats",
+		"gen_location": "London",
+		"lyric": "I’ll never wander London streets alone and haunted"
+	},
+	{
+		"index": 42,
+		"song": "Paris",
+		"album": "Midnights",
+		"gen_location": "France",
+		"lyric": "I was taken by the view like we were in Paris"
+	},
+	{
+		"index": 43,
+		"song": "Paris",
+		"album": "Midnights",
+		"gen_location": "France",
+		"lyric": "Like we were somewhere else, like we were in Paris"
+	},
+	{
+		"index": 44,
+		"song": "Paris",
+		"album": "Midnights",
+		"gen_location": "France",
+		"lyric": "Cause we were in Paris, yes, we were somewhere else"
+	},
+	{
+		"index": 45,
+		"song": "Paris",
+		"album": "Midnights",
+		"gen_location": "France",
+		"lyric": "My love, we were in Paris, yes, we were somewhere else"
+	},
+	{
+		"index": 46,
+		"song": "The Man",
+		"album": "Lover",
+		"gen_location": "France",
+		"lyric": "I’d be just like Leo in St. Tropez"
+	},
+	{
+		"index": 47,
+		"song": "the last great american dynasty",
+		"album": "folklore",
+		"gen_location": "St. Louis",
+		"lyric": "Her saltbox house on the coast took her mind off St. Louis"
+	},
+	{
+		"index": 48,
+		"song": "the last great american dynasty",
+		"album": "folklore",
+		"gen_location": "Rhode Island",
+		"lyric": "Rebekah gave up on the Rhode Island set forever"
+	},
+	{
+		"index": 49,
+		"song": "seven",
+		"album": "folklore",
+		"gen_location": "Pennsylvania",
+		"lyric": "But I, I was high in the sky with Pennsylvania under me"
+	},
+	{
+		"index": 50,
+		"song": "seven",
+		"album": "folklore",
+		"gen_location": "India",
+		"lyric": "Pack your dolls and a sweater, we’ll move to India forever"
+	},
+	{
+		"index": 51,
+		"song": "invisible string",
+		"album": "folklore",
+		"location": "Lake District",
+		"gen_location": "England",
+		"lyric": "Bold was the waitress on our three-year trip getting lunch down by the Lakes"
+	},
+	{
+		"index": 52,
+		"song": "the lakes",
+		"album": "folklore",
+		"location": "Lake District",
+		"gen_location": "England",
+		"lyric": "Take me to the Lakes where all the poets went to die"
+	},
+	{
+		"index": 53,
+		"song": "the lakes",
+		"album": "folklore",
+		"location": "Windermere (in the Lake District)",
+		"gen_location": "England",
+		"lyric": "Those Windermere peaks look like the perfect place to cry"
+	},
+	{
+		"index": 54,
+		"song": "dorothea",
+		"album": "evermore",
+		"gen_location": "Mississippi",
+		"lyric": "The stars in your eyes shined brighter in Tupelo"
+	},
+	{
+		"index": 55,
+		"song": "Sweet Nothing",
+		"album": "Midnights",
+		"gen_location": "Ireland",
+		"lyric": "We almost forgot it, does it ever miss Wicklow sometimes?"
+	},
+	{
+		"index": 56,
+		"song": "Bigger Than The Whole Sky",
+		"album": "Midnights",
+		"gen_location": "Ireland",
+		"lyric": "Did some bird flap its wings over in Asia?"
+	},
+	{
+		"index": 57,
+		"song": "Carolina",
+		"album": "Where the Crawdads Sing",
+		"gen_location": "North Carolina",
+		"lyric": "And there are places I will never ever go and things that only Carolina will ever know"
+	},
+	{
+		"index": 58,
+		"song": "Slut!",
+		"album": "1989",
+		"gen_location": "California",
+		"lyric": "Flamingo pink, Sunrise Boulevard, clink clink, being this young is art"
+	},
+	{
+		"index": 59,
+		"song": "Bad Blood",
+		"album": "1989",
+		"gen_location": "Iraq",
+		"lyric": "Now POV of you and me, similar Iraq"
+	},
+	{
+		"index": 59,
+		"song": "Bad Blood",
+		"album": "1989",
+		"gen_location": "Iraq",
+		"lyric": "Now POV of you and me, similar Iraq"
+	},
+	{
+		"index": 60,
+		"song": "London Boy",
+		"album": "Lover",
+		"gen_location": "Tennessee",
+		"lyric": "Stick with me, I’m your queen, like a Tennessee Stella McCartney"
+	}
+]
