@@ -219,8 +219,10 @@ h2 {
 /* Places Taylor Likes to Sing About Visualization */
 
 #places {
-    height: 225vh;
+    height: 240vh;
     width: 100%;
+    padding-left: 50px;
+    padding-right: 50px;
 }
 
 #ny-vis {
@@ -233,12 +235,24 @@ h2 {
     height: 600px;
 }
 
+#ny-place {
+    margin-bottom: 40px;
+}
+
+#london-place {
+    margin-bottom: 40px;
+}
+
 .marker-with-border {
     border: 2px solid #000;
 }
 
+.leaflet-popup-content {
+    font-family: 'Century Gothic', 'sans-serif';
+}
+
 .spacer {
-    height: 50px;
+    height: 30px;
 }
 
 

@@ -46,44 +46,6 @@ class LyricMap {
         // Specify the path to the Leaflet images
         L.Icon.Default.imagePath = 'img/';
 
-        // Create custom icons
-        // vis.folkloreIcon = L.icon({
-        //     iconUrl: 'img/marker-folklore.jpeg',
-        //     iconSize:     [38, 38],
-        //     iconAnchor:   [22, 22],
-        //     popupAnchor:  [-3, -25]
-        // });
-        // vis.evermoreIcon = L.icon({
-        //     iconUrl: 'img/marker-evermore.jpg',
-        //     iconSize:     [38, 38],
-        //     iconAnchor:   [22, 22],
-        //     popupAnchor:  [-3, -25]
-        // });
-        // vis.loverIcon = L.icon({
-        //     iconUrl: 'img/marker-lover.jpeg',
-        //     iconSize:     [38, 38],
-        //     iconAnchor:   [22, 22],
-        //     popupAnchor:  [-3, -25]
-        // });
-        // vis.reputationIcon = L.icon({
-        //     iconUrl: 'img/marker-reputation.jpeg',
-        //     iconSize:     [38, 38],
-        //     iconAnchor:   [22, 22],
-        //     popupAnchor:  [-3, -25]
-        // });
-        // vis.redIcon = L.icon({
-        //     iconUrl: 'img/marker-red.webp',
-        //     iconSize:     [38, 38],
-        //     iconAnchor:   [22, 22],
-        //     popupAnchor:  [-3, -25]
-        // });
-        // vis.icon1989 = L.icon({
-        //     iconUrl: 'img/marker-1989.webp',
-        //     iconSize:     [38, 38],
-        //     iconAnchor:   [22, 22],
-        //     popupAnchor:  [-3, -25]
-        // });
-
         // Create an array of locations referenced
         // note: coordinates from latlong.net
         vis.NYlocations = [];
@@ -125,14 +87,13 @@ class LyricMap {
         vis.map = L.map(vis.parentElement).setView(vis.mapCenter, vis.zoomLevel);
 
         // Load and display a tile layer on the map
-        // L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        //     attribution: 'OpenStreetMap'
-        // }).addTo(vis.map);
-
         L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
             maxZoom: 19,
             // attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>'
         }).addTo(vis.map);
+        // L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        //     attribution: 'OpenStreetMap'
+        // }).addTo(vis.map);
 
         // Create a LayerGroup to hold the markers
         vis.stationLayer = L.layerGroup().addTo(vis.map);
@@ -171,8 +132,10 @@ class LyricMap {
         // Update the content of lyrics div
         const NYLyricsDiv = document.getElementById('ny-lyrics');
         if (selectedLyric && vis.mapName === "NY") {
-            NYLyricsDiv.innerHTML = `<p>Song: ${selectedLyric.song}</p>
-                                     <p>Lyric: ${selectedLyric.lyric}</p>`;
+            NYLyricsDiv.innerHTML = `<p><b>Place:</b> ${locationName}</p>
+                                     <p><b>Song:</b> ${selectedLyric.song}</p>
+                                     <p><b>Album:</b> ${selectedLyric.album}</p>
+                                     <p><b>Lyric:</b> ${selectedLyric.lyric}</p>`;
             let place_img_path = "img/place-" + (selectedLyric.index).toString() + ".jpeg";
             d3.selectAll(".place-1").remove();
             d3.select("#ny-place").append("image")
@@ -187,8 +150,10 @@ class LyricMap {
         }
         const londonLyricsDiv = document.getElementById('london-lyrics');
         if (selectedLyric && vis.mapName === "London") {
-            londonLyricsDiv.innerHTML = `<p>Song: ${selectedLyric.song}</p>
-                                         <p>Lyric: ${selectedLyric.lyric}</p>`;
+            londonLyricsDiv.innerHTML = `<p><b>Place:</b> ${locationName}</p>
+                                         <p><b>Song:</b> ${selectedLyric.song}</p>
+                                         <p><b>Album:</b> ${selectedLyric.album}</p>
+                                         <p><b>Lyric:</b> ${selectedLyric.lyric}</p>`;
             let place_img_path = "img/place-" + (selectedLyric.index).toString() + ".jpeg";
             d3.selectAll(".place-1").remove();
             d3.select("#london-place").append("image")
@@ -270,42 +235,6 @@ class LyricMap {
         vis.updateVis();
     }
 
-    // updateVis() {
-    //     let vis = this;
-    //
-    //     // Clear the existing markers from the LayerGroup
-    //     vis.stationLayer.clearLayers();
-    //
-    //     // Add each location referenced to map
-    //     vis.NYlocations.forEach(object => {
-    //         const marker = L.marker(object.latlng, {icon: object.icon}).bindPopup(object.name);
-    //         marker.addTo(vis.map);
-    //         marker.on('click', function (event) {
-    //             vis.locationClickHandler(object.name, "NY");
-    //         });
-    //     });
-    //     vis.londonLocations.forEach(object => {
-    //         const marker = L.marker(object.latlng, {icon: object.icon}).bindPopup(object.name);
-    //         marker.addTo(vis.map);
-    //         marker.on('click', function (event) {
-    //             vis.locationClickHandler(object.name, "London");
-    //         });
-    //     });
-    //
-    //     // Set up event listener for map clicks
-    //     vis.map.on('click', function (event) {
-    //         // Check if the click is not on a marker
-    //         if (!event.layer) {
-    //             const clickedLocation = event.latlng;
-    //             if (this.mapName === "NY") {
-    //                 vis.locationClickHandler(clickedLocation, "NY");
-    //             } else if (this.mapName === "London") {
-    //                 vis.locationClickHandler(clickedLocation, "London");
-    //             }
-    //         }
-    //     });
-    // }
-
     updateVis() {
         let vis = this;
 
@@ -314,19 +243,40 @@ class LyricMap {
 
         // Add each location referenced to map
         vis.NYlocations.forEach(object => {
-            const marker = L.marker(object.latlng, { icon: object.icon }).bindPopup(object.name);
+            const marker = L.marker(object.latlng, { icon: object.icon });
+            const popup = L.popup({ closeButton: false }).setContent(object.name);
+
+            marker.bindPopup(popup);
+            marker.on('mouseover', function (e) {
+                this.openPopup();
+            });
+            marker.on('mouseout', function (e) {
+                this.closePopup();
+            });
             marker.addTo(vis.map);
+
             marker.on('click', function (event) {
                 vis.locationClickHandler(object.name, "NY");
             });
         });
         vis.londonLocations.forEach(object => {
-            const marker = L.marker(object.latlng, { icon: object.icon }).bindPopup(object.name);
+            const marker = L.marker(object.latlng, { icon: object.icon });
+            const popup = L.popup({ closeButton: false }).setContent(object.name);
+
+            marker.bindPopup(popup);
+            marker.on('mouseover', function (e) {
+                this.openPopup();
+            });
+            marker.on('mouseout', function (e) {
+                this.closePopup();
+            });
             marker.addTo(vis.map);
+
             marker.on('click', function (event) {
                 vis.locationClickHandler(object.name, "London");
             });
         });
+
 
         // Set up event listener for map clicks
         vis.map.on('click', function (event) {
