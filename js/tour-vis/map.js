@@ -31,19 +31,18 @@ class MapVis {
         vis.zoom = vis.width / vis.viewpoint.width;
 
         // adjust map position
-        vis.map = vis.svg.append("g") // group will contain all state paths
-            .attr("class", "states")
+        vis.map = vis.svg.append("g")
             .attr('transform', `scale(${vis.zoom} ${vis.zoom})`);
 
         // add tooltip
-        vis.tooltip = d3.select("#" + vis.parentElement).append("div")
+        vis.tooltip = d3.select("body").append("div")
             .attr("class", "tooltip")
             .style("opacity", 0);
 
         // projection
-        vis.projection = d3.geoMercator()
-            .translate([vis.width * 2.4 - 110, vis.height * 1.05 - 30])
-            .scale(340);
+        vis.projection = d3.geoAlbersUsa()
+            .translate([487.5, 305])
+            .scale(1300);
 
         // color scale for which tour
         vis.colorScale = d3.scaleOrdinal()
@@ -53,25 +52,11 @@ class MapVis {
         // radius scale for number of tours
         vis.radiusScale = d3.scaleLinear()
             .domain([0, d3.max(Object.values(vis.cityInfo), d => d.numTours)])
-            .range([3, 10]);
+            .range([6, 20]);
 
-        vis.map = vis.svg.append("g")
-            .attr("class", "states")
-            .attr("transform", `scale(${vis.zoom} ${vis.zoom})`);
-
-        vis.path = d3.geoPath();
-
-        vis.states = vis.map.selectAll(".state")
-            .data(topojson.feature(vis.geoData, vis.geoData.objects.states).features)
-            .enter()
-            .append("path")
-            .attr("class", "state")
-            .attr("d", vis.path)
-            .attr("stroke", "black")
-            .attr("fill", "transparent")
-            .attr("stroke-width", 1)
-
-        vis.cities = vis.svg.selectAll(".city")
+        // load cities
+        vis.cityGroup = vis.svg.append("g").attr("class", "city-group");
+        vis.cities = vis.cityGroup.selectAll(".city")
             .data(vis.displayData)
             .enter().append("circle")
             .attr('class', 'city')
@@ -82,9 +67,6 @@ class MapVis {
                     let coordinates = [vis.cityInfo[cityData.city].longitude, vis.cityInfo[cityData.city].latitude];
                     let [x, y] = vis.projection(coordinates);
                     return x;
-                    // if (x !== 0) {
-                        // return (x + 100) * (vis.width / 59) + vis.width/2.3;
-                    // }
                 } else {
                     return -5;
                 }
@@ -96,15 +78,29 @@ class MapVis {
                     let coordinates = [vis.cityInfo[cityData.city].longitude, vis.cityInfo[cityData.city].latitude];
                     let [x, y] = vis.projection(coordinates);
                     return y;
-                    // if (y !== 0) {
-                        // return (100 - y) * (vis.height / 40) - vis.height/0.8;
-                    // }
                 } else {
                     return -5;
                 }
             })
-            .attr("r", 5)
-            .style("fill", d => vis.colorScale(d.tours));
+            .style("fill", d => vis.colorScale(d.tours))
+            .attr("pointer-events", "visible");
+
+        vis.path = d3.geoPath();
+
+        // Load states GeoJSON data
+        d3.json("data/states-albers-10m.json").then(function (statesData) {
+            // Draw states
+            vis.stateGroup = vis.svg.insert("g", ".city-group").attr("class", "state-group");
+            vis.states = vis.stateGroup.selectAll(".state")
+                .data(topojson.feature(statesData, statesData.objects.states).features)
+                .enter()
+                .append("path")
+                .attr("class", "state")
+                .attr("d", vis.path)
+                .attr("stroke", "black")
+                .attr("fill", "transparent")
+                .attr("stroke-width", 1);
+        });
     }
 
     wrangleData() {
@@ -174,13 +170,13 @@ class MapVis {
                 case 'The_Red_Tour':
                     return "#9D1111";
                 case 'Speak_Now_World_Tour':
-                    return "#FFE381";
-                case 'The_1989_World_Tour':
                     return "#41337A";
+                case 'The_1989_World_Tour':
+                    return "#88D9E6";
                 case 'Fearless_Tour':
-                    return '#5DA271';
+                    return '#FFE381';
                 case 'Reputation_Stadium_Tour':
-                    return "#FFA5B0";
+                    return "#191919";
                 default:
                     return "#59656F";
             }
@@ -189,13 +185,14 @@ class MapVis {
 
         // Display information about tour in tooltip
         vis.cities.on("mouseover", function (event, d) {
+            console.log("Mouseover event triggered");
+            console.log("City Data:", d);
             d3.select(this)
                 .attr("r", d => vis.radiusScale(vis.cityInfo[d.City].numTours) + 3);
 
             const cityName = d.City;
             const numTours = vis.cityInfo[cityName] ? vis.cityInfo[cityName].numTours : 0;
             const tours = vis.cityInfo[cityName] ? vis.cityInfo[cityName].tours : [];
-            vis.city
             vis.tooltip
                 .style("opacity", 1)
                 .style("left", event.pageX + 20 + "px")
@@ -203,8 +200,8 @@ class MapVis {
                 .html(`
                 <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
                     <h3>${cityName}<h3>
-                    <h4> Number of Tours: ${numTours}</h4>  
-                    <h4> Tours: 
+                    <h4> Number of Tours: ${numTours}</h4>
+                    <h4> Tours:
                     ${Array.isArray(tours) ?
                     (tours.length > 0 ?
                         `<ul>${tours.map(t => `<li>${t}</li>`).join('')}</ul>` :

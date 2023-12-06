@@ -25,19 +25,11 @@ class GlobeVis {
             .attr("height", vis.height)
             .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`);
 
-        // add title
-        // vis.svg.append('g')
-        //     .attr('class', 'title')
-        //     .attr('id', 'map-title')
-        //     .append('text')
-        //     .text('Where Has Taylor Swift Toured?')
-        //     .attr('transform', `translate(${vis.width / 2}, ${vis.margin.top * 3})`)
-        //     .attr('text-anchor', 'middle');
-
         // projection
         vis.projection = d3.geoOrthographic()
             .translate([vis.width / 2, vis.height / 2])
-            .scale(120)
+            .scale(200)
+            .rotate([98, -39, 0]);
 
         vis.path = d3.geoPath()
             .projection(vis.projection);
@@ -47,7 +39,7 @@ class GlobeVis {
         vis.svg.append("path")
             .datum({type: "Sphere"})
             .attr("class", "graticule")
-            .attr('fill', '#8fa8e5')
+            .attr('fill', '#8bc4c3')
             .attr("stroke","rgba(129,129,129,0.35)")
             .attr("d", vis.path);
 
@@ -131,7 +123,7 @@ class GlobeVis {
         //     .range(["#CBD5C0", "#9CAF88", "#707e62", "#606e56"]);
         vis.colorScale = d3.scaleOrdinal()
             .domain(["0", "1", "<50", "50+"])
-            .range(["#CBD5C0", "#9CAF88", "#79886b", "#54604b"]);
+            .range(["#edece6", "#d5d4b7", "#abba97", "#54604b"]);
 
 
         vis.updateVis();
@@ -146,10 +138,13 @@ class GlobeVis {
             if (numTours === 0) {
                 return vis.colorScale("0");
             } else if (numTours === 1) {
+                console.log(vis.countryInfo[countryName]);
                 return vis.colorScale("1")
             } else if (numTours < 50) {
+                console.log(vis.countryInfo[countryName]);
                 return vis.colorScale("<50");
             } else {
+                console.log(vis.countryInfo[countryName]);
                 return vis.colorScale("50+");
             }
         });
