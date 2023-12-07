@@ -350,3 +350,176 @@ h2 {
     font-family: 'Century Gothic', 'sans-serif';
     font-size: 24px;
 }
+
+body {
+    font-family:'Futura','Helvetica',sans-serif;
+    box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+}
+.wrapper {width:100%;position:relative; background:rgba(0,0,0,0.4);}
+section {width:100%; float:left;height:auto; text-align:center;}
+p,h2 {padding:0;margin:0;}
+section#graph {
+    min-height: 100%;
+    text-align: center;
+    border:1px #FFF solid;
+    background-color:#1D5679;
+}
+
+.chart-tooltip {
+    line-height: 1.5;
+    visibility: hidden;
+    width: auto;
+    text-align:left;
+    padding: 10px 20px;
+    font-size:140%;
+    position: absolute;
+    background-color:rgba(0,0,0,0.55);
+    pointer-events: none;
+    z-index: 1060;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+.chart-tooltip span {
+    text-align:right;float:right;}
+.slider .handle , .slider .line {position:absolute;}
+
+.slider .handle {
+    background-image:url("https://github.com/goeuro/static_content/blob/master/web/Design/ball_indicator.svg");
+    width:40px;
+    height:40px;
+    background-color:red;
+    z-index:9999999;
+    position:fixed;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #A4CFDD;
+    stroke-width: 2;
+    shape-rendering: crispEdges;
+}
+.x.axis line {display:none;}
+.x.axis text {fill:#FFF;}
+/*#92C7E2;}*/
+#line1 , #line2{
+    width: 100%;
+    margin: 0px 0;
+    height:280px;
+    color:white;
+    font-size:10px;
+    position:relative;
+    float:left;
+    z-index:999999;
+}
+
+#line1 {overflow-y:visible; height:470px;}
+#line1 path, .cube .graph path {
+    stroke-width: 2;
+    fill:transparent;
+    z-index:99999;
+}
+
+g.tick {
+    fill:#FFF;
+}
+
+
+.moves {
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+}
+
+#line1 svg#travel-chart {
+    position:absolute; left:0; overflow:visible;}
+
+
+.transline {
+    stroke-dasharray:2000px;
+    stroke-dashoffset: 2000px;
+    animation: draw 12s ease-in-out forwards;
+    -webkit-animation: draw 8s ease-in-out forwards;
+}
+
+@keyframes draw {
+    to {
+        stroke-dasharray:3000px;
+        stroke-dashoffset: 100px;
+    }
+}
+
+/*SLIDER*/
+.axis {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.domain {
+    fill: none;
+    stroke: #eeecec;
+    stroke-opacity: .3;
+    stroke-width: 10px;
+    stroke-linecap: round;
+}
+
+
+.days li {float:left; display:inline;margin:0 0.5% 0 0;}
+
+/*end slider*/
+
+.transportStats {
+    display:inline-block;width:100%;
+    color:#2B84B7;
+}
+
+.transportStats li {
+    background-size:100%;
+    cursor:pointer;
+    z-index:999999;
+    display:inline;
+    float: left;
+    width: 25%;
+    color: #FFF;
+}
+
+
+.transpicked {
+    fill:rgba(255,255,255,0.77)!important;
+    background-color: rgba(238, 241, 243, 0.4) !important;
+}
+
+.transportStats .icon {width:30px;height:30px;background-size:30px; display:inline-block; margin-right:10px;vertical-align: middle;}
+
+span[data="bus"] {background-image:url("https://github.com/goeuro/static_content/blob/master/web/Design/bus-icon.svg");  /*border-right:1px white solid;*/}
+span[data="train"] {background-image:url("https://github.com/goeuro/static_content/blob/master/web/Design/train-icon.svg");}
+span[data="plane"] {background-image:url("https://github.com/goeuro/static_content/blob/master/web/Design/plane-icon.svg");}
+span[data="car"] {background-image:url("https://github.com/goeuro/static_content/blob/master/web/Design/car-icon.svg");/* border-left:1px white solid;*/}
+
+.transline#train , .textT {
+    stroke:#F3648A;
+    color:#F3648A;
+}
+
+.transline#plane  , .textP{
+    stroke:#F7A61B;
+    color:#F7A61B;
+}
+
+.transline#bus , .textB {
+    stroke:#88CE81;
+    color:#88CE81;
+}
+
+.transline#car , .textC{
+    stroke:#8BC5E7;
+    color:#8BC5E7;
+}
+
+#at-large {
+    width: 100%; /* or a specific value like 800px */
+}
