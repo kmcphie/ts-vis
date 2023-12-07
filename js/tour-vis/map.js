@@ -185,8 +185,6 @@ class MapVis {
 
         // Display information about tour in tooltip
         vis.cities.on("mouseover", function (event, d) {
-            console.log("Mouseover event triggered");
-            console.log("City Data:", d);
             d3.select(this)
                 .attr("r", d => vis.radiusScale(vis.cityInfo[d.City].numTours) + 3);
 
