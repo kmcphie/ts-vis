@@ -1,5 +1,11 @@
 /* COLOR PALETTE
-text: #15151B
+dark gray background: #1e1d1d
+text: #ffffff
+
+** PRIMARY COLORS (for backgrounds etc) **
+warm orange: #db6b5c
+medium orange: #e99469
+pale cream orange: #f6c193
 
 debut: #5DA271
 fearless: #FFE381
@@ -12,19 +18,32 @@ folklore: #59656F
 evermore: #775B59
 midnights: #050947
 
-array of colors: ["#5DA271", "#88D9E6", "#41337A", "#775B59", "#9D1111", "#050947", "#59656F", "#FFA5B0", "#191919", "#FFE381"]
+MIX OF PURPLES, PINKS, & GOLDS
+const taylorColors = [
+            "#FF8C94", "#FFE5E2", "#D4A5A5", "#FFD3B5", "#FFB6C1", "#FFDAB9", "#DAA520",
+            "#F0E68C", "#FFE4E1", "#F08080", "#FF6347", "#CD5C5C", "#FF69B4", "#9370DB",
+            "#DDA0DD", "#FFB6C1", "#FFA07A", "#FFD700", "#FAEBD7", "#F5F5DC", "#FFE4B5",
+            "#FFF8DC", "#8B4513", "#D2B48C", "#C71585", "#A52A2A", "#CD853F", "#D2691E",
+            "#F5DEB3", "#FFA07A", "#8A2BE2", "#FF4500", "#FF6347", "#FF1493", "#FFD700",
+            "#FF8C00", "#8B008B", "#800080", "#4B0082", "#8B0000", "#B22222", "#DC143C",
+            "#DB7093", "#800000", "#A52A2A"
+        ];
+
 */
+
+
 
 /* General CSS */
 
 body, html {
     font-family: 'Century Gothic', sans-serif;
-    background-color: #f7f7f7;
+    background-color: #1e1d1d;
     font-size: 20px;
     text-align: left;
     margin: 0;
     padding: 0;
     height: 100%;
+    color: white;
 }
 
 .container {
@@ -37,7 +56,8 @@ h1 {
     font-weight: bold;
     margin-top: 50px;
     margin-left: 50px;
-    font-size: 42px;
+    margin-bottom: 50px;
+    font-size: 60px;
     color: #FFA5B0;
 }
 
@@ -47,6 +67,11 @@ h2 {
     margin-bottom: 40px;
 }
 
+/*svg {*/
+/*    max-width: 100%; !* Make sure the SVG is responsive *!*/
+/*    height: auto;*/
+/*}*/
+
 .container-fluid {
     padding-right: 30px;
     padding-left: 30px;
@@ -55,8 +80,6 @@ h2 {
 .flex-col {
     display: flex;
     justify-content: center;
-    /*align-items: center;*/
-    /*height: 100vh;*/
 }
 
 .left {
@@ -70,9 +93,10 @@ h2 {
 }
 
 .text-box {
+    font-size: 30px;
     box-sizing: border-box;
-    width: 90%;
-    background: #FFA5B0;
+    width: 50%;
+    background: #FF8C94FF;
     border-radius: 2px;
     margin: 12vh 0;
     padding: 30px;
@@ -81,13 +105,24 @@ h2 {
 
 .larger-text {
     font-size: 38px;
-    font-weight: bold;
+    color: white;
 }
 
 .plain-text {
-    margin-left: 50px;
-    margin-top: 25px;
-    margin-bottom: 25px;
+    font-size: 24px;
+    padding: 25px 100px 25px 50px;
+    color: white;
+}
+
+.lyric-text {
+    position: absolute;
+    box-sizing: border-box;
+    width: 30%;
+    margin: 10px 0 0 50px;
+    background: #FFB6C1FF;
+    padding: 30px;
+    border-radius: 10px;
+    z-index: 1000;
 }
 
 
@@ -112,7 +147,7 @@ h2 {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
-    color: #15151B;
+    color: #ffffff;
 }
 
 #title-soundscape {
@@ -121,7 +156,7 @@ h2 {
     top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #15151B;
+    background-color: #ffffff;
     padding: 20px;
     z-index: 1;
 }
@@ -206,12 +241,12 @@ h2 {
 /* Lyric Themes Visualization */
 
 #lyric-themes {
-    height: 170vh;
+    height: auto;
     width: 100%;
 }
 
 #theme-count-vis {
-    height: 900px;
+    height: 80vh;
     width: 100%;
 }
 
@@ -285,8 +320,8 @@ h2 {
     position: absolute;
     visibility: visible;
     background-color: white;
-    border: 1px solid gray;
-    border-radius: 5px;
+    color: #1e1d1d;
+    border-radius: 10px;
     padding: 10px;
     z-index: 1000;
     font-family: 'Century Gothic', 'sans-serif';
@@ -351,12 +386,17 @@ h2 {
     font-size: 24px;
 }
 
-body {
-    font-family:'Futura','Helvetica',sans-serif;
-    box-sizing:border-box;
-    -webkit-box-sizing:border-box;
+/*body {*/
+/*    font-family:'Futura','Helvetica',sans-serif;*/
+/*    box-sizing:border-box;*/
+/*    -webkit-box-sizing:border-box;*/
+/*}*/
+
+.wrapper {
+    width:100%;
+    position:relative;
 }
-.wrapper {width:100%;position:relative; background:rgba(0,0,0,0.4);}
+
 section {width:100%; float:left;height:auto; text-align:center;}
 p,h2 {padding:0;margin:0;}
 section#graph {
@@ -434,7 +474,11 @@ g.tick {
 }
 
 #line1 svg#travel-chart {
-    position:absolute; left:0; overflow:visible;}
+    position:absolute;
+    left:0;
+    overflow:visible;
+    height: 80vh;
+}
 
 
 .transline {
@@ -495,7 +539,7 @@ g.tick {
 
 .transportStats .icon {width:30px;height:30px;background-size:30px; display:inline-block; margin-right:10px;vertical-align: middle;}
 
-span[data="bus"] {background-image:url("https://github.com/goeuro/static_content/blob/master/web/Design/bus-icon.svg");  /*border-right:1px white solid;*/}
+span[data="taylor"] {background-image:url("https://github.com/goeuro/static_content/blob/master/web/Design/bus-icon.svg");  /*border-right:1px white solid;*/}
 span[data="train"] {background-image:url("https://github.com/goeuro/static_content/blob/master/web/Design/train-icon.svg");}
 span[data="plane"] {background-image:url("https://github.com/goeuro/static_content/blob/master/web/Design/plane-icon.svg");}
 span[data="car"] {background-image:url("https://github.com/goeuro/static_content/blob/master/web/Design/car-icon.svg");/* border-left:1px white solid;*/}
@@ -510,7 +554,7 @@ span[data="car"] {background-image:url("https://github.com/goeuro/static_content
     color:#F7A61B;
 }
 
-.transline#bus , .textB {
+.transline#taylor , .textB {
     stroke:#88CE81;
     color:#88CE81;
 }

@@ -19,7 +19,8 @@ let promises = [
     d3.csv("data/themeCount.csv", d => {
         d.item_count = +d.item_count;
         return d;
-    })
+    }),
+    d3.csv("data/lyricThemes.csv")
 ];
 
 Promise.all(promises)
@@ -71,7 +72,13 @@ Promise.all(promises)
         myMapVis = new MapVis("map-vis", data[0], data[2], data[3]);
         // myMapVis.wrangleData();
 
-        myThemeClusterVis = new ClusterVis("theme-count-vis", data[4]);
+        // LYRIC VISUALIZATION
+        console.log("LYRIC THEME COUNT DATA: ")
+        console.log(data[4])
+        console.log('LYRIC THEMES DATA: ')
+        console.log(data[5]);
+
+        myThemeClusterVis = new ClusterVis("theme-count-vis", data[4], data[5]);
 
 
     })

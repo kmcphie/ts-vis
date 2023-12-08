@@ -46,45 +46,45 @@ document.addEventListener("DOMContentLoaded", function() {
     var data = [
         {
             "year":2018,
-            "Taylor":1,
-            "Doja Cat":2,
-            "train":22531,
-            "car":288875
+            "taylor":20,
+            "plane":34,
+            "train":14,
+            "car":53
         },
         {
             "year":2019,
-            "bus":62185,
-            "plane":41402,
-            "train":22617,
-            "car":288146
+            "taylor":23,
+            "plane":54,
+            "train":65,
+            "car":75
         },
         {
             "year":2020,
-            "bus":48744,
-            "plane":29084,
-            "train":18553,
-            "car":231808
+            "taylor":23,
+            "plane":43,
+            "train":65,
+            "car":76
         },
         {
             "year":2021,
-            "bus":59231,
-            "plane":39349,
-            "train":25046,
-            "car":308349
+            "taylor":34,
+            "plane":76,
+            "train":98,
+            "car":43
         },
         {
             "year":2022,
-            "bus":68832,
-            "plane":67064,
-            "train":27497,
-            "car":355731
+            "taylor":23,
+            "plane":4,
+            "train":65,
+            "car":76
         },
         {
             "year":2023,
-            "bus":145197,
-            "plane":89647,
-            "train":51124,
-            "car":652208
+            "taylor":34,
+            "plane":65,
+            "train":43,
+            "car":65
         }
     ];
 
@@ -103,10 +103,12 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     });
 
-    var bus = transports[0];
-    var plane = transports[1];
-    var train = transports[2];
-    var car = transports[3];
+    console.log(transports)
+
+    // var taylor = transports[0];
+    // var plane = transports[1];
+    // var train = transports[2];
+    // var car = transports[3];
 
     x.domain(d3.extent(data, function(d) { return d.year; }))
         .range([0, width]);
@@ -130,7 +132,10 @@ document.addEventListener("DOMContentLoaded", function() {
         .attr("class", "transline")
         .attr('fill', 'none')
         .attr("id", function(d) { return d.name; }) // ID of transport type
-        .attr("d", function(d) { return line(d.values); }); //data of all Y values
+        .attr("d", function(d) {
+            console.log(d)
+            return line(d.values);
+        }); //data of all Y values
 
     var handleLine = svg.append("rect")
         .attr("class", "line")
@@ -192,7 +197,7 @@ document.addEventListener("DOMContentLoaded", function() {
             value = Math.round(x.invert(mouseX)),
             valMap = value - 1; //map day - 1 for proper match (since array indexing starts at 0)
         if (value > 0) {
-            var dayBus = data[valMap].bus;
+            var dayTaylor = data[valMap].taylor;
             var dayTrain = data[valMap].train;
             var dayPlane = data[valMap].plane;
             var dayCar = data[valMap].car;
@@ -223,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         //get daily values and print
-        d3.select(".textB").text(dayBus.toLocaleString());
+        d3.select(".textB").text(dayTaylor.toLocaleString());
         d3.select(".textP").text(dayPlane.toLocaleString());
         d3.select(".textT").text(dayTrain.toLocaleString());
         d3.select(".textC").text(dayCar.toLocaleString());
