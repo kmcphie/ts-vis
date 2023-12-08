@@ -4,7 +4,8 @@ document.addEventListener("DOMContentLoaded", function() {
         d3.selectAll(".transline").style("stroke-dasharray", "0px").style("stroke-dashoffset", "0px");
     } //IE can't animate stroke - needs this disabled.
 
-    var ww = d3.select(".wrapper").node().offsetWidth;
+    // var ww = d3.select(".wrapper").node().offsetWidth;
+    var ww = 1290;
     var margin = { top: 20, right: 20, bottom: 50, left: 20 },
         width = ww - margin.right - margin.left,
         height = 360 - margin.top - margin.bottom;

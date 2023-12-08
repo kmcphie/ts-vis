@@ -25,11 +25,14 @@
 	<body>
 
 		<!--	INTRODUCTION/LANDING PAGE	-->
-		<div id="landing-bg">
-			<img src="img/landing-page-1.webp" style="width:100vw">
+<!--		<div id="landing-bg">-->
+<!--			<img src="img/landing-page-1.webp" style="width:100vw">-->
+<!--		</div>-->
+		<div class="container">
+			<img src="img/album-doodles/debut.png" class="doodle-albums" />
 		</div>
-		<h1 id="title-swift" data-aos="fade-right" data-aos-duration="2000">Swift</h1>
-		<h1 id="title-soundscape" data-aos="fade-right" data-aos-duration="2000">Soundscape</h1>
+		<h1 id="title-swift" data-aos="fade-right" data-aos-duration="2500">Swift Soundscape</h1>
+		<h1 id="title-soundscape" data-aos="fade-right" data-aos-duration="3000">It's Taylor Swift's World. We're Just Living In It.</h1>
 		<img src="img/scroll-down.png" id="scroll-img">
 
 		<div id="intro">
@@ -60,7 +63,7 @@
 			<div class="flex-col left">
 				<!--				<h1 class="pb-3" style="font-size: 64px;">Swift Soundscape</h1>-->
 				<p class="text-box" style="background: #FFB6C1FF;" data-aos="fade-right" data-aos-duration="2000">
-					This year, she kicked off the North and South American legs of her Eras Tour — a 3 hour and 45 minute concert with Swift performing 44 songs from the different eras of her life.
+					This year, she kicked off the North and South American legs of her Eras Tour — a 3 hour and 45 minute concert of 44 songs from the different eras of her life.
 					The Eras Tour shifted economies, with Swift selling out 70k+ seat stadiums across multiple nights and garnering a shout-out from the Federal Reserve as a major contributing factor to local economy booms.
 				</p>
 			</div>
@@ -72,8 +75,8 @@
 					Her accolades, both impressive and extensive, are somehow only the tip of the iceberg.
 				</p>
 			</div>
-			<div class="flex-col left">
-				<p class="text-box larger-text" data-aos="fade-right" data-aos-duration="2000">
+			<div class="flex-col">
+				<p class="text-box larger-text" data-aos="flip-up" data-aos-duration="2000" style="align-items: center; width: 75%;">
 					This year, more than ever, it feels like Taylor Swift <i>is</i> the music industry.
 				</p>
 			</div>
@@ -82,9 +85,9 @@
 		<!--	TAYLOR SWIFT AT LARGE VISUALIZATION	-->
 
 		<div class = "wrapper" id="at-large" >
-			<h1 data-aos="fade-up">Who's Taylor Swift anyway?</h1>
+			<h1 data-aos="fade-up" data-aos-duration="1500">Who's Taylor Swift anyway?</h1>
 
-			<p data-aos="fade-left" class="plain-text">
+			<p data-aos="fade-left" data-aos-duration="1500" class="plain-text plain-text-box" style="background: #856fd2;">
 				In 2018, upon the completion of her original deal, Swift signed a new record deal with Universal Music Group,
 				one she hoped would give her more creative freedom over her work.
 				<br><br>
@@ -93,28 +96,39 @@
 				<br><br>
 				Swift attributes this to the trust and freedom she has under with her new label, where her decisions are welcomed and encouraged.
 			</p>
-			<p data-aos="fade-left" class="plain-text">
+			<p data-aos="fade-left" data-aos-duration="1500" class="plain-text">
 				Let's take a look, then, at how Swift has stacked up against her peers in the music industry in this time.
 			</p>
 
 			<!-- LINE CHART -->
-			<div id="travel-chart" data-aos="fade-up"></div>
+<!--			<div id="travel-chart" data-aos="fade-up"></div>-->
 			<!--<img id="timeline-placeholder" src="data/timeline-vis.png" data-aos="fade-up">-->
 		</div>
 
+<!--		TEMP DIV TO MAKE ROOM FOR THE WEIRD LINE GRAPH IDK WHY IT'S JUST OVERLAPPED -->
+		<div style="height: 50vh;"></div>
+
+
+<!--		 COMMENT AS A SPACE FOR THE HEAT MAP GRAPH + NEED STORY  -->
 
 		<!-- LYRIC THEMES VISUALIZATION	-->
 		<div class="wrapper" id="lyric-themes">
-			<p class="plain-text" data-aos="fade-left">
-				Swift's mark as a musician has always been the fact that she writes all of her own music, both with and without other co-writers.
-				In fact, following her 2010 Grammy Album of the Year win for her album Fearless, critics claimed that she would not have been able to win without the help of her co-writers.
+			<p class="plain-text plain-text-box" style="background: #FFA07AFF;" data-aos="fade-left" data-aos-duration="1500">
+				Swift's mark as a musician has always been the fact that she is a songwriter on all of her songs.
+				Following her 2010 Album of the Year Grammy win for her album Fearless, critics claimed that she would not have been able to win without the help of her co-writers.
 				In response, Swift penned her next album, Speak Now, entirely by herself.
-				Her lyricism and storytelling has always been what connected Swift to her fans.
-				Let's take a deeper look into the worlds Swift creates through her music.
 			</p>
-			<h1 data-aos="fade-up">What's on your mind, Taylor?</h1>
-			<p data-aos="fade-left" class="plain-text">
-				Explore the themes below to get a sense of what Taylor writes about. Click on any theme to see a random lyric pop up!
+			<br>
+			<p class="plain-text plain-text-box" style="background: #88D9E6;" data-aos="fade-left" data-aos-duration="1500">
+				Swift has an uncanny ability to capture stories and build narrative arcs.
+				She writes lyrics from the most vulnerable and honest parts of herself, and somehow, it speaks directly to the hearts and experiences of her fans.
+				Known for both addicting pop radio production and a heartwrenching power ballad, Swift creates new worlds
+				for her listeners to sink into, and she often does this by leveraging literary devices to engage various themes.
+			</p>
+
+			<h1 data-aos="fade-up" data-aos-duration="1500">What's on your mind, Taylor?</h1>
+			<p data-aos="fade-left" class="plain-text" data-aos-duration="1500">
+				Check out the themes that Taylor leverages most in her music. Click on any bubble to see an example of a lyric that falls under that particular theme.
 			</p>
 			<div class="flex row">
 				<div id="theme-count-vis" class="col-md-8" data-aos="fade-up">
