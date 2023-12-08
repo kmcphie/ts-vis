@@ -50,6 +50,29 @@ Promise.all(promises)
             }
         });
 
+        // Rename tours in the data array
+        data[0].forEach(d => {
+            switch (d.Tour) {
+                case 'The_Red_Tour':
+                    d.Tour = "Red";
+                    break;
+                case 'Speak_Now_World_Tour':
+                    d.Tour = "Speak Now";
+                    break;
+                case 'The_1989_World_Tour':
+                    d.Tour = "1989";
+                    break;
+                case 'Fearless_Tour':
+                    d.Tour = 'Fearless';
+                    break;
+                case 'Reputation_Stadium_Tour':
+                    d.Tour = "Reputation";
+                    break;
+                default:
+                    d.Tour = "Tour";
+            }
+        });
+
         // Finding Number Of Events By Country For Each Tour
         const uniqueTours = [...new Set(data.map(d => d.Tour))];
 

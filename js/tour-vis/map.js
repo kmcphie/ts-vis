@@ -97,10 +97,42 @@ class MapVis {
                 .append("path")
                 .attr("class", "state")
                 .attr("d", vis.path)
-                .attr("stroke", "black")
+                .attr("stroke", "#9d9d9d")
                 .attr("fill", "transparent")
                 .attr("stroke-width", 1);
         });
+
+        // Legend
+        vis.legendData = [
+            { label: 'Fearless', color: '#ecd27d' },
+            { label: 'Speak Now', color: '#856fd2' },
+            { label: 'Red', color: '#cc2a2a' },
+            { label: '1989', color: '#88D9E6' },
+            { label: 'Reputation', color: 'white' },
+        ];
+
+        vis.legend = d3.select("#map-legend")
+            .append("svg")
+            .attr("width", vis.width)
+            .attr("height", 50);
+
+        vis.legend.selectAll("rect")
+            .data(vis.legendData)
+            .enter().append("rect")
+            .attr("x", (d, i) => i * 100)
+            .attr("y", 10)
+            .attr("width", 20)
+            .attr("height", 20)
+            .style("fill", d => d.color);
+
+        vis.legend.selectAll("text")
+            .data(vis.legendData)
+            .enter().append("text")
+            .attr("x", (d, i) => i * 100 + 25)
+            .attr("y", 25)
+            .text(d => d.label)
+            .attr("fill", "white")
+            .style("font-size", "12px");
     }
 
     wrangleData() {
@@ -167,16 +199,16 @@ class MapVis {
         }
         function getColorForTour(tour) {
             switch (tour) {
-                case 'The_Red_Tour':
+                case 'Red':
                     return "#9D1111";
-                case 'Speak_Now_World_Tour':
+                case 'Speak Now':
                     return "#41337A";
-                case 'The_1989_World_Tour':
+                case '1989':
                     return "#88D9E6";
-                case 'Fearless_Tour':
+                case 'Fearless':
                     return '#FFE381';
-                case 'Reputation_Stadium_Tour':
-                    return "#191919";
+                case 'Reputation':
+                    return "white";
                 default:
                     return "#59656F";
             }

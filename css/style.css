@@ -322,7 +322,7 @@ h2 {
 /* Tour Visualization */
 
 #tour {
-    height: 240vh;
+    height: 280vh;
     width: 100%;
 }
 
@@ -332,23 +332,20 @@ h2 {
 }
 
 #map-vis {
-    height: 800px;
+    height: 700px;
     width:100%;
+}
+
+#map-legend {
+    margin-left: 50px;
+    margin-top: 50px;
 }
 
 .tooltip {
     position: absolute;
     visibility: visible;
     background-color: white;
-<<<<<<< HEAD
     color: #1e1d1d;
-    border-radius: 10px;
-=======
-    /*border: 1px solid gray;*/
-    border-radius: 5px;
->>>>>>> 0784dbe (hello#)
-    padding: 10px;
-    z-index: 1000;
     font-family: 'Century Gothic', 'sans-serif';
 }
 
