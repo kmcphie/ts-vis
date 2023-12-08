@@ -20,7 +20,12 @@ let promises = [
         d.item_count = +d.item_count;
         return d;
     }),
-    d3.csv("data/lyricThemes.csv")
+
+    d3.csv("data/lyricThemes.csv"),
+
+    d3.json("data/wins.json"),
+    d3.csv("data/grammyAwards.csv")
+
 ];
 
 Promise.all(promises)
@@ -70,6 +75,12 @@ Promise.all(promises)
 
         myGlobeVis = new GlobeVis("globe-vis", data[0], data[1]);
         myMapVis = new MapVis("map-vis", data[0], data[2], data[3]);
+        treeVis = new TreeVis('tree-vis', data[6])
+        console.log(data[7])
+        winBar = new WinBar('grammy-vis', data[7])
+
+        console.log("grammy data:", data[7])
+
         // myMapVis.wrangleData();
 
         // LYRIC VISUALIZATION

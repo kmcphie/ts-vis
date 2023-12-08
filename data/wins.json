@@ -1,0 +1,51 @@
+{
+  "children": [
+    {
+      "name": "Pop",
+      "children": [
+        {"name": "Beyoncé", "group": "A", "value": 33, "colname": "level3"},
+        {"name": "Taylor Swift", "group": "A", "value": 19, "colname": "level3"},
+        {"name": "Adele", "group": "C", "value": 13, "colname": "level3"},
+        {"name": "Alicia Keys", "group": "C", "value": 17, "colname": "level3"}
+      ],
+      "colname": "level2"
+    },
+    {
+      "name": "Rock",
+      "children": [
+        {"name": "U2", "group": "C", "value": 21, "colname": "level3"},
+        {"name": "Bruce Springsteen", "group": "A", "value": 18, "colname": "level3"}
+      ],
+      "colname": "level2"
+    },
+    {
+      "name": "Rap",
+      "children": [
+        {"name": "Kanye West", "group": "B", "value": 44, "colname": "level3"},
+        {"name": "Jay-Z", "group": "A", "value": 41, "colname": "level3"},
+        {"name": "Kendrick Lamar", "group": "A", "value": 21, "colname": "level3"},
+        {"name": "Eminem", "group": "D", "value": 20, "colname": "level3"},
+        {"name": "Pharrell Williams", "group": "D", "value": 21, "colname": "level3"},
+        {"name": "T-Pain", "group": "D", "value": 8, "colname": "level3"}
+      ],
+      "colname": "level2"
+    },
+    {
+      "name": "Classical",
+      "children": [
+        {"name": "Pierre Boulez", "group": "E", "value": 4, "colname": "level3"},
+        {"name": "John Williams", "group": "F", "value": 12, "colname": "level3"}
+      ],
+      "colname": "level2"
+    },
+    {
+      "name": "Jazz",
+      "children": [
+        {"name": "Chick Corea", "group": "F", "value": 13, "colname": "level3"},
+        {"name": "Pat Metheny", "group": "G", "value": 10, "colname": "level3"}
+      ],
+      "colname": "level2"
+    }
+  ],
+  "name": "CEO"
+}

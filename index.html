@@ -84,6 +84,8 @@
 
 		<!--	TAYLOR SWIFT AT LARGE VISUALIZATION	-->
 
+
+
 		<div class = "wrapper" id="at-large" >
 			<h1 data-aos="fade-up" data-aos-duration="1500">Who's Taylor Swift anyway?</h1>
 
@@ -107,6 +109,24 @@
 
 <!--		TEMP DIV TO MAKE ROOM FOR THE WEIRD LINE GRAPH IDK WHY IT'S JUST OVERLAPPED -->
 		<div style="height: 50vh;"></div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-8">
+					<div id="tree-vis">
+						<h1>Artists By Grammy Nominations </h1>
+						<!-- Your tree visualization content goes here -->
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div id="grammy-vis">
+
+						<!-- Your Grammy visualization content goes here -->
+					</div>
+				</div>
+			</div>
+		</div>
 
 
 <!--		 COMMENT AS A SPACE FOR THE HEAT MAP GRAPH + NEED STORY  -->
@@ -267,7 +287,14 @@
 		<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 		<script src="js/ranking.js"></script>
 
-	<!-- tour vis -->
+		<!-- tree vis -->
+		<script src="js/tree1.js"></script>
+
+		<!-- grammy bar  -->
+		<script src="js/winbar.js"></script>
+
+
+		<!-- tour vis -->
 	<script src="js/tour-vis/globe.js"></script>
 	<script src="js/tour-vis/map.js"></script>
 

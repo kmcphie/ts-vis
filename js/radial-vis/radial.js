@@ -16,8 +16,8 @@ svg.selectAll("circle")
 	.data(ticks)
 	.join(
 		enter => enter.append("circle")
-			.attr("cx",  width / 2 + 150)
-			.attr("cy", height / 2 - 140)
+			.attr("cx",  width / 2 + 300)
+			.attr("cy", height / 2 )
 			.attr("fill", "none")
 			.attr("stroke", "gray")
 			.attr("r", d => radialScale(d))
@@ -28,15 +28,15 @@ svg.selectAll(".ticklabel")
 	.join(
 		enter => enter.append("text")
 			.attr("class", "ticklabel")
-			.attr("x", width / 2 + 150)
-			.attr("y", d => height / 2 - radialScale(d) - 140)
+			.attr("x", width / 2 + 300)
+			.attr("y", d => height / 2 - radialScale(d) + 20)
 			.text(d => d.toFixed(2))  // Display as decimals
 	);
 
 function angleToCoordinate(angle, value) {
 	let x = Math.cos(angle) * radialScale(value);
 	let y = Math.sin(angle) * radialScale(value);
-	return {"x": width / 2  + 150 + x, "y": height / 2 - y - 140};
+	return {"x": width / 2  + 300 + x, "y": height / 2 - y };
 }
 
 let features = ["Danceability", "Energy", "Acousticness", "Valence"];
@@ -46,11 +46,22 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 		.x(d => d.x)
 		.y(d => d.y);
 
-	console.log(data)
+	const taylorColors = [
+		"#FF8C94", "#FFE5E2", "#D4A5A5", "#FFD3B5", "#FFB6C1", "#FFDAB9", "#DAA520",
+		"#F0E68C", "#FFE4E1", "#F08080", "#FF6347", "#CD5C5C", "#FF69B4", "#9370DB",
+		"#DDA0DD", "#FFB6C1", "#FFA07A", "#FFD700", "#FAEBD7", "#F5F5DC", "#FFE4B5",
+		"#FFF8DC", "#8B4513", "#D2B48C", "#C71585", "#A52A2A", "#CD853F", "#D2691E",
+		"#F5DEB3", "#FFA07A", "#8A2BE2", "#FF4500", "#FF6347", "#FF1493", "#FFD700",
+		"#FF8C00", "#8B008B", "#800080", "#4B0082", "#8B0000", "#B22222", "#DC143C",
+		"#DB7093", "#800000", "#A52A2A"
+	];
 
-	let colorScale = d3.scaleOrdinal()
-		.domain(data.map(d => d.Playlist_ID))
-		.range(d3.schemeCategory10);
+
+	console.log(data)
+	//
+	// let colorScale = d3.scaleOrdinal()
+	// 	.domain(data.map(d => d.Playlist_ID))
+	// 	.range(d3.schemeCategory10);
 
 	function getPathCoordinates(data_point) {
 		let coordinates = [];
@@ -93,8 +104,8 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 		.join(
 			enter => enter.append("line")
 				.attr("class", "line")
-				.attr("x1", width / 2 + 150)
-				.attr("y1", height / 2 - 140)
+				.attr("x1", width / 2 + 300)
+				.attr("y1", height / 2 )
 				.attr("x2", d => d.line_coord.x)
 				.attr("y2", d => d.line_coord.y)
 				.attr("stroke", "black")
@@ -121,8 +132,10 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 				const path = enter.append("path")
 					.attr("d", d => line(getPathCoordinates(d)))
 					.attr("stroke-width", 3)
-					.attr("stroke", d => colorScale(d.Playlist_ID))
-					.attr("fill", d => colorScale(d.Playlist_ID))
+					// .attr("stroke", d => colorScale(d.Playlist_ID))
+					// .attr("fill", d => colorScale(d.Playlist_ID))
+					.attr("stroke", d => taylorColors[data.indexOf(d)])  // Use the index of the data point to get a color
+					.attr("fill", d => taylorColors[data.indexOf(d)])   // Use the index of the data point to get a color
 					.attr("stroke-opacity", 0)
 					.attr("opacity", 0);
 
@@ -142,7 +155,7 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 	function resetRectangles() {
 		// Reset the fill color of all rectangles to the original color
 		svg.selectAll(".song-label rect")
-			.attr("fill", "#ffd3da");
+			.attr("fill", "#ffffff");
 	}
 
 	const sanitizeId = (id) => id.replace(/[^\w-]/g, '_'); // Replace non-word characters with underscores
@@ -158,16 +171,16 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 				group.append("rect")
 					.attr("id", d => "rect-" + sanitizeId(d.Song_Name))
 					.attr("x", 140)
-					.attr("y", (d, i) => i * 30 + 15)
-					.attr("width", 370)
+					.attr("y", (d, i) => i * 30 + 60)
+					.attr("width", 460)
 					.attr("height", 25)
-					.attr("fill", "#ffd3da");
+					.attr("fill", "#ffffff");
 
 				// Add a sanitized id to the text based on the Song_Name
 				group.append("text")
 					.attr("id", d => "text-" + sanitizeId(d.Song_Name))
 					.attr("x", 149)
-					.attr("y", (d, i) => i * 30 + 33)
+					.attr("y", (d, i) => i * 30 + 77)
 					.text(d => d.Song_Name);
 
 				group.on("click", (event, d) => {
@@ -179,7 +192,9 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 
 					// Change the color of the corresponding rectangle
 					const rect = group.select("rect#rect-" + sanitizeId(d.Song_Name));
-					rect.attr("fill", newOpacity === 0.5 ? colorScale(d.Playlist_ID) : "#ffd3da");
+					// rect.attr("fill", newOpacity === 0.5 ? colorScale(d.Playlist_ID) : "#ffd3da");
+					rect.attr("fill", newOpacity === 0.5 ? taylorColors[data.indexOf(d)] : "#ffffff");
+
 
 					// Update the information box with the selected paths
 					const pathsForSong = songGroups.filter(song => song === d).selectAll("path");

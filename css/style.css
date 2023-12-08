@@ -340,8 +340,13 @@ h2 {
     position: absolute;
     visibility: visible;
     background-color: white;
+<<<<<<< HEAD
     color: #1e1d1d;
     border-radius: 10px;
+=======
+    /*border: 1px solid gray;*/
+    border-radius: 5px;
+>>>>>>> 0784dbe (hello#)
     padding: 10px;
     z-index: 1000;
     font-family: 'Century Gothic', 'sans-serif';
@@ -559,31 +564,131 @@ g.tick {
 
 .transportStats .icon {width:30px;height:30px;background-size:30px; display:inline-block; margin-right:10px;vertical-align: middle;}
 
-span[data="taylor"] {background-image:url("https://github.com/goeuro/static_content/blob/master/web/Design/bus-icon.svg");  /*border-right:1px white solid;*/}
+
+span[data="Taylor-Swift"] {background-image:url("https://github.com/goeuro/static_content/blob/master/web/Design/bus-icon.svg");  /*border-right:1px white solid;*/}
 span[data="train"] {background-image:url("https://github.com/goeuro/static_content/blob/master/web/Design/train-icon.svg");}
 span[data="plane"] {background-image:url("https://github.com/goeuro/static_content/blob/master/web/Design/plane-icon.svg");}
 span[data="car"] {background-image:url("https://github.com/goeuro/static_content/blob/master/web/Design/car-icon.svg");/* border-left:1px white solid;*/}
 
-.transline#train , .textT {
-    stroke:#F3648A;
-    color:#F3648A;
+.transline#Morgan-Wallen, .textMorganWallen {
+    stroke: #F3648A;
+    color: #F3648A;
+    stroke-width: 1;
 }
 
-.transline#plane  , .textP{
-    stroke:#F7A61B;
-    color:#F7A61B;
+.transline#SZA, .textSZA {
+    stroke: #F7A61B;
+    color: #F7A61B;
+    stroke-width: 1;
 }
 
-.transline#taylor , .textB {
-    stroke:#88CE81;
-    color:#88CE81;
+.transline#Taylor-Swift, .textTaylorSwift {
+    stroke: #88CE81;
+    color: #88CE81;
+    stroke-width: 1;
+>>>>>>> 0784dbe (hello#)
 }
 
-.transline#car , .textC{
-    stroke:#8BC5E7;
-    color:#8BC5E7;
+.transline#Drake, .textDrake {
+    stroke: #8BC5E7;
+    color: #8BC5E7;
+    stroke-width: 1;
+}
+
+.transline#Luke-Combs, .textLukeCombs {
+    stroke: #FF5733;
+    color: #FF5733;
+    stroke-width: 1;
+}
+
+.transline#Miley-Cyrus, .textMileyCyrus {
+    stroke: #9A4A8D;
+    color: #9A4A8D;
+    stroke-width: 1;
+}
+
+.transline#Zach-Bryan, .textZachBryan {
+    stroke: #3BCCB9;
+    color: #3BCCB9;
+    stroke-width: 1;
+}
+
+.transline#Savage, .textSavage {
+    stroke: #A85533;
+    color: #A85533;
+    stroke-width: 1;
+}
+
+.transline#Weeknd, .textWeeknd {
+    stroke: #A895ED;
+    color: #A895ED;
+    stroke-width: 1;
+}
+
+.transline#Bailey-Zimmerman, .textBaileyZimmerman {
+    stroke: #FFC300;
+    color: #FFC300;
+    stroke-width: 1;
+}
+
+.transline#Olivia-Rodrigo, .textOliviaRodrigo {
+    stroke: #F5BB00;
+    color: #F5BB00;
+    stroke-width: 1;
+}
+
+.transline#Travis-Scott, .textTravisScott {
+    stroke: #825DFF;
+    color: #825DFF;
+    stroke-width: 1;
+}
+
+.transline#Ice-Spice, .textIceSpice {
+    stroke: #4F98CA;
+    color: #4F98CA;
+    stroke-width: 1;
+}
+
+.transline#Lil-Uzi-Vert, .textLilUziVert {
+    stroke: #A200FF;
+    color: #A200FF;
+    stroke-width: 1;
+}
+
+.transline#Chris-Brown, .textChrisBrown {
+    stroke: #CB4C5E;
+    color: #CB4C5E;
+    stroke-width: 1;
+}
+
+.transline#Post-Malone, .textPostMalone {
+    stroke: #778899;
+    color: #778899;
+    stroke-width: 1;
+}
+
+.transline#Nicki-Minaj, .textNickiMinaj {
+    stroke: #FF69B4;
+    color: #FF69B4;
+    stroke-width: 1;
+}
+
+.transline#Jelly-Roll, .textJellyRoll {
+    stroke: #A52A2A;
+    color: #A52A2A;
+    stroke-width: 1;
 }
 
 #at-large {
     width: 100%; /* or a specific value like 800px */
+}
+
+.selected-line {
+    stroke-width: 30; /* Adjust the stroke width as needed */
+    /* Add any other styling you want for the selected line */
+}
+
+#grammy-vis {
+    width: 700px;
+    height: 700px;
 }
