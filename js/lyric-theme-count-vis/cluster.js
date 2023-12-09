@@ -106,9 +106,6 @@ class ClusterVis {
                 tooltip.html(`<strong>${d.theme}</strong><br>${d.description}<br>${d.item_count} mentions`)
                     .style("left", (event.pageX + 10) + "px")
                     .style("top", (event.pageY + 10) + "px")
-                    .style("color", "#1e1d1d")
-                    .style("padding", "10px")
-                    .style("border", "1px solid #ccc");
 
                 // increase radius
                 d3.select(this)
@@ -127,6 +124,7 @@ class ClusterVis {
                 // Hide tooltip on mouseout
                 tooltip
                     .style("opacity", 0)
+                    .html(``)
 
             })
             .on("click", function (event, d) {
@@ -163,10 +161,9 @@ class ClusterVis {
             lyricBox.selectAll(".lyric-text")
                 .data(lyrics)
                 .enter()
-                .append("text")
-                .text(d => `${d.Song}: "${d.Lyric}"`)
-                .attr("x", 20)
-                .attr("y", (d, i) => 20 * (i + 1))
+                .append("div") // Create a new div for each data point
+                .attr("class", "lyric-text-child")
+                .html(d => `<strong>${d.Song}</strong><br>${d.Lyric}`);
         }
 
         function getRandomIndex(min, max) {

@@ -62,7 +62,7 @@ h1 {
     font-weight: bold;
     margin-top: 50px;
     margin-left: 50px;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     font-size: 60px;
     color: #FFA5B0;
 }
@@ -362,6 +362,9 @@ h2 {
     background-color: white;
     color: #1e1d1d;
     font-family: 'Century Gothic', 'sans-serif';
+    border-radius: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
 }
 
 
