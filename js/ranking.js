@@ -27,6 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     var color = d3.scaleOrdinal(d3.schemeCategory10);
 
+
     var xAxis = d3.axisBottom(x)
         .ticks(6)
         .tickSize(10, 0);
@@ -220,7 +221,6 @@ document.addEventListener("DOMContentLoaded", function() {
         };
     });
 
-
     // var taylor = transports[0];
     // var plane = transports[1];
     // var train = transports[2];
@@ -273,7 +273,6 @@ document.addEventListener("DOMContentLoaded", function() {
     city.append("path")
         .attr("class", "transline")
         .attr('fill', 'none')
-
         .attr("id", function(d) { return d.name; }) // ID of transport type
         .attr("d", function(d) {
             console.log(d)
@@ -282,16 +281,8 @@ document.addEventListener("DOMContentLoaded", function() {
         .attr("id", function (d) { return d.name; })
         .attr("d", function (d) { return line(d.values); });
 
-    var taylorSwiftLine = d3.select("#Taylor-Swift.transline");
 
-    city.selectAll(".transline")
-        .on("click", function(d) {
-            // Remove the bold styling from all lines
-            d3.selectAll(".transline").classed("selected-line", false);
 
-            // Apply the bold styling to the clicked line
-            d3.select(this).classed("selected-line", true);
-        });
 
     var handleLine = svg.append("rect")
         .attr("class", "line")
@@ -343,131 +334,149 @@ document.addEventListener("DOMContentLoaded", function() {
     //     .on('touchmove', mouseMove)
     //     .on('touchend', mouseOut);
 
-    //** Init Tooltip
-    // var toolTip = d3.select("#at-large #travel-chart").append('div')
-    //     .attr('class', 'chart-tooltip');
 
+    var tooltip = d3.select("#at-large #travel-chart").append('div')
+        .attr('class', 'chart-tooltip')
+        .style('opacity', 0);
+
+    // Append overlay rectangle for mouse tracking
+    svg.append('rect')
+        .attr('class', 'overlay')
+        .attr('width', width)
+        .attr('height', height)
+        .style('fill', 'none')
+        .style('pointer-events', 'all')
+        .on('mouseover', function() {
+            tooltip.transition().duration(200).style('opacity', 1);
+        })
+        .on('mouseout', function() {
+            tooltip.transition().duration(200).style('opacity', 0);
+            d3.selectAll(".transline").classed("selected-line", false);
+        })
+        .on('mousemove', mouseMove);
+
+    // Assuming 'artists' is an array containing artist names
+    var artistSelect = d3.select("#artist-select");
+
+    artistSelect
+        .selectAll("option")
+        .data(artists)
+        .enter()
+        .append("option")
+        .text(function (d) {
+            return d.name;
+        })
+        .attr("value", function (d) {
+            return d.name;
+        });
+
+
+    artistSelect.on("change", function () {
+        var selectedArtist = this.value;
+
+        // Hide all lines
+        d3.selectAll(".transline").style("display", "none");
+
+        // Show the selected artist and Taylor Swift lines
+        d3.select("#" + selectedArtist).style("display", "block");
+        d3.select("#Taylor-Swift").style("display", "block");
+    });
+
+    svg.append("svg:image")
+        .attr("xlink:href", "https://i.imgur.com/iSKSqWk.png") // Replace with the direct link to the image file
+        .attr("width", 80)
+        .attr("height", 80)
+        .attr("class", "taylor-swift-image")
+        .attr("x", 0)
+        .attr("y", 0);
+
+
+    // Add a transition for the image to move along the path
+    svg.selectAll(".taylor-swift-image")
+        .transition()
+        .duration(6000) // Adjust the duration of the animation
+        .attrTween("transform", translateAlong(svg.select("#Taylor-Swift.transline").node()))
+        .on("end", function () {
+            // Animation complete, you can add additional logic here if needed
+        });
+
+// Function to create the animation along the path
+    function translateAlong(path) {
+        var l = path.getTotalLength();
+        return function (i) {
+            return function (t) {
+                var p = path.getPointAtLength(t * l);
+                return "translate(" + p.x + "," + p.y +  ")";
+            };
+        };
+    }
+
+
+    // function isMouseOverPath(path, mouseX) {
+    //     // Get the path data (d attribute)
+    //     var pathData = path.getAttribute("d");
+    //
+    //     // Create a temporary SVG path element
+    //     var tempPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    //     tempPath.setAttribute("d", pathData);
+    //
+    //     // Check if the mouse coordinates are within the bounding box of the path
+    //     return tempPath.isPointInFill({ x: mouseX, y: 0 });
+    // }
 
     function mouseMove(event) {
-        var mouse = d3.pointer(event),
-            mouseX = mouse[0],
-            mouseY = mouse[1],
-            value = Math.round(x.invert(mouseX)),
-            valMap = value - 1; //map day - 1 for proper match (since array indexing starts at 0)
-        if (value > 0) {
-            var dayTaylor = data[valMap].taylor;
-            var dayTrain = data[valMap].train;
-            var dayPlane = data[valMap].plane;
-            var dayCar = data[valMap].car;
+        var mouseX = d3.pointer(event)[0];
+
+        // Check if mouse is over any path
+        var hoveredPath = getHoveredPath(mouseX);
+
+        if (hoveredPath) {
+            var artistName = hoveredPath.id;
+
+            // Display tooltip with artist name
+            tooltip.html(artistName)
+                .style('left', (mouseX + 'px'))
+                .style('top', (y(hoveredPath.values[0].ranking) + 'px'));
+
+            // Highlight the hovered line
+            d3.selectAll(".transline").classed("selected-line", false);
+            d3.select("#" + artistName).classed("selected-line", true);
+        } else {
+            // If not over any path, hide the tooltip and remove highlighting
+            tooltip.style('visibility', 'hidden');
+            d3.selectAll(".transline").classed("selected-line", false);
         }
-
-        //** Display tool tip
-        toolTip
-            .style('visibility', 'visible')
-            .style("left", (20 + mouseX + "px"))
-            .style("top", (mouseY + "px"))
-            .html(value + " December 2015<br/>Buses: <span class='textB'></span><br/>Trains: <span class='textT'></span><br/>Planes: <span class='textP'></span><br/>Cars: <span class='textC'></span>");
-
-        handle
-            .attr("x", (mouseX + "px"));
-
-        handleText
-            .attr("x", (mouseX + "px"))
-            .html(value);
-
-        handleLine
-            .attr("x", (mouseX + "px"));
-
-        //Don't smush tooltip on right edge:
-        var leftLimit = width - 180;
-        if (mouseX >= leftLimit) {
-            toolTip.style("left",
-                (mouseX - 140 + "px"));
-        }
-
-        //get daily values and print
-        d3.select(".textB").text(dayTaylor.toLocaleString());
-        d3.select(".textP").text(dayPlane.toLocaleString());
-        d3.select(".textT").text(dayTrain.toLocaleString());
-        d3.select(".textC").text(dayCar.toLocaleString());
     }
 
-    function mouseOut() {
-        toolTip.style('visibility', 'hidden');
-        var totalBus = 0,
-            totalTrain = 0,
-            totalPlane = 0,
-            totalCar = 0; //reset values
+    function getHoveredPath(mouseX) {
+        // Iterate through paths and check if mouse is over any path
+        for (var i = 0; i < artists.length; i++) {
+            var path = d3.select("#" + artists[i].name).node();
+            if (isMouseOverPath(path, mouseX)) {
+                console.log(artists[i])
+                return artists[i];
+            }
+        }
+
+        return null;
     }
 
-    // function mouseMove(event) {
-    //     var mouse = d3.pointer(event),
-    //         mouseX = mouse[0],
-    //         mouseY = mouse[1],
-    //         value = Math.round(x.invert(mouseX)),
-    //         valMap = value - 1; //map day - 1 for proper match (since array indexing starts at 0)
-    //     if (value > 0) {
-    //         // var dayTaylorSwift = data[valMap][TaylorSwift];
-    //         // if (value > 0) {
-    //         //     var dayMorganWallen = data[valMap][MorganWallen];
-    //         //     var daySZA = data[valMap][SZA];
-    //         //     var dayTaylorSwift = data[valMap][TaylorSwift];
-    //         //     var dayDrake = data[valMap][Drake];
-    //         //     var dayLukeCombs = data[valMap][LukeCombs];
-    //         //     var dayMileyCyrus = data[valMap][MileyCyrus];
-    //         //     var dayZachBryan = data[valMap][ZachBryan];
-    //         //     var daySavage = data[valMap][Savage];
-    //         //     var dayWeeknd = data[valMap][Weeknd];
-    //         //     var dayBailey = data[valMap][Bailey];
-    //         //     var dayOlivia = data[valMap][Olivia];
-    //         //     var dayTravis = data[valMap][Travis];
-    //         //     var dayIce = data[valMap][Ice];
-    //         //     var dayLilUzi = data[valMap][LilUzi];
-    //         //     var dayChrisBrown = data[valMap][ChrisBrown];
-    //         //     var dayPostMalone = data[valMap][PostMalone];
-    //         //     var dayNickiMinaj = data[valMap][NickiMinaj];
-    //         //     var dayJellyRoll = data[valMap][JellyRoll];
-    //         // }
-    //     }
-    //
-    //     //** Display tool tip
-    //     toolTip
-    //         .style('visibility', 'visible')
-    //         .style("left", (20 + mouseX + "px"))
-    //         .style("top", (mouseY + "px"))
-    //         .html(value + " December 2015<br/>Buses: <span class='textB'></span><br/>Trains: <span class='textT'></span><br/>Planes: <span class='textP'></span><br/>Cars: <span class='textC'></span>");
-    //
-    //     handle
-    //         .attr("x", (mouseX + "px"));
-    //
-    //     handleText
-    //         .attr("x", (mouseX + "px"))
-    //         .html(value);
-    //
-    //     handleLine
-    //         .attr("x", (mouseX + "px"));
-    //
-    //     //Don't smush tooltip on right edge:
-    //     var leftLimit = width - 180;
-    //     if (mouseX >= leftLimit) {
-    //         toolTip.style("left",
-    //             (mouseX - 140 + "px"));
-    //     }
-    //
-    //     // //get daily values and print
-    //     d3.select(".textB").text(dayTaylorSwift.toLocaleString());
-    //     // d3.select(".textP").text(daySZA.toLocaleString());
-    //     // d3.select(".textT").text(dayTrain.toLocaleString());
-    //     // d3.select(".textC").text(dayCar.toLocaleString());
-    // }
-    //
-    // function mouseOut() {
-    //     toolTip.style('visibility', 'hidden');
-    //     var totalBus = 0,
-    //         totalTrain = 0,
-    //         totalPlane = 0,
-    //         totalCar = 0; //reset values
-    // }
+    function isMouseOverPath(path, mouseX) {
+        var pathLength = path.getTotalLength();
+        var tolerance = 5; // Adjust the tolerance as needed
+
+        for (var i = 0; i < pathLength; i += 1) {
+            var point = path.getPointAtLength(i);
+            if (Math.abs(point.x - mouseX) < tolerance) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+
+
 
 });
 

@@ -264,22 +264,26 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 		infoBox.append("text")
 			.attr("x", 10)
 			.attr("y", 20)
-			.text("Average Valence: " + avgValence.toFixed(2));
+			.text("Average Valence: " + avgValence.toFixed(2))
+			.attr('fill', 'white');
 
 		infoBox.append("text")
 			.attr("x", 10)
 			.attr("y", 40)
-			.text("Average Acousticness: " + avgAcousticness.toFixed(2));
+			.text("Average Acousticness: " + avgAcousticness.toFixed(2))
+			.attr('fill', 'white');
 
 		infoBox.append("text")
 			.attr("x", 10)
 			.attr("y", 60)
-			.text("Average Danceability: " + avgDanceability.toFixed(2));
+			.text("Average Danceability: " + avgDanceability.toFixed(2))
+			.attr('fill', 'white');
 
 		infoBox.append("text")
 			.attr("x", 10)
 			.attr("y", 80)
-			.text("Average Energy: " + avgEnergy.toFixed(2));
+			.text("Average Energy: " + avgEnergy.toFixed(2))
+			.attr('fill', 'white')
 
 		// Generate sentences about the vibe based on average values
 		const vibeSentences = generateVibeSentences(selectedPaths);
@@ -289,6 +293,7 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 			.data(vibeSentences)
 			.enter()
 			.append("text")
+			.attr('fill', 'white')
 			.attr("class", "vibe-sentence")
 			.attr("x", 10)
 			.attr("y", (d, i) => 100 + i * 20)

@@ -583,121 +583,140 @@ span[data="plane"] {background-image:url("https://github.com/goeuro/static_conte
 span[data="car"] {background-image:url("https://github.com/goeuro/static_content/blob/master/web/Design/car-icon.svg");/* border-left:1px white solid;*/}
 
 .transline#Morgan-Wallen, .textMorganWallen {
-    stroke: #F3648A;
-    color: #F3648A;
-    stroke-width: 1;
+    stroke: #FFE4E1;
+    color: #FFE4E1;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
 
 .transline#SZA, .textSZA {
-    stroke: #F7A61B;
-    color: #F7A61B;
-    stroke-width: 1;
+    stroke: #FFD3B5;
+    color: #FFD3B5;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
 
 .transline#Taylor-Swift, .textTaylorSwift {
-    stroke: #88CE81;
-    color: #88CE81;
-    stroke-width: 1;
->>>>>>> 0784dbe (hello#)
+    stroke: #FFD700; /* Bright color for Taylor Swift */
+    color: #FFD700;
+    stroke-width: 3; /* Updated stroke width for Taylor Swift */
+    opacity: 0.8; /* Higher opacity */
 }
 
 .transline#Drake, .textDrake {
-    stroke: #8BC5E7;
-    color: #8BC5E7;
-    stroke-width: 1;
+    stroke: #F08080;
+    color: #F08080;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
 
 .transline#Luke-Combs, .textLukeCombs {
-    stroke: #FF5733;
-    color: #FF5733;
-    stroke-width: 1;
+    stroke: #FF6347;
+    color: #FF6347;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
 
 .transline#Miley-Cyrus, .textMileyCyrus {
-    stroke: #9A4A8D;
-    color: #9A4A8D;
-    stroke-width: 1;
+    stroke: #DAA520;
+    color: #DAA520;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
 
 .transline#Zach-Bryan, .textZachBryan {
-    stroke: #3BCCB9;
-    color: #3BCCB9;
-    stroke-width: 1;
+    stroke: #FAEBD7;
+    color: #FAEBD7;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
 
 .transline#Savage, .textSavage {
-    stroke: #A85533;
-    color: #A85533;
-    stroke-width: 1;
+    stroke: #FFB6C1;
+    color: #FFB6C1;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
 
 .transline#Weeknd, .textWeeknd {
-    stroke: #A895ED;
-    color: #A895ED;
-    stroke-width: 1;
+    stroke: #DDA0DD;
+    color: #DDA0DD;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
 
 .transline#Bailey-Zimmerman, .textBaileyZimmerman {
-    stroke: #FFC300;
-    color: #FFC300;
-    stroke-width: 1;
+    stroke: #FFE4B5;
+    color: #FFE4B5;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
 
 .transline#Olivia-Rodrigo, .textOliviaRodrigo {
-    stroke: #F5BB00;
-    color: #F5BB00;
-    stroke-width: 1;
+    stroke: #FFF8DC;
+    color: #FFF8DC;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
 
 .transline#Travis-Scott, .textTravisScott {
-    stroke: #825DFF;
-    color: #825DFF;
-    stroke-width: 1;
+    stroke: #8A2BE2;
+    color: #8A2BE2;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
 
 .transline#Ice-Spice, .textIceSpice {
-    stroke: #4F98CA;
-    color: #4F98CA;
-    stroke-width: 1;
+    stroke: #F5F5DC;
+    color: #F5F5DC;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
 
 .transline#Lil-Uzi-Vert, .textLilUziVert {
-    stroke: #A200FF;
-    color: #A200FF;
-    stroke-width: 1;
+    stroke: #A52A2A;
+    color: #A52A2A;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
 
 .transline#Chris-Brown, .textChrisBrown {
-    stroke: #CB4C5E;
-    color: #CB4C5E;
-    stroke-width: 1;
+    stroke: #B22222;
+    color: #B22222;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
 
 .transline#Post-Malone, .textPostMalone {
-    stroke: #778899;
-    color: #778899;
-    stroke-width: 1;
+    stroke: #DC143C;
+    color: #DC143C;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
 
 .transline#Nicki-Minaj, .textNickiMinaj {
     stroke: #FF69B4;
     color: #FF69B4;
-    stroke-width: 1;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
 
 .transline#Jelly-Roll, .textJellyRoll {
     stroke: #A52A2A;
     color: #A52A2A;
-    stroke-width: 1;
+    stroke-width: 1.5; /* Updated stroke width */
+    opacity: 0.3;
 }
+
+
+
 
 #at-large {
     width: 100%; /* or a specific value like 800px */
 }
 
 .selected-line {
-    stroke-width: 30; /* Adjust the stroke width as needed */
-    /* Add any other styling you want for the selected line */
+    opacity: 5; /* Adjust the stroke width as needed */
 }
 
 #grammy-vis {
