@@ -275,8 +275,30 @@ class GlobeVis {
 
             vis.countryInfo[d.properties.name] = {
                 name: originalName,
-                numTours: 0 // Initialize the count
+                numShows: 0, // Initialize the count
+                totalShows: 0,
+                tours: []
             };
+        });
+
+        // Calculate the total stats (doesn't change based on filtering)
+        vis.totalShowsAllCountries = 0;
+        vis.tourData.forEach(d => {
+            const countryName = d.Country;
+            if (["England", "Scotland", "Wales", "Northern Ireland"].includes(countryName)) {
+                vis.countryInfo["United Kingdom"].totalShows++;
+                if (!vis.countryInfo["United Kingdom"].tours.includes(d.Tour)) {
+                    vis.countryInfo["United Kingdom"].tours.push(d.Tour);
+                }
+                vis.totalShowsAllCountries++;
+            }
+            if (vis.countryInfo[countryName]) {
+                vis.countryInfo[countryName].totalShows++;
+                if (!vis.countryInfo[countryName].tours.includes(d.Tour)) {
+                    vis.countryInfo[countryName].tours.push(d.Tour);
+                }
+                vis.totalShowsAllCountries++;
+            }
         });
 
         // Filter the displayData based on the selection box
@@ -286,14 +308,14 @@ class GlobeVis {
             vis.displayData = vis.displayData.filter(d => d.Tour === selectedTourName);
         }
 
-        // Count the number of tours for each country
+        // Count the number of shows for each country (changes based on filtering)
         vis.displayData.forEach(d => {
             const countryName = d.Country;
             if (["England", "Scotland", "Wales", "Northern Ireland"].includes(countryName)) {
-                vis.countryInfo["United Kingdom"].numTours++;
+                vis.countryInfo["United Kingdom"].numShows++;
             }
             if (vis.countryInfo[countryName]) {
-                vis.countryInfo[countryName].numTours++;
+                vis.countryInfo[countryName].numShows++;
             }
         });
 
@@ -305,12 +327,12 @@ class GlobeVis {
 
         vis.countries.style("fill", d => {
             const countryName = d.properties.name;
-            const numTours = vis.countryInfo[countryName]?.numTours || 0;
-            if (numTours === 0) {
+            const numShows = vis.countryInfo[countryName]?.numShows || 0;
+            if (numShows === 0) {
                 return vis.colorScale("0");
-            } else if (numTours === 1) {
+            } else if (numShows === 1) {
                 return vis.colorScale("1")
-            } else if (numTours < 50) {
+            } else if (numShows < 50) {
                 return vis.colorScale("<50");
             } else {
                 return vis.colorScale("50+");
@@ -323,7 +345,7 @@ class GlobeVis {
                 .attr('stroke', 'black')
 
             const countryName = d.properties.name;
-            const numTours = vis.countryInfo[countryName] ? vis.countryInfo[countryName].numTours : 0;
+            const numShows = vis.countryInfo[countryName] ? vis.countryInfo[countryName].numShows : 0;
             vis.tooltip
                 .style("opacity", 1)
                 .style("left", event.pageX + 20 + "px")
@@ -331,19 +353,53 @@ class GlobeVis {
                 .html(`
                 <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
                     <h3>${countryName}<h3>
-                    <h4> Number of Tours: ${numTours}</h4>  
+                    <h4> Number of Shows: ${numShows}</h4>  
                 </div>`);
-        })
-            .on('mouseout', function(event, d){
-                d3.select(this)
-                    .attr('stroke-width', '0px')
+        }).on('mouseout', function(event, d){
+            d3.select(this)
+                .attr('stroke-width', '0px')
 
-                vis.tooltip
-                    .style("opacity", 0)
-                    .style("left", 0)
-                    .style("top", 0)
-                    .html(``);
-            });
+            vis.tooltip
+                .style("opacity", 0)
+                .style("left", 0)
+                .style("top", 0)
+                .html(``);
+        });
+
+        vis.countries.on("click", function (event, d) {
+            const countryName = d.properties.name;
+            const numShows = vis.countryInfo[countryName] ? vis.countryInfo[countryName].numShows : 0;
+            const totalShows = vis.countryInfo[countryName] ? vis.countryInfo[countryName].totalShows : 0;
+            const percentShows = ((totalShows / vis.totalShowsAllCountries) * 100).toFixed(2);
+            const tours = vis.countryInfo[countryName] ? vis.countryInfo[countryName].tours : 0;
+
+            let tourCountryInfoDiv = document.getElementById("tour-country-info");
+            tourCountryInfoDiv.innerHTML =
+                `<div>
+            <h3><b>${countryName}</b></h3>
+            <p><b>Shows:</b> ${numShows}</p>
+            <p><b>Total Shows:</b> ${totalShows}</p>
+            <p><b>Associated tours:</b> 
+                ${Array.isArray(tours) ?
+                    (tours.length > 0 ?
+                        `<ul>${tours.map(t => `<li>${t}</li>`).join('')}</ul>` :
+                        'No tours available') :
+                    `<p>${tours}</p>`}
+            </p>
+            <br>
+            </div>`;
+
+            if (percentShows === "0.00") {
+                tourCountryInfoDiv.append(`Taylor Swift hasn't toured in ${countryName}... yet!`);
+            } else {
+                if (countryName === "United States") {
+                    tourCountryInfoDiv.append(`Out of all tours prior to the Eras Tour, ${percentShows}% of Taylor Swift's shows have been performed in the ${countryName}.`);
+                } else {
+                    tourCountryInfoDiv.append(`Out of all tours prior to the Eras Tour, ${percentShows}% of Taylor Swift's shows have been performed in ${countryName}.`);
+                }
+            }
+
+        });
 
     }
 }
