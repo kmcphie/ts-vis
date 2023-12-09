@@ -392,7 +392,9 @@ class GlobeVis {
                 tourCountryInfoDiv.append(`Taylor Swift hasn't toured in ${countryName}... yet!`);
             } else {
                 if (countryName === "United States") {
-                    tourCountryInfoDiv.append(`Out of all tours prior to the Eras Tour, ${percentShows}% of Taylor Swift's shows have been performed in the ${countryName}.`);
+                    tourCountryInfoDiv.append(`Out of all tours prior to the Eras Tour, ${percentShows}% of Taylor Swift's 
+                    shows have been performed in the ${countryName}. Since that's such a high percentage, let's take a 
+                    closer look at where within the US Taylor has been!`);
                 } else {
                     tourCountryInfoDiv.append(`Out of all tours prior to the Eras Tour, ${percentShows}% of Taylor Swift's shows have been performed in ${countryName}.`);
                 }
