@@ -24,7 +24,8 @@ let promises = [
     d3.csv("data/lyricThemes.csv"),
 
     d3.json("data/wins.json"),
-    d3.csv("data/grammyAwards.csv")
+    d3.csv("data/grammyAwards.csv"),
+    d3.csv("data/Tour_Info.csv")
 
 ];
 
@@ -93,10 +94,12 @@ Promise.all(promises)
         console.log(data[2]);
         console.log("CITY DATA:");
         console.log(data[3]);
+        console.log("TOUR INFO:");
+        console.log(data[8]);
 
 
 
-        myGlobeVis = new GlobeVis("globe-vis", data[0], data[1]);
+        myGlobeVis = new GlobeVis("globe-vis", data[0], data[1], data[8]);
         myMapVis = new MapVis("map-vis", data[0], data[2], data[3]);
         treeVis = new TreeVis('tree-vis', data[6])
         console.log(data[7])

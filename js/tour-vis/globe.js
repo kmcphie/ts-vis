@@ -3,10 +3,11 @@
 * * * * * * * * * * * * * */
 
 class GlobeVis {
-    constructor(parentElement, tourData, geoData) {
+    constructor(parentElement, tourData, geoData, tourInfo) {
         this.parentElement = parentElement;
         this.tourData = tourData;
         this.geoData = geoData;
+        this.tourInfo = tourInfo;
 
         this.initVis()
     }
@@ -87,7 +88,74 @@ class GlobeVis {
             vis.wrangleData();
         });
 
+        // Legend
+        vis.legendData = [
+            { label: 'Fearless', color: '#ecd27d', id: 'tour-fearless' },
+            { label: 'Speak Now', color: '#856fd2', id: 'tour-speak-now' },
+            { label: 'Red', color: '#cc2a2a', id: 'tour-red' },
+            { label: '1989', color: '#88D9E6', id: 'tour-1989' },
+            { label: 'Reputation', color: 'white', id: 'tour-reputation' },
+        ];
+
+        vis.legend = d3.select("#tour-legend")
+            .append("svg")
+            .attr("width", 500)
+            .attr("height", 50);
+
+        vis.legend.selectAll("rect")
+            .data(vis.legendData)
+            .enter().append("rect")
+            .attr("x", (d, i) => i * 100)
+            .attr("y", 10)
+            .attr("width", 20)
+            .attr("height", 20)
+            .style("fill", d => d.color)
+            .attr("id", d => d.id);
+
+        vis.legend.selectAll("text")
+            .data(vis.legendData)
+            .enter().append("text")
+            .attr("x", (d, i) => i * 100 + 25)
+            .attr("y", 25)
+            .text(d => d.label)
+            .attr("fill", "white")
+            .style("font-size", "12px");
+
+        // Event listeners for albums
+        document.getElementById("tour-fearless").addEventListener("click", function () {
+            let selectedTour = vis.tourInfo.find(entry => entry.Title === "Fearless Tour");
+            vis.updateTourCountryInfo(selectedTour);
+        });
+        document.getElementById("tour-speak-now").addEventListener("click", function () {
+            let selectedTour = vis.tourInfo.find(entry => entry.Title === "Speak Now World Tour");
+            vis.updateTourCountryInfo(selectedTour);
+        });
+        document.getElementById("tour-red").addEventListener("click", function () {
+            let selectedTour = vis.tourInfo.find(entry => entry.Title === "The Red Tour");
+            vis.updateTourCountryInfo(selectedTour);
+        });
+        document.getElementById("tour-1989").addEventListener("click", function () {
+            let selectedTour = vis.tourInfo.find(entry => entry.Title === "The 1989 World Tour");
+            vis.updateTourCountryInfo(selectedTour);
+        });
+        document.getElementById("tour-reputation").addEventListener("click", function () {
+            let selectedTour = vis.tourInfo.find(entry => entry.Title === "Reputation Stadium Tour");
+            vis.updateTourCountryInfo(selectedTour);
+        });
+
         vis.wrangleData();
+    }
+
+    updateTourCountryInfo(selectedTour) {
+        const tourCountryInfoDiv = document.getElementById("tour-country-info");
+        tourCountryInfoDiv.innerHTML =
+            `<div>
+                    <p><b>${selectedTour.Title}</b></p>
+                    <p><b>Dates:</b> ${selectedTour.Dates}</p>
+                    <p><b>Shows:</b> ${selectedTour.Shows}</p>
+                    <p><b>Attendance:</b> ${selectedTour.Attendance}</p>
+                    <p><b>Revenue:</b> ${selectedTour.Revenue}</p>
+                </div>`;
     }
 
     wrangleData() {

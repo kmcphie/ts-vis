@@ -102,38 +102,6 @@ class MapVis {
                 .attr("stroke-width", 1);
         });
 
-        // Legend
-        vis.legendData = [
-            { label: 'Fearless', color: '#ecd27d' },
-            { label: 'Speak Now', color: '#856fd2' },
-            { label: 'Red', color: '#cc2a2a' },
-            { label: '1989', color: '#88D9E6' },
-            { label: 'Reputation', color: 'white' },
-        ];
-
-        vis.legend = d3.select("#tour-legend")
-            .append("svg")
-            .attr("width", vis.width)
-            .attr("height", 50);
-
-        vis.legend.selectAll("rect")
-            .data(vis.legendData)
-            .enter().append("rect")
-            .attr("x", (d, i) => i * 100)
-            .attr("y", 10)
-            .attr("width", 20)
-            .attr("height", 20)
-            .style("fill", d => d.color);
-
-        vis.legend.selectAll("text")
-            .data(vis.legendData)
-            .enter().append("text")
-            .attr("x", (d, i) => i * 100 + 25)
-            .attr("y", 25)
-            .text(d => d.label)
-            .attr("fill", "white")
-            .style("font-size", "12px");
-
         // Filter by tour dropdown
         d3.select("#tour-filter")
             .on("change", function () {
