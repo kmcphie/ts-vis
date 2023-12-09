@@ -224,21 +224,20 @@ class MapVis {
             const numTours = vis.cityInfo[cityName] ? vis.cityInfo[cityName].numTours : 0;
             const tours = vis.cityInfo[cityName] ? vis.cityInfo[cityName].tours : [];
             vis.tooltip
-                .style("opacity", 1)
+                .style("opacity", 0.9)
                 .style("left", event.pageX + 20 + "px")
                 .style("top", event.pageY + "px")
                 .html(`
-                <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
-                    <h3>${cityName}<h3>
-                    <h4> Number of Shows: ${numTours}</h4>
-                    <h4> Associated Tours:
+                    <strong>${cityName}</strong>
+                    <br>
+                    <strong> Number of Shows: </strong> ${numTours}
+                    <br>
+                    <strong> Associated Tours: </strong>
                     ${Array.isArray(tours) ?
                     (tours.length > 0 ?
                         `<ul>${tours.map(t => `<li>${t}</li>`).join('')}</ul>` :
                         'No tours available') :
-                    `<p>${tours}</p>`}
-                    </h4>
-                </div>`);
+                    `${tours}`}`);
         })
             .on('mouseout', function (event, d) {
                 d3.select(this)

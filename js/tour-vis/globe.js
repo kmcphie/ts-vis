@@ -347,14 +347,13 @@ class GlobeVis {
             const countryName = d.properties.name;
             const numShows = vis.countryInfo[countryName] ? vis.countryInfo[countryName].numShows : 0;
             vis.tooltip
-                .style("opacity", 1)
+                .style("opacity", 0.9)
                 .style("left", event.pageX + 20 + "px")
                 .style("top", event.pageY + "px")
                 .html(`
-                <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
-                    <h3>${countryName}<h3>
-                    <h4> Number of Shows: ${numShows}</h4>  
-                </div>`);
+                    <strong>${countryName}</strong>
+                    <br>
+                    <strong> Number of Shows:</strong> ${numShows}`);
         }).on('mouseout', function(event, d){
             d3.select(this)
                 .attr('stroke-width', '0px')
