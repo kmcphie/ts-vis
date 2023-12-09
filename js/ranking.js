@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //     height = 360 - margin.top - margin.bottom;
 
     var ww = d3.select(".wrapper").node().offsetWidth;
-    var margin = { top: 20, right: 20, bottom: 50, left: 50 },
+    var margin = { top: 50, right: 20, bottom: 50, left: 150 },
         width = 1400 - margin.right - margin.left,
         height = 600 - margin.top - margin.bottom;
 

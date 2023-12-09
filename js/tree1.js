@@ -96,14 +96,6 @@ class TreeVis {
             .attr('font-size', '19px')
             .attr('fill', (d) => color(d.data.name));
 
-        this.treesvg
-            .append('text')
-            .attr('x', 0)
-            .attr('y', 14)
-            .text('Three group leaders and 14 employees')
-            .attr('font-size', '19px')
-            .attr('fill', 'grey');
-
     }
     setupTileClick() {
         const vis = this;

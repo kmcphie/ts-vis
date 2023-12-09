@@ -18,7 +18,8 @@ folklore: #9d9d9d
 evermore: #9e7967
 midnights: #1e29d4
 
-MIX OF PURPLES, PINKS, & GOLDS
+BROAD COLOR PALETTE OF PURPLES, PINKS, ORANGES, BLUES, AND GREENS
+COPY-PASTE INTO A JS FILE AND SEE SWATCHES OF ALL OF THE HEX CODES TO MAKE IT EASY!
 const taylorColors = [
             "#FF8C94", "#FFE5E2", "#D4A5A5", "#FFD3B5", "#FFB6C1", "#FFDAB9", "#DAA520",
             "#F0E68C", "#FFE4E1", "#F08080", "#FF6347", "#CD5C5C", "#FF69B4", "#9370DB",
@@ -26,7 +27,13 @@ const taylorColors = [
             "#FFF8DC", "#8B4513", "#D2B48C", "#C71585", "#A52A2A", "#CD853F", "#D2691E",
             "#F5DEB3", "#FFA07A", "#8A2BE2", "#FF4500", "#FF6347", "#FF1493", "#FFD700",
             "#FF8C00", "#8B008B", "#800080", "#4B0082", "#8B0000", "#B22222", "#DC143C",
-            "#DB7093", "#800000", "#A52A2A"
+            "#DB7093", "#800000", "#A52A2A", "#D3A1D9", "#FFD9EC", "#FFC0CB", "#FF7F9E", "#FF6B8B",
+            "#FF5252", "#E43977", "#FFB7C5", "#FF769F", "#FF5A77",
+            "#FF2B50", "#FA336C", "#FFABC9", "#E63980", "#FF668F",
+            "#FF4E6E", "#FF0040", "#B3E0F2", "#9AD8EA", "#81D0E2", "#68C8DA", "#4FC0D2",
+            "#36B8CA", "#1DADC2", "#0CA3BA", "#0092A7", "#007C8F",
+            "#B7E1CD", "#A3D8C0", "#8FD0B3", "#7AC8A6", "#66C099",
+            "#52B88C", "#3EA17E", "#2E8F6B", "#217B59", "#1A6747"
         ];
 */
 

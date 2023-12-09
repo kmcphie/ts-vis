@@ -84,9 +84,6 @@
 
 		<!--	TAYLOR SWIFT AT LARGE VISUALIZATION	-->
 
-
-
-		<div class = "wrapper" id="at-large" >
 			<h1 data-aos="fade-up" data-aos-duration="1500">Who's Taylor Swift anyway?</h1>
 
 			<p data-aos="fade-left" data-aos-duration="1500" class="plain-text plain-text-box" style="background: #856fd2;">
@@ -100,105 +97,40 @@
 			</p>
 			<p data-aos="fade-left" data-aos-duration="1500" class="plain-text">
 				Let's take a look, then, at how Swift has stacked up against her peers in the music industry in this time.
+				Below is a graph outlining the Billboard Music Charts ranking of the Top 20 Artists of 2023, and the progression of their chart ranking from 2017 to now.
 			</p>
-		</div>
 
-<!--		TEMP DIV TO MAKE ROOM FOR THE WEIRD LINE GRAPH IDK WHY IT'S JUST OVERLAPPED -->
-		<div style="height: 60vh;"></div>
+		<div class="wrapper" id="at-large" data-aos="fade-up" data-aos-duration="1500"></div>
 
 		<div class="container-fluid mt-20 mb-20">
+			<p data-aos="fade-left" data-aos-duration="1500" class="plain-text plain-text-box" style="background: #0CA3BAFF">
+				The Grammy Awards are presented by the Recording Academy of the United States to recognize "outstanding" achievements in the music industry.
+				They are regarded by many as the most prestigious and significant awards in the music industry worldwide.
+				<br><br>
+				For any artist, a Grammy nomination is an absolute honor, and a Grammy win is a massive milestone.
+			</p>
+
+			<p class="plain-text">
+				Take a look at some of the Grammy's most nominated and awarded artists across major music genres below.
+				<br>
+				<i>Click on any artist to see the breakdown of their nominations by year!</i>
+			</p>
+
+
 			<div class="row">
 				<div class="col-md-8">
 					<div id="tree-vis">
-						<h1>Artists By Grammy Nominations </h1>
 						<!-- Your tree visualization content goes here -->
 					</div>
 				</div>
 
 				<div class="col-md-4">
 					<div id="grammy-vis">
-
 						<!-- Your Grammy visualization content goes here -->
 					</div>
 				</div>
 			</div>
 		</div>
-
-		<!-- LYRIC THEMES VISUALIZATION	-->
-		<div class="wrapper" id="lyric-themes">
-			<p class="plain-text plain-text-box" style="background: #FFA07AFF;" data-aos="fade-left" data-aos-duration="1500">
-				Swift's mark as a musician has always been the fact that she is a songwriter on all of her songs.
-				Following her 2010 Album of the Year Grammy win for her album Fearless, critics claimed that she would not have been able to win without the help of her co-writers.
-				In response, Swift penned her next album, Speak Now, entirely by herself.
-			</p>
-			<br>
-			<p class="plain-text plain-text-box" style="background: #88D9E6;" data-aos="fade-left" data-aos-duration="1500">
-				Swift has an uncanny ability to capture stories and build narrative arcs.
-				She writes lyrics from the most vulnerable and honest parts of herself, and somehow, it speaks directly to the hearts and experiences of her fans.
-				Known for both addicting pop radio production and a heartwrenching power ballad, Swift creates new worlds
-				for her listeners to sink into, and she often does this by leveraging literary devices to engage various themes.
-			</p>
-
-			<h1 data-aos="fade-up" data-aos-duration="1500">What's on your mind, Taylor?</h1>
-			<p data-aos="fade-left" class="plain-text" data-aos-duration="1500">
-				Check out the themes that Taylor leverages most in her music. Click on any bubble to see an example of a lyric that falls under that particular theme.
-			</p>
-			<div class="flex row">
-				<div id="theme-count-vis" class="col-md-8" data-aos="fade-up">
-					<div id="theme-details-box" class="col-md-4"></div>
-				</div>
-			</div>
-		</div>
-
-
-		<!-- PLACES TAYLOR LIKES TO SING ABOUT VISUALIZATION -->
-		<div id="places" data-aos="fade-up">
-			<h1>Taylor's Favorite Places</h1>
-			<p class="plain-text">
-				Taylor Swift is known for including references to real places in her lyrics. What city do you think
-				she's mentioned the most? (Hint: Welcome to ______)
-			</p>
-			<p class="plain-text">
-			    More than any other place, Taylor Swift references New York in her lyrics. There's the obvious
-				"Welcome to New York," but songs such as "Mean," "Come Back," "Holy Ground," "False God,"
-				"Daylight" and "Hoax" all include a general New York reference as well. The map below shows some
-				specific places within New York that Taylor Swift has referenced.
-			</p>
-			<div class="row">
-				<div class="col-md-6">
-					<div id="ny-vis" data-aos="fade-right"></div>
-				</div>
-				<div class="col-md-6">
-					<div id="ny-place-img"></div>
-					<p id="ny-lyrics">Click on a location on the map to see the song lyric associated with it! Zoom out to see more locations.</p>
-				</div>
-			</div>
-			<div class="spacer"></div>
-			<p class="plain-text">
-				London is another city that Taylor Swift has mentioned a lot! Her songs "Come Back...Be Here" and "Message
-				in a Bottle" both include a general London reference, and the map below shows specific locations referenced
-				within London. You'll notice that all the references are from the same album, and even the same song: London Boy.
-			</p>
-			<div class="row">
-				<div class="col-md-6">
-					<div id="london-vis" data-aos="fade-right"></div>
-				</div>
-				<div class="col-md-6">
-					<div id="london-place-img"></div>
-					<p id="london-lyrics">Click on a location on the map to see the song lyric associated with it! Zoom out to see more locations.</p>
-				</div>
-			</div>
-		</div>
-
-
-		<!-- TIMES TAYLOR LIKES TO SING ABOUT -->
-<!--		<div id="times" data-aos="fade-up">-->
-<!--			<h1>What time is it, Taylor?</h1>-->
-<!--			<div id="time-vis">-->
-<!--				<img src="img/Taylor_Swift.jpg">-->
-<!--			</div>-->
-<!--		</div>-->
-
 
 		<!--	TOUR VISUALIZATION	-->
 		<div id="tour" data-aos="fade-up">
@@ -249,6 +181,90 @@
 				States, let's take a closer look!
 			</p>
 		</div>
+
+		<!-- PLACES TAYLOR LIKES TO SING ABOUT VISUALIZATION -->
+		<div id="places" data-aos="fade-up">
+			<h1>Taylor's Favorite Places</h1>
+			<p class="plain-text">
+				Taylor Swift is known for including references to real places in her lyrics. What city do you think
+				she's mentioned the most? (Hint: Welcome to ______)
+			</p>
+			<p class="plain-text">
+				More than any other place, Taylor Swift references New York in her lyrics. There's the obvious
+				"Welcome to New York," but songs such as "Mean," "Come Back," "Holy Ground," "False God,"
+				"Daylight" and "Hoax" all include a general New York reference as well. The map below shows some
+				specific places within New York that Taylor Swift has referenced.
+			</p>
+			<div class="row">
+				<div class="col-md-6">
+					<div id="ny-vis" data-aos="fade-right"></div>
+				</div>
+				<div class="col-md-6">
+					<div id="ny-place-img"></div>
+					<p id="ny-lyrics">Click on a location on the map to see the song lyric associated with it! Zoom out to see more locations.</p>
+				</div>
+			</div>
+			<div class="spacer"></div>
+			<p class="plain-text">
+				London is another city that Taylor Swift has mentioned a lot! Her songs "Come Back...Be Here" and "Message
+				in a Bottle" both include a general London reference, and the map below shows specific locations referenced
+				within London. You'll notice that all the references are from the same album, and even the same song: London Boy.
+			</p>
+			<div class="row">
+				<div class="col-md-6">
+					<div id="london-vis" data-aos="fade-right"></div>
+				</div>
+				<div class="col-md-6">
+					<div id="london-place-img"></div>
+					<p id="london-lyrics">Click on a location on the map to see the song lyric associated with it! Zoom out to see more locations.</p>
+				</div>
+			</div>
+		</div>
+
+		<!-- LYRIC THEMES VISUALIZATION	-->
+		<div id="lyric-themes">
+			<div class="flex-col left mb-20">
+				<p class="plain-text plain-text-box" style="background: #FFA07AFF;" data-aos="fade-right" data-aos-duration="2000">
+					Swift's mark as a musician has always been the fact that she is a songwriter on all of her songs.
+					Following her 2010 Album of the Year Grammy win for her album Fearless, critics claimed that she would not have been able to win without the help of her co-writers.
+					In response, Swift penned her next album, Speak Now, entirely by herself.
+				</p>
+			</div>
+			<br>
+			<div class="flex-col right">
+				<p class="plain-text plain-text-box" style="background: #88D9E6;" data-aos="fade-left" data-aos-duration="2000">
+					Swift has an uncanny ability to capture stories and build narrative arcs.
+					She writes lyrics from the most vulnerable and honest parts of herself, and somehow, it speaks directly to the hearts and experiences of her fans.
+					Known for both addicting pop radio production and a heartwrenching power ballad, Swift creates new worlds
+					for her listeners to sink into, and she often does this by leveraging literary devices to engage various themes.
+				</p>
+			</div>
+
+			<h1 data-aos="fade-up" data-aos-duration="1500">What's on your mind, Taylor?</h1>
+			<p data-aos="fade-left" class="plain-text" data-aos-duration="1500">
+				Check out the themes that Taylor leverages most in her music. Click on any bubble to see an example of a lyric that falls under that particular theme.
+			</p>
+			<div class="flex row">
+				<div id="theme-count-vis" class="col-md-8" data-aos="fade-up">
+					<div id="theme-details-box" class="col-md-4"></div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+
+		<!-- TIMES TAYLOR LIKES TO SING ABOUT -->
+<!--		<div id="times" data-aos="fade-up">-->
+<!--			<h1>What time is it, Taylor?</h1>-->
+<!--			<div id="time-vis">-->
+<!--				<img src="img/Taylor_Swift.jpg">-->
+<!--			</div>-->
+<!--		</div>-->
+
+
+
 
 
 		<!-- RADIAL CHART VISUALIZATION -->
