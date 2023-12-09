@@ -24,7 +24,8 @@ let promises = [
     d3.csv("data/lyricThemes.csv"),
 
     d3.json("data/wins.json"),
-    d3.csv("data/grammyAwards.csv")
+    d3.csv("data/grammyAwards.csv"),
+    d3.csv("data/Tour_Info.csv")
 
 ];
 
@@ -50,6 +51,29 @@ Promise.all(promises)
             }
         });
 
+        // Rename tours in the data array
+        data[0].forEach(d => {
+            switch (d.Tour) {
+                case 'The_Red_Tour':
+                    d.Tour = "Red";
+                    break;
+                case 'Speak_Now_World_Tour':
+                    d.Tour = "Speak Now";
+                    break;
+                case 'The_1989_World_Tour':
+                    d.Tour = "1989";
+                    break;
+                case 'Fearless_Tour':
+                    d.Tour = 'Fearless';
+                    break;
+                case 'Reputation_Stadium_Tour':
+                    d.Tour = "Reputation";
+                    break;
+                default:
+                    d.Tour = "Tour";
+            }
+        });
+
         // Finding Number Of Events By Country For Each Tour
         const uniqueTours = [...new Set(data.map(d => d.Tour))];
 
@@ -70,10 +94,12 @@ Promise.all(promises)
         console.log(data[2]);
         console.log("CITY DATA:");
         console.log(data[3]);
+        console.log("TOUR INFO:");
+        console.log(data[8]);
 
 
 
-        myGlobeVis = new GlobeVis("globe-vis", data[0], data[1]);
+        myGlobeVis = new GlobeVis("globe-vis", data[0], data[1], data[8]);
         myMapVis = new MapVis("map-vis", data[0], data[2], data[3]);
         treeVis = new TreeVis('tree-vis', data[6])
         console.log(data[7])
