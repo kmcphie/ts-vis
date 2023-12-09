@@ -12,6 +12,109 @@ class GlobeVis {
         this.initVis()
     }
 
+    updateTourInfo(selectedTour) {
+        let vis = this;
+
+        // Update the dropdown and colors to match selected tour
+        vis.tourFilter.value = (() => {
+            switch (selectedTour.Title) {
+                case 'The Red Tour':
+                    vis.colorScale = d3.scaleOrdinal()
+                        .domain(["0", "1", "<50", "50+"])
+                        .range(["#ede6e6", "#c96d6d", "#cb3d3d", "#cc2a2a"]);
+                    vis.oceanColor = "#8bc4c3";
+                    return 'Red';
+                case 'Speak Now World Tour':
+                    vis.colorScale = d3.scaleOrdinal()
+                        .domain(["0", "1", "<50", "50+"])
+                        .range(["#e9e6ed", "#b1aad2", "#9289cc", "#856fd2"]);
+                    vis.oceanColor = "#8bc4c3";
+                    return 'Speak Now';
+                case 'The 1989 World Tour':
+                    vis.colorScale = d3.scaleOrdinal()
+                        .domain(["0", "1", "<50", "50+"])
+                        .range(["#e6edec", "#bbdae3", "#a0d8e1", "#88D9E6"]);
+                    vis.oceanColor = "#727272";
+                    return '1989';
+                case 'Fearless Tour':
+                    vis.colorScale = d3.scaleOrdinal()
+                        .domain(["0", "1", "<50", "50+"])
+                        .range(["#edece6", "#e7dec6", "#e5ce96", "#ecd27d"]);
+                    vis.oceanColor = "#8bc4c3";
+                    return 'Fearless';
+                case 'Reputation Stadium Tour':
+                    vis.colorScale = d3.scaleOrdinal()
+                        .domain(["0", "1", "<50", "50+"])
+                        .range(["#ffffff", "#b7b7b7", "#7a7a7a", "#313131"]);
+                    vis.oceanColor = "#8bc4c3";
+                    return 'Reputation';
+                default:
+                    return 'all';
+            }
+        })();
+
+        vis.svg.select(".graticule")
+            .attr('fill', vis.oceanColor);
+
+        // Trigger the change event on the dropdown to update the visualization
+        const changeEvent = new Event("change");
+        vis.tourFilter.dispatchEvent(changeEvent);
+
+        // Update the text to show information about selected tour
+        let tourCountryInfoDiv = document.getElementById("tour-country-info");
+        tourCountryInfoDiv.innerHTML =
+            `<div>
+            <h3><b>${selectedTour.Title}</b></h3>
+            <p><b>Dates:</b> ${selectedTour.Dates}</p>
+            <p><b>Shows:</b> ${selectedTour.Shows}</p>
+            <p><b>Attendance:</b> ${selectedTour.Attendance}</p>
+            <p><b>Revenue:</b> ${selectedTour.Revenue}</p>
+        </div>`;
+    }
+
+    updateColorsOnly(selectedTourName) {
+        let vis = this;
+
+        // Update the dropdown and colors to match selected tour
+        if (selectedTourName === 'Red') {
+            vis.colorScale = d3.scaleOrdinal()
+                .domain(["0", "1", "<50", "50+"])
+                .range(["#ede6e6", "#c96d6d", "#cb3d3d", "#cc2a2a"]);
+            vis.oceanColor = "#8bc4c3";
+        } else if (selectedTourName === 'Speak Now') {
+            vis.colorScale = d3.scaleOrdinal()
+                .domain(["0", "1", "<50", "50+"])
+                .range(["#e9e6ed", "#b1aad2", "#9289cc", "#856fd2"]);
+            vis.oceanColor = "#8bc4c3";
+        } else if (selectedTourName === '1989') {
+            vis.colorScale = d3.scaleOrdinal()
+                .domain(["0", "1", "<50", "50+"])
+                .range(["#e6edec", "#bbdae3", "#a0d8e1", "#88D9E6"]);
+            vis.oceanColor = "#727272";
+        } else if (selectedTourName === 'Fearless') {
+            vis.colorScale = d3.scaleOrdinal()
+                .domain(["0", "1", "<50", "50+"])
+                .range(["#edece6", "#e7dec6", "#e5ce96", "#ecd27d"]);
+            vis.oceanColor = "#8bc4c3";
+        } else if (selectedTourName === 'Reputation') {
+            vis.colorScale = d3.scaleOrdinal()
+                .domain(["0", "1", "<50", "50+"])
+                .range(["#ffffff", "#b7b7b7", "#7a7a7a", "#313131"]);
+            vis.oceanColor = "#8bc4c3";
+        } else {
+            vis.colorScale = d3.scaleOrdinal()
+                .domain(["0", "1", "<50", "50+"])
+                .range(["#edece6", "#d5d4b7", "#abba97", "#54604b"]);
+            vis.oceanColor = "#8bc4c3";
+        }
+
+        vis.svg.select(".graticule")
+            .attr('fill', vis.oceanColor);
+
+        let tourCountryInfoDiv = document.getElementById("tour-country-info");
+        tourCountryInfoDiv.innerHTML = `<div></div>`;
+    }
+
     initVis() {
         let vis = this;
 
@@ -19,6 +122,13 @@ class GlobeVis {
         vis.margin = {top: 20, right: 20, bottom: 20, left: 20};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
+
+        // color scale definition
+        vis.colorScale = d3.scaleOrdinal()
+            .domain(["0", "1", "<50", "50+"])
+            .range(["#edece6", "#d5d4b7", "#abba97", "#54604b"]);
+
+        vis.oceanColor = "#8bc4c3";
 
         // init drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
@@ -29,7 +139,7 @@ class GlobeVis {
         // projection
         vis.projection = d3.geoOrthographic()
             .translate([vis.width / 2, vis.height / 2])
-            .scale(200)
+            .scale(230)
             .rotate([98, -39, 0]);
 
         vis.path = d3.geoPath()
@@ -40,7 +150,7 @@ class GlobeVis {
         vis.svg.append("path")
             .datum({type: "Sphere"})
             .attr("class", "graticule")
-            .attr('fill', '#8bc4c3')
+            .attr('fill', vis.oceanColor)
             .attr("stroke","rgba(129,129,129,0.35)")
             .attr("d", vis.path);
 
@@ -85,6 +195,7 @@ class GlobeVis {
         // Filter by tour dropdown
         vis.tourFilter = document.getElementById("tour-filter");
         vis.tourFilter.addEventListener("change", function () {
+            vis.updateColorsOnly(vis.tourFilter.value);
             vis.wrangleData();
         });
 
@@ -124,38 +235,26 @@ class GlobeVis {
         // Event listeners for albums
         document.getElementById("tour-fearless").addEventListener("click", function () {
             let selectedTour = vis.tourInfo.find(entry => entry.Title === "Fearless Tour");
-            vis.updateTourCountryInfo(selectedTour);
+            vis.updateTourInfo(selectedTour);
         });
         document.getElementById("tour-speak-now").addEventListener("click", function () {
             let selectedTour = vis.tourInfo.find(entry => entry.Title === "Speak Now World Tour");
-            vis.updateTourCountryInfo(selectedTour);
+            vis.updateTourInfo(selectedTour);
         });
         document.getElementById("tour-red").addEventListener("click", function () {
             let selectedTour = vis.tourInfo.find(entry => entry.Title === "The Red Tour");
-            vis.updateTourCountryInfo(selectedTour);
+            vis.updateTourInfo(selectedTour);
         });
         document.getElementById("tour-1989").addEventListener("click", function () {
             let selectedTour = vis.tourInfo.find(entry => entry.Title === "The 1989 World Tour");
-            vis.updateTourCountryInfo(selectedTour);
+            vis.updateTourInfo(selectedTour);
         });
         document.getElementById("tour-reputation").addEventListener("click", function () {
             let selectedTour = vis.tourInfo.find(entry => entry.Title === "Reputation Stadium Tour");
-            vis.updateTourCountryInfo(selectedTour);
+            vis.updateTourInfo(selectedTour);
         });
 
         vis.wrangleData();
-    }
-
-    updateTourCountryInfo(selectedTour) {
-        const tourCountryInfoDiv = document.getElementById("tour-country-info");
-        tourCountryInfoDiv.innerHTML =
-            `<div>
-                    <p><b>${selectedTour.Title}</b></p>
-                    <p><b>Dates:</b> ${selectedTour.Dates}</p>
-                    <p><b>Shows:</b> ${selectedTour.Shows}</p>
-                    <p><b>Attendance:</b> ${selectedTour.Attendance}</p>
-                    <p><b>Revenue:</b> ${selectedTour.Revenue}</p>
-                </div>`;
     }
 
     wrangleData() {
@@ -182,13 +281,10 @@ class GlobeVis {
 
         // Filter the displayData based on the selection box
         vis.displayData = vis.tourData;
-        let selectedTour = vis.tourFilter.value;
-        if (selectedTour !== 'all') {
-            vis.displayData = vis.displayData.filter(d => d.Tour === selectedTour);
+        let selectedTourName = vis.tourFilter.value;
+        if (selectedTourName !== 'all') {
+            vis.displayData = vis.displayData.filter(d => d.Tour === selectedTourName);
         }
-
-        console.log("Filtered data:");
-        console.log(vis.displayData);
 
         // Count the number of tours for each country
         vis.displayData.forEach(d => {
@@ -200,11 +296,6 @@ class GlobeVis {
                 vis.countryInfo[countryName].numTours++;
             }
         });
-
-        // Color scale definition
-        vis.colorScale = d3.scaleOrdinal()
-            .domain(["0", "1", "<50", "50+"])
-            .range(["#edece6", "#d5d4b7", "#abba97", "#54604b"]);
 
         vis.updateVis();
     }
