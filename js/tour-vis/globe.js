@@ -81,6 +81,12 @@ class GlobeVis {
                 })
         )
 
+        // Filter by tour dropdown
+        vis.tourFilter = document.getElementById("tour-filter");
+        vis.tourFilter.addEventListener("change", function () {
+            vis.wrangleData();
+        });
+
         vis.wrangleData();
     }
 
@@ -106,8 +112,18 @@ class GlobeVis {
             };
         });
 
+        // Filter the displayData based on the selection box
+        vis.displayData = vis.tourData;
+        let selectedTour = vis.tourFilter.value;
+        if (selectedTour !== 'all') {
+            vis.displayData = vis.displayData.filter(d => d.Tour === selectedTour);
+        }
+
+        console.log("Filtered data:");
+        console.log(vis.displayData);
+
         // Count the number of tours for each country
-        vis.tourData.forEach(d => {
+        vis.displayData.forEach(d => {
             const countryName = d.Country;
             if (["England", "Scotland", "Wales", "Northern Ireland"].includes(countryName)) {
                 vis.countryInfo["United Kingdom"].numTours++;
@@ -118,13 +134,9 @@ class GlobeVis {
         });
 
         // Color scale definition
-        // vis.colorScale = d3.scaleQuantize()
-        //     .domain([0, 314])
-        //     .range(["#CBD5C0", "#9CAF88", "#707e62", "#606e56"]);
         vis.colorScale = d3.scaleOrdinal()
             .domain(["0", "1", "<50", "50+"])
             .range(["#edece6", "#d5d4b7", "#abba97", "#54604b"]);
-
 
         vis.updateVis();
     }
@@ -134,17 +146,14 @@ class GlobeVis {
 
         vis.countries.style("fill", d => {
             const countryName = d.properties.name;
-            const numTours = vis.countryInfo[countryName] ? vis.countryInfo[countryName].numTours : 0;
+            const numTours = vis.countryInfo[countryName]?.numTours || 0;
             if (numTours === 0) {
                 return vis.colorScale("0");
             } else if (numTours === 1) {
-                console.log(vis.countryInfo[countryName]);
                 return vis.colorScale("1")
             } else if (numTours < 50) {
-                console.log(vis.countryInfo[countryName]);
                 return vis.colorScale("<50");
             } else {
-                console.log(vis.countryInfo[countryName]);
                 return vis.colorScale("50+");
             }
         });

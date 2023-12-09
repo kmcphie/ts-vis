@@ -207,26 +207,42 @@
 		<div id="tour" data-aos="fade-up">
 			<h1>Musical Globetrotter</h1>
 			<p class="plain-text plain-text-box" style="background: #8A2BE2FF;" data-aos="fade-left" data-aos-duration="2000">
-				Over the span of her career, the parallels in her storytelling and lyrics over time have amassed her an incredible fan base.
-				Swifties clamor over the opportunity to hear Taylor Swift live in concert. She is currently on The Eras Tour, the highest grossing tour in history.
+				Over the span of her career, the parallels in her storytelling and lyrics over time have amassed Taylor
+				Swift an incredible fan base. Swifties clamor over the opportunity to hear Taylor Swift live in concert.
+				She is currently on The Eras Tour, the highest grossing tour in history.
 				Let's see where in the world Taylor has been, and what makes a Taylor Swift concert so special.
 			</p>
 			<br>
 			<p class="plain-text plain-text-box" style="background: #FFA07AFF;" data-aos="fade-left" data-aos-duration="2000">
 				Prior to her Eras Tour, which is ongoing
 				and has taken her to places she's never toured before, Taylor had toured in 21 different countries.
-				Scroll around the globe to find out where she's been!
+				Scroll around the globe to find out where she's been! Click on a tour or a country for more information.
 			</p>
 			<div class="row">
-				<div class="tour-vis" id="globe-vis" data-aos="fade-up"></div>
+				<div id="tour-legend"></div>
+				<div id="filter-container">
+					<label for="tour-filter">Filter by Tour:</label>
+					<select id="tour-filter">
+						<option value="all">All Tours</option>
+						<option value="Red">Red</option>
+						<option value="Reputation">Reputation</option>
+						<option value="Speak Now">Speak Now</option>
+						<option value="1989">1989</option>
+						<option value="Fearless">Fearless</option>
+					</select>
+				</div>
+				<div class="col-md-6">
+					<div class="tour-vis" id="globe-vis" data-aos="fade-up"></div>
+				</div>
+				<div class="col-md-6">
+					<div id="tour-country-info"></div>
+				</div>
 			</div>
-			<p class="plain-text plain-text-box"  style="background: #FFB6C1FF;" data-aos="fade-left" data-aos-duration="2000">
-				Again only considering tours prior to her ongoing Eras Tour, 83% of Taylor Swift's tours have
-				been performed in the United States. Let's take a closer look at where her tours occurred within
-				the United States!
+			<p class="plain-text" data-aos="fade-up" data-aos-duration="2000">
+				Since 83% of Taylor Swift's tours (prior to her ongoing Eras Tour) have been performed in the United
+				States, let's take a closer look!
 			</p>
-			<div class="row">
-				<div id="map-legend"></div>
+			<div class="row" data-aos="fade-up" data-aos-duration="2000">
 				<div class="tour-vis" id="map-vis"></div>
 			</div>
 		</div>

@@ -111,7 +111,7 @@ class MapVis {
             { label: 'Reputation', color: 'white' },
         ];
 
-        vis.legend = d3.select("#map-legend")
+        vis.legend = d3.select("#tour-legend")
             .append("svg")
             .attr("width", vis.width)
             .attr("height", 50);
@@ -133,6 +133,13 @@ class MapVis {
             .text(d => d.label)
             .attr("fill", "white")
             .style("font-size", "12px");
+
+        // Filter by tour dropdown
+        d3.select("#tour-filter")
+            .on("change", function () {
+                vis.wrangleData();
+                vis.updateVis();
+            });
     }
 
     wrangleData() {
@@ -143,6 +150,12 @@ class MapVis {
 
         // Filter the tourData to include only tours in the United States
         vis.displayData = vis.tourData.filter(d => d.Country === 'United States');
+
+        // Filter the displayData based on the selection box
+        const selectedTour = document.getElementById('tour-filter').value;
+        if (selectedTour !== 'all') {
+            vis.displayData = vis.displayData.filter(d => d.Tour === selectedTour);
+        }
 
         // Count the number of tours for each U.S. city
         vis.displayData.forEach(d => {
@@ -163,17 +176,23 @@ class MapVis {
                 }
             }
         });
-
-        console.log(vis.cityInfo);
     }
 
     updateVis() {
         let vis = this;
 
-        // Color and radius size based on tour info
+        // Change color by tour
         vis.cities.style("fill", d => {
-            const mostFrequentTour = getMostFrequentTour(vis.cityInfo[d.City].tours);
-            return mostFrequentTour === 'multiple' ? 'gray' : getColorForTour(mostFrequentTour);
+            const cityInfo = vis.cityInfo[d.City];
+
+            // Check if cityInfo exists for filtering purposes
+            if (cityInfo) {
+                const mostFrequentTour = getMostFrequentTour(cityInfo.tours);
+                return mostFrequentTour === 'multiple' ? 'gray' : getColorForTour(mostFrequentTour);
+            } else {
+                // Handle the case where cityInfo doesn't exist (i.e. set a default color)
+                return '#1e1d1d';
+            }
         });
         function getMostFrequentTour(tours) {
             if (!Array.isArray(tours) || tours.length === 0) {
@@ -213,7 +232,20 @@ class MapVis {
                     return "#59656F";
             }
         }
-        vis.cities.attr("r", d => vis.radiusScale(vis.cityInfo[d.City].numTours));
+
+        // Change radius by number of shows
+        vis.cities.attr("r", d => {
+            const cityInfo = vis.cityInfo[d.City];
+
+            // Check if cityInfo exists for filtering purposes
+            if (cityInfo) {
+                return vis.radiusScale(cityInfo.numTours);
+            } else {
+                // Handle the case where cityInfo doesn't exist (e.g. set a default radius)
+                return 0;
+            }
+        });
+
 
         // Display information about tour in tooltip
         vis.cities.on("mouseover", function (event, d) {
@@ -230,8 +262,8 @@ class MapVis {
                 .html(`
                 <div style="border: thin solid grey; border-radius: 5px; background: lightgrey; padding: 20px">
                     <h3>${cityName}<h3>
-                    <h4> Number of Tours: ${numTours}</h4>
-                    <h4> Tours:
+                    <h4> Number of Shows: ${numTours}</h4>
+                    <h4> Associated Tours:
                     ${Array.isArray(tours) ?
                     (tours.length > 0 ?
                         `<ul>${tours.map(t => `<li>${t}</li>`).join('')}</ul>` :

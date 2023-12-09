@@ -336,9 +336,14 @@ h2 {
     width:100%;
 }
 
-#map-legend {
+#tour-legend {
     margin-left: 50px;
     margin-top: 50px;
+}
+
+#filter-container {
+    font-size: 14px;
+    margin-left: 50px;
 }
 
 .tooltip {
