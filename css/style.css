@@ -596,126 +596,136 @@ span[data="car"] {background-image:url("https://github.com/goeuro/static_content
     stroke: #FFE4E1;
     color: #FFE4E1;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .transline#SZA, .textSZA {
     stroke: #FFD3B5;
     color: #FFD3B5;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .transline#Taylor-Swift, .textTaylorSwift {
     stroke: #FFD700; /* Bright color for Taylor Swift */
     color: #FFD700;
     stroke-width: 3; /* Updated stroke width for Taylor Swift */
-    opacity: 0.8; /* Higher opacity */
+    opacity: 2; /* Higher opacity */
 }
 
 .transline#Drake, .textDrake {
     stroke: #F08080;
     color: #F08080;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .transline#Luke-Combs, .textLukeCombs {
     stroke: #FF6347;
     color: #FF6347;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .transline#Miley-Cyrus, .textMileyCyrus {
     stroke: #DAA520;
     color: #DAA520;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .transline#Zach-Bryan, .textZachBryan {
     stroke: #FAEBD7;
     color: #FAEBD7;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .transline#Savage, .textSavage {
     stroke: #FFB6C1;
     color: #FFB6C1;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .transline#Weeknd, .textWeeknd {
     stroke: #DDA0DD;
     color: #DDA0DD;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .transline#Bailey-Zimmerman, .textBaileyZimmerman {
     stroke: #FFE4B5;
     color: #FFE4B5;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .transline#Olivia-Rodrigo, .textOliviaRodrigo {
     stroke: #FFF8DC;
     color: #FFF8DC;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .transline#Travis-Scott, .textTravisScott {
     stroke: #8A2BE2;
     color: #8A2BE2;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .transline#Ice-Spice, .textIceSpice {
     stroke: #F5F5DC;
     color: #F5F5DC;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .transline#Lil-Uzi-Vert, .textLilUziVert {
     stroke: #A52A2A;
     color: #A52A2A;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .transline#Chris-Brown, .textChrisBrown {
     stroke: #B22222;
     color: #B22222;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .transline#Post-Malone, .textPostMalone {
     stroke: #DC143C;
     color: #DC143C;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .transline#Nicki-Minaj, .textNickiMinaj {
     stroke: #FF69B4;
     color: #FF69B4;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 .transline#Jelly-Roll, .textJellyRoll {
     stroke: #A52A2A;
     color: #A52A2A;
     stroke-width: 1.5; /* Updated stroke width */
-    opacity: 0.3;
+    opacity: 0.4;
+}
+
+.image-border-mask {
+    fill: none;
+    stroke: none;
+    clip-path: url(#image-border-clip);  // Reference the mask using a clip-path
+}
+
+.taylor-swift-image {
+    clip-path: url(#image-border-clip);  // Apply the same clip-path to the image
 }
 
 
@@ -733,3 +743,14 @@ span[data="car"] {background-image:url("https://github.com/goeuro/static_content
     width: 700px;
     height: 700px;
 }
+
+#reset-button-1 {
+    font-size: 20px; /* You can adjust the font size as needed */
+    padding: 5px 10px; /* You can adjust the padding as needed */
+    width: 200px; /* You can adjust the width as needed */
+    height: 50px; /* You can adjust the height as needed */
+}
+
+/*body {*/
+/*    overflow-x: hidden;*/
+/*}*/

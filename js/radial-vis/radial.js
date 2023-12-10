@@ -1,6 +1,5 @@
 let width = 1500;
-let height = 800;
-let maxVisiblePaths = 3;
+let height = 900;
 
 let svg = d3.select("#radial-vis").append("svg")
 	.attr("width", width )
@@ -28,8 +27,9 @@ svg.selectAll(".ticklabel")
 	.join(
 		enter => enter.append("text")
 			.attr("class", "ticklabel")
-			.attr("x", width / 2 + 300)
-			.attr("y", d => height / 2 - radialScale(d) + 20)
+			.attr("fill", "white")
+			.attr("x", width / 2 + 310)
+			.attr("y", d => height / 2 - radialScale(d) + 10)
 			.text(d => d.toFixed(2))  // Display as decimals
 	);
 
@@ -108,7 +108,7 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 				.attr("y1", height / 2 )
 				.attr("x2", d => d.line_coord.x)
 				.attr("y2", d => d.line_coord.y)
-				.attr("stroke", "black")
+				.attr("stroke", "white")
 		);
 
 	// draw axis label for each group
@@ -117,7 +117,8 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 		.join(
 			enter => enter.append("text")
 				.attr("class", "axislabel")
-				.attr("x", d => d.label_coord.x)
+				.attr("fill", "white")
+				.attr("x", d => d.label_coord.x - 40)
 				.attr("y", d => d.label_coord.y)
 				.text(d => d.name)
 		);
@@ -132,8 +133,6 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 				const path = enter.append("path")
 					.attr("d", d => line(getPathCoordinates(d)))
 					.attr("stroke-width", 3)
-					// .attr("stroke", d => colorScale(d.Playlist_ID))
-					// .attr("fill", d => colorScale(d.Playlist_ID))
 					.attr("stroke", d => taylorColors[data.indexOf(d)])  // Use the index of the data point to get a color
 					.attr("fill", d => taylorColors[data.indexOf(d)])   // Use the index of the data point to get a color
 					.attr("stroke-opacity", 0)
@@ -147,7 +146,7 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 	console.log("hi")
 
 	// Add a reset button click event listener
-	document.getElementById("reset-button").addEventListener("click", function () {
+	document.getElementById("reset-button-1").addEventListener("click", function () {
 		clearPreviousPaths();
 		resetRectangles();
 	});
@@ -171,7 +170,7 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 				group.append("rect")
 					.attr("id", d => "rect-" + sanitizeId(d.Song_Name))
 					.attr("x", 140)
-					.attr("y", (d, i) => i * 30 + 60)
+					.attr("y", (d, i) => i * 40 + 60)
 					.attr("width", 460)
 					.attr("height", 25)
 					.attr("fill", "#ffffff");
@@ -180,7 +179,7 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 				group.append("text")
 					.attr("id", d => "text-" + sanitizeId(d.Song_Name))
 					.attr("x", 149)
-					.attr("y", (d, i) => i * 30 + 77)
+					.attr("y", (d, i) => i * 40 + 80)
 					.text(d => d.Song_Name);
 
 				group.on("click", (event, d) => {

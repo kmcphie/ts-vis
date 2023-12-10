@@ -99,6 +99,16 @@
 				Below is a graph outlining the Billboard Music Charts ranking of the Top 20 Artists of 2023, and the progression of their chart ranking from 2017 to now.
 			</p>
 
+		<div>
+			<div id="chart-trigger"></div>
+			<label for="artist-select">Select Artist:</label>
+			<select id="artist-select">
+				<!-- Add options dynamically based on your artist data -->
+			</select>
+			<button id="reset-btn">Reset</button>
+		</div>
+
+
 		<div class="wrapper" id="at-large" data-aos="fade-up" data-aos-duration="1500"></div>
 
 		<div class="container-fluid mt-20 mb-20">
@@ -116,12 +126,7 @@
 			</p>
 
 
-			<div>
-				<label for="artist-select">Select Artist:</label>
-				<select id="artist-select">
-					<!-- Add options dynamically based on your artist data -->
-				</select>
-			</div>
+
 
 
 			<!-- LINE CHART -->
@@ -282,7 +287,6 @@
 		<div id="radial" data-aos="fade-up">
 			<p class="plain-text">Now, it's your turn to look behind the curtain and break down the production features of some of your favorite songs.</p>
 			<h1>Compare the Production Features of Your Favorite Taylor Swift Songs</h1>
-			<h2 class="text-center">Select up to 3 songs and compare their audio features.</h2>
 			<div class="container-fluid" data-aos="fade-up">
 				<div class="row mt-4">
 					<div class="col-md-8 offset-2 explanation-box">
@@ -294,7 +298,7 @@
 							<p><strong>Acousticness:</strong> Indicates the likelihood of a track being acoustic. A higher acousticness value suggests a more acoustic track.</p>
 						</div>
 					</div>
-					<button id="reset-button">Reset</button>
+					<button id="reset-button-1">Reset</button>
 					<div id="tooltip"></div>
 					<div id="radial-vis"></div>
 					<div id="info-box"></div>
