@@ -2,7 +2,7 @@ let width = 1500;
 let height = 900;
 
 let svg = d3.select("#radial-vis").append("svg")
-	.attr("width", width )
+	.attr("width", width)
 	.attr("height", height);
 
 
@@ -143,7 +143,7 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 		);
 
 
-	console.log("hi")
+	// console.log("hi")
 
 	// Add a reset button click event listener
 	document.getElementById("reset-button-1").addEventListener("click", function () {

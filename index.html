@@ -238,25 +238,24 @@
 		</div>
 		<br><br>
 		<p class="plain-text plain-text-box" data-aos="fade-left" data-aos-duration="2000">
-			London is another city that Taylor Swift has mentioned a lot! Her songs "Come Back...Be Here" and "Message
-			in a Bottle" both include a general London reference, and the map below shows specific locations referenced
-			within London. You'll notice that all the references are from the same album, and even the same song: London Boy.
+			London is another city that Taylor Swift has mentioned a lot. Her songs "Come Back...Be Here" and "Message
+			in a Bottle" both include a general London reference, but all of her specific references to London are actually from the same song — London Boy.
 		</p>
 
 		<div data-aos="fade-right" data-aos-duration="2000">
 			<h1>She Loves a London Boy</h1>
 			<p class="plain-text">
-				<i>Take a look at the map of New York City below and click on a location to see the lyric that references it!</i>
+				<i>Take a look at the map of London below and click on a location to see the specific lyric from London Boy</i>
 			</p>
 		</div>
 
-		<div class="container-fluid row">
+		<div class="container-fluid row m-3">
 			<div class="col-md-8">
 				<div id="london-vis" data-aos="fade-right" data-aos-duration="2000"></div>
 			</div>
 			<div class="col-md-4">
 				<div id="london-place-img"></div>
-				<p id="london-lyrics">Click on a location on the map to see the song lyric associated with it! Zoom out to see more locations.</p>
+				<p id="london-lyrics">Try to find all 7 locations!</p>
 			</div>
 		</div>
 		<br><br>
@@ -264,7 +263,7 @@
 		<!-- LYRIC THEMES VISUALIZATION	-->
 		<div id="lyric-themes">
 			<div class="flex-col left mb-20">
-				<p class="plain-text plain-text-box" style="background: #FFA07AFF;" data-aos="fade-right" data-aos-duration="2000">
+				<p class="plain-text plain-text-box" style="background: #0CA3BAFF;" data-aos="fade-right" data-aos-duration="2000">
 					Swift's mark as a musician has always been the fact that she is a songwriter on all of her songs.
 					Following her 2010 Album of the Year Grammy win for her album Fearless, critics claimed that she would not have been able to win without the help of her co-writers.
 					In response, Swift penned her next album, Speak Now, entirely by herself.
@@ -272,7 +271,7 @@
 			</div>
 			<br>
 			<div class="flex-col right">
-				<p class="plain-text plain-text-box" style="background: #88D9E6;" data-aos="fade-left" data-aos-duration="2000">
+				<p class="plain-text plain-text-box" style="background: #800080FF;" data-aos="fade-left" data-aos-duration="2000">
 					Swift has an uncanny ability to capture stories and build narrative arcs.
 					She writes lyrics from the most vulnerable and honest parts of herself, and somehow, it speaks directly to the hearts and experiences of her fans.
 					Known for both addicting pop radio production and a heartwrenching power ballad, Swift creates new worlds
@@ -291,50 +290,55 @@
 			<div id="theme-count-vis" class="col-md-8" data-aos="fade-up">
 				<div id="theme-details-box" class="col-md-4"></div>
 <!--				<div class="container-fluid row">-->
-<!--					<div id="taylor-swift" class="col-md-3"></div>-->
-<!--					<div id="fearless" class="col-md-3"></div>-->
-<!--					<div id="speak-now" class="col-md-3"></div>-->
-<!--				</div>-->
-<!--				<div class="container-fluid row">-->
-<!--					<div id="red" class="col-md-3"></div>-->
-<!--					<div id="I989" class="col-md-3"></div>-->
-<!--					<div id="reputation" class="col-md-3"></div>-->
-<!--					<div id="lover" class="col-md-3"></div>-->
-<!--				</div>-->
-<!--				<div class="container-fluid row">-->
-<!--					<div id="folklore" class="col-md-3"></div>-->
-<!--					<div id="evermore" class="col-md-3"></div>-->
-<!--					<div id="midnights" class="col-md-3"></div>-->
-<!--				</div>-->
+				<!--					<div id="taylor-swift" class="col-md-3"></div>-->
+				<!--					<div id="fearless" class="col-md-3"></div>-->
+				<!--					<div id="speak-now" class="col-md-3"></div>-->
+				<!--				</div>-->
+				<!--				<div class="container-fluid row">-->
+				<!--					<div id="red" class="col-md-3"></div>-->
+				<!--					<div id="I989" class="col-md-3"></div>-->
+				<!--					<div id="reputation" class="col-md-3"></div>-->
+				<!--					<div id="lover" class="col-md-3"></div>-->
+				<!--				</div>-->
+				<!--				<div class="container-fluid row">-->
+				<!--					<div id="folklore" class="col-md-3"></div>-->
+				<!--					<div id="evermore" class="col-md-3"></div>-->
+				<!--					<div id="midnights" class="col-md-3"></div>-->
+				<!--				</div>-->
 			</div>
 		</div>
-
 
 		<!-- RADIAL CHART VISUALIZATION -->
-		<div id="radial" data-aos="fade-up">
-			<p class="plain-text">Now, it's your turn to look behind the curtain and break down the production features of some of your favorite songs.</p>
-			<h1>Compare the Production Features of Your Favorite Taylor Swift Songs</h1>
-			<div class="container-fluid" data-aos="fade-up">
-				<div class="row mt-4">
-					<div class="col-md-8 offset-2 explanation-box">
-						<!-- Rectangle with explanations -->
-						<div class="explanation-rectangle">
-							<p><strong>Danceability:</strong> A measure of how suitable a track is for dancing based on a combination of musical elements.</p>
-							<p><strong>Energy:</strong> Represents the intensity and activity of a song. High energy tracks feel fast, loud, and noisy.</p>
-							<p><strong>Valence:</strong> Describes the musical positiveness conveyed by a track. Higher valence sounds more positive.</p>
-							<p><strong>Acousticness:</strong> Indicates the likelihood of a track being acoustic. A higher acousticness value suggests a more acoustic track.</p>
-						</div>
-					</div>
-					<button id="reset-button-1">Reset</button>
-					<div id="tooltip"></div>
-					<div id="radial-vis"></div>
-					<div id="info-box"></div>
+		<div class="container-fluid">
+			<div class="flex-col mb-4" data-aos="fade-right" data-aos-duration="2000">
+				<div class="plain-text-box" style="background: #FF8C00FF">
+					Swift has topped the charts consistently over the course of her career.
+					So much so, that for every new album she releases, she ends up beating <i>herself</i> in opening week sales.
+					Over the years, she's amassed a strong catalog of hits singles, some of which we have included below.
 				</div>
-
 			</div>
 
+			<div class="flex-col mb-4" data-aos="fade-left" data-aos-duration="2000">
+				<div class="plain-text-box" style="background: #FF769FFF">
+					You'll find that Swift explores a wide range of production choices throughout her songs. We've broken down her songs by the following production aspects.
+				</div>
+			</div>
+			<br><br>
 		</div>
 
+		<h1 data-aos="fade-left" data-aos-duration="2000">Take a Peek Behind the Curtain</h1>
+		<p class="plain-text" data-aos="fade-left" data-aos-duration="2000">
+			<i>Click on up to three songs below to compare their production features. Take note, in particular, of which songs that you like and what their production features are like!</i>
+		</p>
+
+		<div id="radial" data-aos="fade-up" data-aos-duration="2000">
+			<div class="container-fluid" data-aos="fade-up" data-aos-duration="2000">
+					<div id="tooltip"></div>
+					<button id="reset-button-1">Reset</button>
+					<div id="radial-vis"></div>
+					<div id="info-box"></div>
+			</div>
+		</div>
 
 
 	<!-- embedding JS libraries -->
