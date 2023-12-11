@@ -127,8 +127,6 @@ class WinBar {
             }
         });
 
-        // console.log(vis.displayData)
-
         vis.updateVis();
     }
 
