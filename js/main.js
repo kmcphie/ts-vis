@@ -7,7 +7,8 @@ let myGlobeVis,
     myMapVis,
     myThemeClusterVis,
     treeVis,
-    winBar
+    winBar,
+    allSongData
 ;
 
 // load data using promises
@@ -32,7 +33,16 @@ let promises = [
     d3.csv("data/albumThemeCount.csv", d => {
         d.count = +d.count;
         return d;
+    }),
+
+    d3.csv("data/allSongData.csv", d => {
+        d.Energy = +d.Energy;
+        d.Acousticness = +d.Acousticness;
+        d.Valence = +d.Valence;
+        d.Danceability = +d.Danceability;
+        return d;
     })
+
 ];
 
 Promise.all(promises)
@@ -122,21 +132,81 @@ Promise.all(promises)
         console.log("INDIVIDUAL ALBUM THEME COUNT: ")
         console.log(data[9]);
 
+        allSongData = data[10];
+
     })
     .catch( function (err){console.log(err)} );
 
-function toggleClusters() {
-    var themeContainer = document.getElementById("theme-container");
-}
 function moveToAlbumClusters() {
-    var otherButton = document.getElementById("theme-container");
-
     // console.log("album clusters!")
     myThemeClusterVis.initAlbumClusters()
 }
 
 function moveToTotalClusters() {
     myThemeClusterVis.initVis();
+}
 
+function recommendSong() {
+    console.log("process song rec");
 
+    d3.select(".song-rec").remove();
+
+    // Get values from input fields
+    const valence = parseFloat(document.getElementById('valence').value);
+    const danceability = parseFloat(document.getElementById('danceability').value);
+    const acousticness = parseFloat(document.getElementById('acousticness').value);
+    const energy = parseFloat(document.getElementById('energy').value);
+
+    // Validation: Check if values are within the range [0, 1]
+    if (isNaN(valence) || valence < 0 || valence > 1 ||
+        isNaN(danceability) || danceability < 0 || danceability > 1 ||
+        isNaN(acousticness) || acousticness < 0 || acousticness > 1 ||
+        isNaN(energy) || energy < 0 || energy > 1) {
+        alert('Please enter valid values between 0 and 1 for production features.');
+    }
+
+    //console.log(allSongData);
+
+    const filteredSongs = filterSongs(valence, danceability, acousticness, energy);
+    const recommendation = recommendFromFilteredSongs(filteredSongs);
+
+    console.log(recommendation);
+
+    d3.select("#song-rec").append("text")
+        .attr("class", "song-rec")
+        .text(recommendation);
+}
+
+// Filter the dataset by user input
+function filterSongs(valence, danceability, acousticness, energy) {
+    return allSongData.filter(song => {
+        // Assuming your dataset has columns named 'Valence', 'Danceability', 'Acousticness', 'Energy'
+        const songValence = song.Valence;
+        const songDanceability = song.Danceability;
+        const songAcousticness = song.Acousticness;
+        const songEnergy = song.Energy;
+
+        // Check if each production feature is within ±0.2 of the user input
+        return (
+            Math.abs(songValence - valence) <= 0.3 &&
+            Math.abs(songDanceability - danceability) <= 0.3 &&
+            Math.abs(songAcousticness - acousticness) <= 0.3 &&
+            Math.abs(songEnergy - energy) <= 0.3
+        );
+    });
+}
+
+// Function to recommend a song from the filtered list
+function recommendFromFilteredSongs(filteredSongs) {
+    if (filteredSongs.length > 0) {
+        // Generate a random index within the length of the filteredSongs array
+        const randomIndex = Math.floor(Math.random() * filteredSongs.length);
+
+        // Get the random song from the array
+        const randomSong = filteredSongs[randomIndex];
+
+        return `Based on your choices, we think you would enjoy the song "${randomSong.song}". Give it a listen and let us know what you think!`;
+    } else {
+        return "Sorry, no matching songs found.";
+    }
 }

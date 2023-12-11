@@ -105,7 +105,7 @@ h2 {
     box-sizing: border-box;
     width: 50%;
     background: #FF8C94FF;
-    margin: 12vh 0;
+    margin: 12vh 10vh;
     padding: 30px;
     border-radius: 20px;
 }
@@ -770,3 +770,21 @@ span[data="car"] {background-image:url("https://github.com/goeuro/static_content
 /*body {*/
 /*    overflow-x: hidden;*/
 /*}*/
+
+.recommend-button {
+    border-radius: 15px;
+    border: 0;
+    margin: 10px 0 30px 0;
+    background: #FF5252FF;
+    padding: 10px 15px;
+    color: white;
+}
+
+.song-rec {
+    border-radius: 15px;
+    border: 0;
+    margin: 10px 50px 30px 0;
+    background: #FF5252FF;
+    padding: 20px;
+    color: white;
+}

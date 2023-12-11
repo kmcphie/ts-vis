@@ -73,8 +73,8 @@ class WinBar {
 
         // add y axis
         vis.yAxis = d3.axisLeft()
-            .scale(vis.y);
-
+            .scale(vis.y)
+            .tickFormat(d => Number.isInteger(d) ? d : "");
 
 
         vis.xAxisGroup = vis.svg.append("g")
