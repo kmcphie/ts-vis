@@ -170,7 +170,7 @@ function recommendSong() {
     const filteredSongs = filterSongs(valence, danceability, acousticness, energy);
     const recommendation = recommendFromFilteredSongs(filteredSongs);
 
-    console.log(recommendation);
+    // console.log(recommendation);
 
     d3.select("#song-rec").append("text")
         .attr("class", "song-rec")

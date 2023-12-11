@@ -177,6 +177,15 @@ h2 {
     z-index: 1;
 }
 
+.disclaimer {
+    position: relative;
+    font-size: 16px;
+    color: #9d9d9d;
+    z-index: 1;
+    padding: 20px;
+    margin: 15px 50px;
+}
+
 #scroll-img {
     position: absolute;
     bottom: 20px;
