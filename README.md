@@ -2,7 +2,7 @@
 A data story about Taylor Swift's music and impact. Created for Harvard's CS 171. Joanna Bai, Sraavya Sambara, Katherine McPhie.
 
 # Overview
-This data story is a deep dive analysis into the discography of Taylor Swift, the greatest pop star of our time, and possibly of all time. From her career spanning nearly two decades and ten records (14 records if you include Swift’s latest re-recording project), this data story includes visualizations that display Swift’s artistry and identify patterns and outliers in her catalog.
+This data story is a deep dive analysis into the discography of Taylor Swift, the greatest pop star of our time, and possibly of all time. From her career spanning nearly two decades and ten records (14 records if you include Swift’s latest re-recording project), this data story includes visualizations that display Swift’s artistry and identifies patterns and outliers in her catalog.
 
 # Visualizations
 
