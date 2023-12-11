@@ -121,7 +121,7 @@ class MapVis {
 
         // Filter the displayData based on the selection box
         const selectedTour = document.getElementById('tour-filter').value;
-        if (selectedTour !== 'all') {
+        if (selectedTour !== 'All Tours') {
             vis.displayData = vis.displayData.filter(d => d.Tour === selectedTour);
         }
 

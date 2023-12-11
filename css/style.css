@@ -304,6 +304,16 @@ h2 {
     font-family: 'Century Gothic', 'sans-serif';
 }
 
+.place-1 {
+    border-radius: 50%;
+}
+
+.map-border {
+    background-color: #FFB6C1FF;
+    border-radius: 25px;
+    padding: 15px;
+}
+
 
 /* Times Taylor Likes To Sing About Visualization */
 
@@ -316,7 +326,7 @@ h2 {
 /* Tour Visualization */
 
 #tour {
-    height: 260vh;
+    height: 230vh;
     width: 100%;
 }
 
@@ -335,9 +345,14 @@ h2 {
     margin-top: 50px;
 }
 
-#tour-country-info {
+#country-info {
     /*margin-top: 50px;*/
     /*margin-right: 50px;*/
+    margin-left: 50px;
+}
+
+#tour-info {
+    margin-top: 50px;
     margin-left: 50px;
 }
 

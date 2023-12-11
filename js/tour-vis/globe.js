@@ -15,6 +15,13 @@ class GlobeVis {
     updateTourInfo(selectedTour) {
         let vis = this;
 
+        // Have the US map appear when showing tours
+        document.getElementById("map-vis").style.display = "block";
+
+        // Clear the country info div
+        let countryInfoDiv = document.getElementById("country-info");
+        countryInfoDiv.innerHTML = ``;
+
         // Update the dropdown and colors to match selected tour
         vis.tourFilter.value = (() => {
             switch (selectedTour.Title) {
@@ -49,7 +56,7 @@ class GlobeVis {
                     vis.oceanColor = "#8bc4c3";
                     return 'Reputation';
                 default:
-                    return 'all';
+                    return 'All Tours';
             }
         })();
 
@@ -61,7 +68,7 @@ class GlobeVis {
         vis.tourFilter.dispatchEvent(changeEvent);
 
         // Update the text to show information about selected tour
-        let tourCountryInfoDiv = document.getElementById("tour-country-info");
+        let tourCountryInfoDiv = document.getElementById("tour-info");
         tourCountryInfoDiv.innerHTML =
             `<div>
             <h3><b>${selectedTour.Title}</b></h3>
@@ -111,8 +118,8 @@ class GlobeVis {
         vis.svg.select(".graticule")
             .attr('fill', vis.oceanColor);
 
-        let tourCountryInfoDiv = document.getElementById("tour-country-info");
-        tourCountryInfoDiv.innerHTML = `<div></div>`;
+        let tourInfoDiv = document.getElementById("tour-info");
+        tourInfoDiv.innerHTML = `<div></div>`;
     }
 
     initVis() {
@@ -304,7 +311,7 @@ class GlobeVis {
         // Filter the displayData based on the selection box
         vis.displayData = vis.tourData;
         let selectedTourName = vis.tourFilter.value;
-        if (selectedTourName !== 'all') {
+        if (selectedTourName !== 'All Tours') {
             vis.displayData = vis.displayData.filter(d => d.Tour === selectedTourName);
         }
 
@@ -371,12 +378,14 @@ class GlobeVis {
             const totalShows = vis.countryInfo[countryName] ? vis.countryInfo[countryName].totalShows : 0;
             const percentShows = ((totalShows / vis.totalShowsAllCountries) * 100).toFixed(2);
             const tours = vis.countryInfo[countryName] ? vis.countryInfo[countryName].tours : 0;
+            vis.tourFilter = document.getElementById("tour-filter");
+            let selectedTourName = vis.tourFilter.value;
 
-            let tourCountryInfoDiv = document.getElementById("tour-country-info");
-            tourCountryInfoDiv.innerHTML =
+            let countryInfoDiv = document.getElementById("country-info");
+            countryInfoDiv.innerHTML =
                 `<div>
             <h3><b>${countryName}</b></h3>
-            <p><b>Shows:</b> ${numShows}</p>
+            <p><b>Shows for ${selectedTourName}:</b> ${numShows}</p>
             <p><b>Total Shows:</b> ${totalShows}</p>
             <p><b>Associated tours:</b> 
                 ${Array.isArray(tours) ?
@@ -388,15 +397,22 @@ class GlobeVis {
             <br>
             </div>`;
 
+            // Clear the tour info div
+            let tourCountryInfoDiv = document.getElementById("tour-info");
+            tourCountryInfoDiv.innerHTML = ``;
+
             if (percentShows === "0.00") {
-                tourCountryInfoDiv.append(`Taylor Swift hasn't toured in ${countryName}... yet!`);
+                countryInfoDiv.append(`Taylor Swift hasn't toured in ${countryName}... yet!`);
+                document.getElementById("map-vis").style.display = "none";
             } else {
                 if (countryName === "United States") {
-                    tourCountryInfoDiv.append(`Out of all tours prior to the Eras Tour, ${percentShows}% of Taylor Swift's 
-                    shows have been performed in the ${countryName}. Since that's such a high percentage, let's take a 
-                    closer look at where within the US Taylor has been!`);
+                    countryInfoDiv.innerHTML = `<i>${percentShows}% of Taylor Swift's shows have been performed 
+                    in the ${countryName}, so let's take a closer look!</i>`;
+                    // Show the US div when the US is selected
+                    document.getElementById("map-vis").style.display = "block";
                 } else {
-                    tourCountryInfoDiv.append(`Out of all tours prior to the Eras Tour, ${percentShows}% of Taylor Swift's shows have been performed in ${countryName}.`);
+                    countryInfoDiv.append(`Out of all tours prior to the Eras Tour, ${percentShows}% of Taylor Swift's shows have been performed in ${countryName}.`);
+                    document.getElementById("map-vis").style.display = "none";
                 }
             }
 
