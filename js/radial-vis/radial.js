@@ -1,4 +1,4 @@
-let width = 1500;
+let width = 1400;
 let height = 900;
 
 let svg = d3.select("#radial-vis").append("svg")
@@ -15,7 +15,7 @@ svg.selectAll("circle")
 	.data(ticks)
 	.join(
 		enter => enter.append("circle")
-			.attr("cx",  width / 2 + 300)
+			.attr("cx",  width / 2 + 200)
 			.attr("cy", height / 2 )
 			.attr("fill", "none")
 			.attr("stroke", "gray")
@@ -28,7 +28,7 @@ svg.selectAll(".ticklabel")
 		enter => enter.append("text")
 			.attr("class", "ticklabel")
 			.attr("fill", "white")
-			.attr("x", width / 2 + 310)
+			.attr("x", width / 2 + 210)
 			.attr("y", d => height / 2 - radialScale(d) + 10)
 			.text(d => d.toFixed(2))  // Display as decimals
 	);
@@ -36,7 +36,7 @@ svg.selectAll(".ticklabel")
 function angleToCoordinate(angle, value) {
 	let x = Math.cos(angle) * radialScale(value);
 	let y = Math.sin(angle) * radialScale(value);
-	return {"x": width / 2  + 300 + x, "y": height / 2 - y };
+	return {"x": width / 2  + 200 + x, "y": height / 2 - y };
 }
 
 let features = ["Danceability", "Energy", "Acousticness", "Valence"];
@@ -57,7 +57,7 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 	];
 
 
-	console.log(data)
+	// console.log(data)
 	//
 	// let colorScale = d3.scaleOrdinal()
 	// 	.domain(data.map(d => d.Playlist_ID))
@@ -70,7 +70,7 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 			let angle = (Math.PI / 2) + (2 * Math.PI * i / features.length);
 			coordinates.push(angleToCoordinate(angle, data_point[ft_name]));
 		}
-		console.log(coordinates);
+		// console.log(coordinates);
 		return coordinates;
 	}
 
@@ -104,7 +104,7 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 		.join(
 			enter => enter.append("line")
 				.attr("class", "line")
-				.attr("x1", width / 2 + 300)
+				.attr("x1", width / 2 + 200)
 				.attr("y1", height / 2 )
 				.attr("x2", d => d.line_coord.x)
 				.attr("y2", d => d.line_coord.y)
@@ -118,7 +118,7 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 			enter => enter.append("text")
 				.attr("class", "axislabel")
 				.attr("fill", "white")
-				.attr("x", d => d.label_coord.x - 40)
+				.attr("x", d => d.label_coord.x)
 				.attr("y", d => d.label_coord.y)
 				.text(d => d.name)
 		);
@@ -149,6 +149,7 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 	document.getElementById("reset-button-1").addEventListener("click", function () {
 		clearPreviousPaths();
 		resetRectangles();
+		d3.select("#info-box svg").selectAll("*").remove();
 	});
 
 	function resetRectangles() {
@@ -169,16 +170,18 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 				// Add a sanitized id to the rectangle based on the Song_Name
 				group.append("rect")
 					.attr("id", d => "rect-" + sanitizeId(d.Song_Name))
-					.attr("x", 140)
+					.attr("x", 80)
 					.attr("y", (d, i) => i * 40 + 60)
 					.attr("width", 460)
-					.attr("height", 25)
+					.attr("height", 30)
+					.attr("rx", 12)
+					.attr("ry", 12)
 					.attr("fill", "#ffffff");
 
 				// Add a sanitized id to the text based on the Song_Name
 				group.append("text")
 					.attr("id", d => "text-" + sanitizeId(d.Song_Name))
-					.attr("x", 149)
+					.attr("x", 90)
 					.attr("y", (d, i) => i * 40 + 80)
 					.text(d => d.Song_Name);
 
@@ -219,17 +222,8 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 
 	// Update the SVG container for the information box
 	let infoBox = d3.select("#info-box").append("svg")
-		.attr("width", "100%");
-
-// Add a group to the information box for better organization
-	let infoBoxGroup = infoBox.append("g")
-		.attr("transform", "translate(10, 10)");
-
-// Now you can append text and other elements to the infoBoxGroup
-	infoBoxGroup.append("text")
-		.attr("id", "infoBoxHeading")
-		.attr("x", 0)
-		.attr("y", 20);
+		.attr("width", "100%")
+		.attr("height", "180px");
 
 // Function to generate sentences about the vibe based on average values
 	function generateVibeSentences(selectedPaths) {
@@ -240,8 +234,8 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 			const avgAcousticness = d3.mean(selectedPaths, d => d.Acousticness);
 
 			// Example sentences, you can customize these based on your preferences
-			const valenceSentence = `The selected songs exude a ${avgValence > 0.5 ? 'positive' : 'mellow'} valence.`;
-			const energySentence = `With an average energy level of ${avgEnergy.toFixed(2)}, these songs offer ${avgEnergy > 0.5 ? 'high energy' : 'a relaxed vibe'}.`;
+			const valenceSentence = `The selected songs exude a ${avgValence > 0.5 ? 'positive' : 'mellow'} valence,`;
+			const energySentence = `a ${avgEnergy > 0.7 ? 'high energy vibe' : 'relaxed vibe'}, and are ${avgDanceability > 0.7 ? 'super danceable' : 'relatively danceable'}.`;
 
 			return [valenceSentence, energySentence];
 		} else {
@@ -268,26 +262,25 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 
 		infoBox.append("text")
 			.attr("x", 10)
-			.attr("y", 40)
+			.attr("y", 45)
 			.text("Average Acousticness: " + avgAcousticness.toFixed(2))
 			.attr('fill', 'white');
 
 		infoBox.append("text")
 			.attr("x", 10)
-			.attr("y", 60)
+			.attr("y", 70)
 			.text("Average Danceability: " + avgDanceability.toFixed(2))
 			.attr('fill', 'white');
 
 		infoBox.append("text")
 			.attr("x", 10)
-			.attr("y", 80)
+			.attr("y", 95)
 			.text("Average Energy: " + avgEnergy.toFixed(2))
 			.attr('fill', 'white')
 
 		// Generate sentences about the vibe based on average values
 		const vibeSentences = generateVibeSentences(selectedPaths);
 
-		// Add text elements for vibe sentences
 		infoBox.selectAll(".vibe-sentence")
 			.data(vibeSentences)
 			.enter()
@@ -295,7 +288,7 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 			.attr('fill', 'white')
 			.attr("class", "vibe-sentence")
 			.attr("x", 10)
-			.attr("y", (d, i) => 100 + i * 20)
+			.attr("y", (d, i) => 140 + i * 25)
 			.text(d => d);
 
 	}

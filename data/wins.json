@@ -33,7 +33,7 @@
     {
       "name": "Classical",
       "children": [
-        {"name": "Pierre Boulez", "group": "E", "value": 4, "colname": "level3"},
+        {"name": "Pierre B", "group": "E", "value": 4, "colname": "level3"},
         {"name": "John Williams", "group": "F", "value": 12, "colname": "level3"}
       ],
       "colname": "level2"

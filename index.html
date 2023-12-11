@@ -137,8 +137,11 @@
     and encouraged.
 </p>
 
-<h1 data-aos="fade-up" data-aos-duration="1500">Grammy Glory: How Do Taylor Swift's Wins Stack Up Against Music's Finest? </h1>
-
+<h1 data-aos="fade-up" data-aos-duration="1500">
+    Grammy Glory
+    <br>
+    <span style="font-size: 40px; color: #FFA07AFF;">How Do Taylor Swift's Wins Stack Up Against Music's Finest?</span>
+</h1>
 
 <div class="container-fluid flex row">
     <div class="col-md-7">
@@ -146,9 +149,9 @@
     </div>
 
     <div class="col-md-4">
-        <p class="plain-text" data-aos="fade-left" data-aos-duration="1500">
+        <p class="plain-text mt-4" data-aos="fade-left" data-aos-duration="1500">
             Take a look at some of the Grammy's most nominated and awarded artists across major music genres below.
-            <br>
+            <br><br>
             <i>Click on any artist to see the breakdown of their nominations by year!</i>
         </p>
         <div id="grammy-vis"></div>
@@ -375,16 +378,30 @@
 
     <h1 data-aos="fade-left" data-aos-duration="2000">Take a Peek Behind the Curtain</h1>
     <p class="plain-text" data-aos="fade-left" data-aos-duration="2000">
-        <i>Click on up to three songs below to compare their production features. Take note, in particular, of which songs
-            that you like and what their production features are like!</i>
+        <i>Click on some songs below to compare their production features. Take note, in particular, of which songs
+            you like and what their production features are like!</i>
     </p>
 
     <div id="radial" data-aos="fade-up" data-aos-duration="2000">
-        <div class="container-fluid" data-aos="fade-up" data-aos-duration="2000">
-            <div id="tooltip"></div>
-            <button id="reset-button-1">Reset</button>
-            <div id="radial-vis"></div>
-            <div id="info-box"></div>
+        <div class="container-fluid flex row" data-aos="fade-up" data-aos-duration="2000">
+            <div class="flex col-md-9">
+                <div id="radial-vis"></div>
+            </div>
+            <div class="flex col-md-3 mt-2">
+                <button id="reset-button-1">Reset Songs</button>
+
+                <div class="definitions" style="font-size: 14px;">
+                    <p><strong>Danceability:</strong> A measure of how suitable a track is for dancing based on a combination of musical elements.</p>
+                    <br>
+                    <p><strong>Energy:</strong> Represents the intensity and activity of a song. High energy tracks feel fast, loud, and noisy.</p>
+                    <br>
+                    <p><strong>Valence:</strong> Describes the musical positiveness conveyed by a track. Higher valence sounds more positive.</p>
+                    <br>
+                    <p><strong>Acousticness:</strong> Indicates the likelihood of a track being acoustic. A higher acousticness value suggests a more acoustic track.</p>
+                </div>
+
+                <div id="info-box" class="flex"></div>
+            </div>
         </div>
     </div>
 </div>
