@@ -349,13 +349,14 @@ h2 {
 }
 
 #tour-legend {
-    /*margin-left: 50px;*/
+    margin-left: 50px;
     margin-top: 50px;
 }
 
 #tour-country-info {
-    margin-top: 50px;
-    margin-right: 50px;
+    /*margin-top: 50px;*/
+    /*margin-right: 50px;*/
+    margin-left: 50px;
 }
 
 #filter-container {
