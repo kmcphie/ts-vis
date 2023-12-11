@@ -47,13 +47,13 @@ d3.csv("data/Taylor_Swift_Spotify_Data1.csv").then(data => {
 		.y(d => d.y);
 
 	const taylorColors = [
-		"#FF8C94", "#FFE5E2", "#D4A5A5", "#FFD3B5", "#FFB6C1", "#FFDAB9", "#DAA520",
-		"#F0E68C", "#FFE4E1", "#F08080", "#FF6347", "#CD5C5C", "#FF69B4", "#9370DB",
-		"#DDA0DD", "#FFB6C1", "#FFA07A", "#FFD700", "#FAEBD7", "#F5F5DC", "#FFE4B5",
-		"#FFF8DC", "#8B4513", "#D2B48C", "#C71585", "#A52A2A", "#CD853F", "#D2691E",
+		"#C71585", "#A52A2A", "#CD853F", "#D2691E",
 		"#F5DEB3", "#FFA07A", "#8A2BE2", "#FF4500", "#FF6347", "#FF1493", "#FFD700",
 		"#FF8C00", "#8B008B", "#800080", "#4B0082", "#8B0000", "#B22222", "#DC143C",
-		"#DB7093", "#800000", "#A52A2A"
+		"#FF4E6E", "#FF0040", "#B3E0F2", "#9AD8EA", "#81D0E2", "#68C8DA", "#4FC0D2",
+		"#36B8CA", "#1DADC2", "#0CA3BA", "#0092A7", "#007C8F",
+		"#66C099",
+		"#52B88C", "#3EA17E", "#2E8F6B", "#217B59", "#1A6747"
 	];
 
 

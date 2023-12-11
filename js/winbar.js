@@ -76,7 +76,8 @@ class WinBar {
         vis.yAxis = d3.axisLeft()
             .scale(vis.y);
 
-        // create axis groups
+
+
         vis.xAxisGroup = vis.svg.append("g")
             .attr("class", "x-axis axis axisWhite")
             .attr("transform", "translate(0," + vis.height + ")");
@@ -185,17 +186,6 @@ class WinBar {
                 return Math.max(0, height);
             })
 
-        // Call axis functions with the new domain
-        // vis.xAxisGroup
-        //     .transition()
-        //     .duration(1000)
-        //     .call(vis.xAxis)
-        //     .selectAll('text')
-        //     .attr('x', '-0.5em')
-        //     .attr('y', '0.2em')
-        //     .attr('text-anchor', 'end')
-        //     .attr('transform', 'rotate(-45)')
-        //     .attr('fill', 'white');
 
         vis.xAxisGroup
             .transition()
@@ -208,23 +198,35 @@ class WinBar {
             .attr('transform', 'rotate(-45)')
             .attr('fill', 'white')
             .attr('font-size', '14px');  // Adjust the font size as needed
-            // .call(removeDuplicateTicks);  // Call the function to remove duplicate ticks
+
+        function hideTicksEndingWithDecimal(selection) {
+            const format = d3.format('.1f');  // Format with one decimal place
+
+            selection.each(function(d, i) {
+                const tickValue = typeof d === 'number' ? format(d) : String(d);
+                console.log(`Tick ${i} Text:`, tickValue);
+
+                if (tickValue === 'undefined' || tickValue === 'NaN') {
+                    console.warn(`Warning: Tick ${i} has an undefined or NaN value. Original value:`, d);
+                    return;
+                }
+
+                const decimalValues = ['.1', '.2', '.3', '.4', '.5', '.6', '.7', '.8', '.9'];
+
+                if (decimalValues.some(value => tickValue.endsWith(value))) {
+                    d3.select(this).style('visibility', 'hidden');
+                } else {
+                    d3.select(this).style('visibility', 'visible');
+                }
+            });
+        }
 
         vis.yAxisGroup
             .transition()
             .duration(1000)
             .call(vis.yAxis)
             .attr('font-size', '14px')
-            .call(removeDuplicateTicks);
-
-// Function to remove duplicate ticks
-        function removeDuplicateTicks(selection) {
-            selection.each(function(_, i) {
-                if (i % 2 !== 0) {
-                    d3.select(this).remove();
-                }
-            });
-        }
+            .call(hideTicksEndingWithDecimal);
 
     }
 }
