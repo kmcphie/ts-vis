@@ -208,6 +208,16 @@ h2 {
     margin-top: 20px;
 }
 
+.intro-img {
+    width: 35%;
+    height: 35%;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: auto;
+    display: block;
+    border-radius: 25%;
+}
+
 
 /*!* Introduction/Landing Page *!*/
 
