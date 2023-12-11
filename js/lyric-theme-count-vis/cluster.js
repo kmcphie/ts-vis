@@ -23,7 +23,7 @@ class ClusterVis {
         this.parentElement = parentElement;
         this.themeCountData = themeCountData;
         this.lyricThemeData = lyricThemeData;
-        this.albumThemeCount = albumThemeCount;
+        this.albumThemeCount = albumThemeCount
 
         this.initVis()
     }
@@ -124,43 +124,8 @@ class ClusterVis {
                 // console.log("cluster click!")
                 // console.log(d);
 
-                showThemeLyrics(event, d);
+                vis.showThemeLyrics(event, d, false);
             });
-
-        // Function to show example lyrics in a side box
-        function showThemeLyrics(event, d) {
-            // Select or create a side box element
-            const lyricBox = d3.select("#theme-details-box")
-                .append("div")
-                .attr("class", "lyric-text")
-                .style("background", "#FFA07AFF")
-
-
-            let lyricData = vis.lyricThemeData
-            // console.log(lyricData);
-
-            let filteredLyrics = lyricData.filter(entry => {
-                return entry.Theme === d.theme
-            })
-            // console.log(filteredLyrics);
-
-            let len = filteredLyrics.length;
-
-            let lyrics = [
-                filteredLyrics[getRandomIndex(0, len)]
-            ]
-
-            lyricBox.selectAll(".lyric-text")
-                .data(lyrics)
-                .enter()
-                .append("div") // Create a new div for each data point
-                .attr("class", "lyric-text-child")
-                .html(d => `<strong>${d.Song}</strong><br>${d.Lyric}`);
-        }
-
-        function getRandomIndex(min, max) {
-            return Math.floor(Math.random() * (max - min) + min);
-        }
 
         // Set up the simulation tick
         simulation.on("tick", () => {
@@ -169,146 +134,175 @@ class ClusterVis {
         });
     }
 
-    initClusterAlbums() {
+    initAlbumClusters() {
         let vis = this;
 
+        console.log(vis.albumThemeCount);
+
         // clear out the nodes & the svg space
-        // IF TIME FIGURE OUT THE ANIMATION
         vis.svg.selectAll(".node").remove();
         d3.select(".lyric-text").remove();
         d3.select("#" + vis.parentElement + " svg").remove();
+        d3.select(".theme-button").remove();
+
+        console.log("cleared!")
 
         // margin conventions
-        vis.margin = {top: 30, right: 0, bottom: 20, left: 0};
-        // vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
-        // vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
+        vis.margins = {
+            'top': 100,
+            'bottom': 25,
+            'left': 20,
+            'right': 10
+        };
 
-        // Define the number of rows and columns for the grid
-        vis.numRows = 2;
-        vis.numCols = 5;
+        // vis.width = $("#taylor-swift").width() + 30 - vis.margins.left - vis.margins.right;
+        vis.height = 400 - vis.margins.top;
 
-        // Calculate the spacing between albums
-        vis.spacingX = vis.width / (vis.numCols + 1);
-        vis.spacingY = vis.height / (vis.numRows + 1);
+        // Create a tooltip
+        vis.tooltip = d3.select("body")
+            .append("div")
+            .attr("class", "tooltip")
+            .attr("background-color", "FFF")
+            .style("opacity", 0);
 
-        // define albums
-        vis.albumPositions = [];
-        vis.albumIds = [];
-        vis.albumThemes = [];
         vis.albums = ["Taylor Swift", "Fearless", "Speak Now", "Red", "1989", "reputation", "Lover", "folklore", "evermore", "Midnights"]
 
-        // init drawing area for each album
+
         vis.albums.forEach((d,i) => {
-            var albumId = d.replace(/\s+/g, '-').toLowerCase();
+            let albumId = d.replace(/\s+/g, '-').toLowerCase();
             if (albumId === '1989') {
                 albumId = 'I989';
             }
-            vis.albumIds[i] = albumId;
 
-            // Calculate the center for the current iteration
-            const center = {
-                x: (i % vis.numCols + 1) * vis.spacingX,
-                y: Math.floor(i / vis.numCols) * vis.spacingY
-            };
+            vis.width = $("#" + albumId).width() + 30 - vis.margins.left - vis.margins.right;
 
-            //console.log(albumId);
-            vis.albumPositions[i] = { x: center.x, y: center.y };
+            // initialize svg
+            vis.svg = d3.select("#" + albumId).append("svg")
+                .attr("width", vis.width)
+                .attr("height", vis.height)
+                .attr('transform', `translate (${vis.margin.left}, ${vis.margin.top})`)
 
-            // vis.albumSVG = d3.select("#" + vis.parentElement).append("svg")
-            //     .attr("width", vis.spacingX)
-            //     .attr("height", vis.spacingY)
-            //     .attr("id", albumId)
-            //     .attr('transform', `translate(${vis.albumPositions[i].x + vis.margin.left}, ${vis.albumPositions[i].y + vis.margin.top})`)
-            //     .style("fill", "#FFF");
+            vis.displayData = vis.albumThemeCount.filter(d => d.album === vis.albums[i])
 
-            d3.selectAll("#" + vis.albumIds[i]).append("svg")
-                .attr("width", "100%")
-                .attr("height", "30vh")
-                .attr("class", "album-clusters mr-5 ml-5 mt-2 mb-2")
-                .style("background", "white")
+            // Scale function for node radii
+            let radiusExtent = d3.extent(vis.displayData, function (d) {
+                return d.count;
+            });
 
-            vis.albumThemes[i] = vis.albumThemeCount.filter(d => d.album === vis.albums[i])
-            console.log(vis.albumThemes[i]);
-        })
+            let radiusScale = d3.scaleLinear()
+                .domain(radiusExtent)
+                .range([5, 30]);
 
-        // cue album cluster graphs
-        vis.clusterAlbums();
-    }
-    clusterAlbums() {
-        let vis = this;
-        console.log("yay! album clusters!")
-
-        console.log(vis.albumThemes)
-        console.log(vis.albumPositions)
-        console.log(vis.albumIds)
-
-        // Scale function for node radii
-        let radiusExtent = d3.extent(vis.albumThemes, function (d) {
-            return d.count;
-        });
-
-        let radiusScale = d3.scaleLinear()
-            .domain(radiusExtent)
-            .range([5, 30]);
-
-
-        vis.albumThemes.forEach((d, i) => {
-            // d is each individual albums themes & need to just create a cluster for each one
-            console.log(d);
-
-            const svg = d3.select("#" + vis.albumIds[i]).select("svg");
-
-            // svg.selectAll(".node").data(d).enter().append("text").text("hello")
+            // Append album title text
+            vis.svg.append("text")
+                .attr("class", "album-title")
+                .attr("x", vis.width / 2)
+                .attr("y", 20)
+                .attr("text-anchor", "middle")
+                .text(vis.albums[i]);
 
             // Create a force simulation
-            const simulation = d3.forceSimulation(d)
-                .force("center", d3.forceCenter(vis.spacingX / 2, vis.spacingY / 2)) // Center the simulation
-                .force("charge", d3.forceManyBody().strength(-20)) // Adjust strength as needed
-                .force("collide", d3.forceCollide().radius(d => radiusScale(d.count) + 5).strength(0.2)); // Adjust radius and strength as needed
+            const simulation = d3.forceSimulation(vis.displayData)
+                .force("center", d3.forceCenter(vis.width / 2, vis.height / 2)) // Center the simulation
+                .force("x", d3.forceX().strength(0.1).x(vis.width)) // Adjust strength and position as needed
+                .force("y", d3.forceY().strength(0.1).y(vis.height)) // Adjust strength and position as needed
+                .force("collide", d3.forceCollide().radius(d => radiusScale(d.count) + 2).strength(0.2)); // Adjust radius and strength as needed
 
-            // Create nodes
-            const nodes = d3.select("#" + vis.albumIds[i]).selectAll(".node")
-                .data(d)
+            // Draw nodes
+            const nodes = vis.svg.selectAll(".node")
+                .data(vis.displayData)
                 .enter().append("circle")
                 .attr("class", "node")
+                .attr("cx", d => d.x)
+                .attr("cy", d => d.y)
                 .attr("r", d => radiusScale(d.count))
-                .attr("fill", d => taylorColors[i]) // Replace with your color scale function
-                // .call(d3.drag() // Enable dragging of nodes
-                //     .on("start", dragstarted)
-                //     .on("drag", dragged)
-                //     .on("end", dragended));
+                .attr("fill", d => taylorColors[d.index])
+                .on("mouseover", function (event, d) {
+                    // Show tooltip on hover
+                    vis.tooltip
+                        .style("opacity", 0.9);
 
-            // Add labels to nodes
-            // const labels = d3.select("#" + vis.albumIds[i]).selectAll(".label")
-            //     .data(d)
-            //     .enter().append("text")
-            //     .attr("class", "label")
-            //     .attr("dx", d => radiusScale(d.count) + 5)
-            //     .attr("dy", d => -radiusScale(d.count) - 5)
-            //     .text(d => d.theme);
+                    // Update tooltip content and style
+                    vis.tooltip.html(`<strong>${d.theme}</strong><br>${d.count} mentions`)
+                        .style("left", (event.pageX + 10) + "px")
+                        .style("top", (event.pageY + 10) + "px")
 
-            // ...
+                    // increase radius
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .attr("r", d => radiusScale(d.count) * 1.1)
+                })
+                .on("mouseout", function (d) {
+                    // reduce radius back down to size
+                    d3.select(this)
+                        .transition()
+                        .duration(200)
+                        .attr("r", d => radiusScale(d.count))
+                        .style("stroke-width", 0)
 
-            // Define drag functions
-            function dragstarted(event, d) {
-                if (!event.active) simulation.alphaTarget(0.3).restart();
-                d.fx = d.x;
-                d.fy = d.y;
-            }
+                    // Hide tooltip on mouseout
+                    vis.tooltip
+                        .style("opacity", 0)
+                        .html(``)
 
-            function dragged(event, d) {
-                d.fx = event.x;
-                d.fy = event.y;
-            }
+                })
+                .on("click", function (event, d) {
+                    d3.select(".lyric-text").remove();
+                    // console.log("cluster click!")
+                    // console.log(d);
 
-            function dragended(event, d) {
-                if (!event.active) simulation.alphaTarget(0);
-                d.fx = null;
-                d.fy = null;
-            }
+                    vis.showThemeLyrics(event, d, true);
+                });
 
-        });
+            // Set up the simulation tick
+            simulation.on("tick", () => {
+                nodes.attr("cx", d => d.x)
+                    .attr("cy", d => d.y);
+            });
 
-        }
-
+        })
     }
+
+    // Function to show example lyrics in a side box
+    showThemeLyrics(event, d, bool) {
+        let vis = this;
+
+        // Select or create a side box element
+        const lyricBox = d3.select("#theme-details-box")
+            .append("div")
+            .attr("class", "lyric-text")
+            .style("background", "#FFA07AFF")
+
+
+        let lyricData = vis.lyricThemeData
+        //console.log(lyricData);
+
+        // filter data either just by theme or also by theme and album
+        let filteredLyrics = lyricData.filter(entry => {
+            if (bool) {
+                return entry.Theme === d.theme & entry.Album === d.album
+            } else {
+                return entry.Theme === d.theme
+            }
+        })
+        // console.log(filteredLyrics);
+
+        let len = filteredLyrics.length;
+
+        let lyrics = [
+            filteredLyrics[getRandomIndex(0, len)]
+        ]
+
+        lyricBox.selectAll(".lyric-text")
+            .data(lyrics)
+            .enter()
+            .append("div") // Create a new div for each data point
+            .attr("class", "lyric-text-child")
+            .html(d => `<strong>${d.Song}</strong><br>${d.Lyric}`);
+    }
+}
+
+function getRandomIndex(min, max) {
+    return Math.floor(Math.random() * (max - min) + min);
+}

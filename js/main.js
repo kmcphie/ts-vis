@@ -7,7 +7,8 @@ let myGlobeVis,
     myMapVis,
     myThemeClusterVis,
     treeVis,
-    winBar
+    winBar,
+    myAlbumClusterVis
 ;
 
 // load data using promises
@@ -103,8 +104,6 @@ Promise.all(promises)
         // console.log("TOUR INFO:");
         // console.log(data[8]);
 
-
-
         myGlobeVis = new GlobeVis("globe-vis", data[0], data[1], data[8]);
         myMapVis = new MapVis("map-vis", data[0], data[2], data[3]);
 
@@ -124,11 +123,11 @@ Promise.all(promises)
         console.log("INDIVIDUAL ALBUM THEME COUNT: ")
         console.log(data[9]);
 
-
     })
     .catch( function (err){console.log(err)} );
 
 function moveToAlbumClusters() {
     console.log("album clusters!")
-    myThemeClusterVis.initClusterAlbums();
+    myThemeClusterVis.initAlbumClusters()
+   // myAlbumClusterVis = new AlbumClusterVis("theme-count-vis", data[9], data[5]);
 }

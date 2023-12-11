@@ -129,17 +129,6 @@ h2 {
     border-radius: 20px;
 }
 
-.lyric-text {
-    position: absolute;
-    box-sizing: border-box;
-    width: 30%;
-    margin: 10px 0 0 50px;
-    background: #FFB6C1FF;
-    padding: 30px;
-    border-radius: 10px;
-    z-index: 1000;
-}
-
 .doodle-albums {
     position: absolute;
     width: 400px;
@@ -219,48 +208,6 @@ h2 {
 }
 
 
-/*!* Introduction/Landing Page *!*/
-
-/*#landing-bg {*/
-/*    position: relative;*/
-/*    overflow: hidden;*/
-/*    height: 100vh;*/
-/*}*/
-
-/*#landing-bg img {*/
-/*    width: 100vw;*/
-/*    height: auto;*/
-/*}*/
-
-/*#title-swift {*/
-/*    font-size: 160px;*/
-/*    font-weight: bold;*/
-/*    position: relative;*/
-/*    padding-left: 75px;*/
-/*    top: -825px;*/
-/*}*/
-
-/*#title-soundscape {*/
-/*    font-size: 120px;*/
-/*    position: relative;*/
-/*    padding-left: 180px;*/
-/*    padding-bottom: 25px;*/
-/*    top: -900px;*/
-/*    background-color: #15151B;*/
-/*}*/
-
-/*#scroll-img {*/
-/*    position: absolute;*/
-/*    bottom: -10px;*/
-/*    left: 50%;*/
-/*    transform: translateX(-50%);*/
-/*    height: 20vh;*/
-/*    z-index: 1;*/
-/*    opacity: 0;*/
-/*    transition: opacity 1.2s ease;*/
-/*}*/
-
-
 /* Taylor Swift At Large Visualization */
 
 #at-large {
@@ -285,6 +232,31 @@ h2 {
     height: 100vh;
     width: 100%;
 }
+
+.album-title {
+    fill: white;
+}
+
+.lyric-text {
+    position: absolute;
+    box-sizing: border-box;
+    width: 20%;
+    margin: 20px 0 0 50px;
+    background: #FFB6C1FF;
+    padding: 30px;
+    border-radius: 10px;
+    z-index: 1000;
+}
+
+.theme-button {
+    margin: 10px 0 0 50px;
+    border-radius: 15px;
+    background: #FFE5E2FF;
+    padding: 10px;
+    font-size: 18px;
+}
+
+
 
 
 /* Places Taylor Likes to Sing About Visualization */
