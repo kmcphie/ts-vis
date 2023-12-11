@@ -103,7 +103,7 @@ class MapVis {
         });
 
         // Filter by tour dropdown
-        d3.select("#tour-filter")
+        d3.select("#tour-legend")
             .on("change", function () {
                 vis.wrangleData();
                 vis.updateVis();

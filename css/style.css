@@ -265,7 +265,7 @@ h2 {
 
 #at-large {
     height: 80vh;
-    width: 100%;
+    width: 80%;
 }
 
 #timeline-placeholder {
@@ -371,8 +371,9 @@ h2 {
 
 #filter-container {
     font-size: 14px;
-    margin-top: 50px;
-    margin-left: 50px;
+    margin-top: 60px;
+    margin-left: 90px;
+
 }
 
 .tooltip {
@@ -738,7 +739,7 @@ span[data="car"] {background-image:url("https://github.com/goeuro/static_content
 
 
 #at-large {
-    width: 100%; /* or a specific value like 800px */
+    width: 150%; /* or a specific value like 800px */
 }
 
 .selected-line {

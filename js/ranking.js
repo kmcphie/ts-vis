@@ -42,9 +42,9 @@ document.addEventListener("DOMContentLoaded", function() {
         } //IE can't animate stroke - needs this disabled.
 
 
-        var ww = d3.select(".wrapper").node().offsetWidth;
+        // var ww = d3.select(".wrapper").node().offsetWidth;
         var margin = { top: 50, right: 20, bottom: 50, left: 150 },
-            width = 1400 - margin.right - margin.left,
+            width = 1250 - margin.right - margin.left,
             height = 600 - margin.top - margin.bottom;
 
 
@@ -65,13 +65,13 @@ document.addEventListener("DOMContentLoaded", function() {
             .tickSizeOuter(0)  // Hide the outer ticks
             .tickFormat(d3.format("d"));
 
-        if (ww < 700) {
-            var xAxis = d3.axisBottom(x)
-                .ticks(5)
-                .tickSize(10)  // Increase the inner tick size
-                .tickSizeOuter(0)  // Hide the outer ticks
-                .tickFormat(d3.format("d"));
-        }
+        // if (ww < 700) {
+        //     var xAxis = d3.axisBottom(x)
+        //         .ticks(5)
+        //         .tickSize(10)  // Increase the inner tick size
+        //         .tickSizeOuter(0)  // Hide the outer ticks
+        //         .tickFormat(d3.format("d"));
+        // }
 
 
         var yAxis = d3.axisLeft(y);
@@ -434,7 +434,8 @@ document.addEventListener("DOMContentLoaded", function() {
         d3.select("#reset-btn")
             .on("click", function () {
                 // Show all lines
-                d3.selectAll(".transline").style("display", "block");
+                d3.selectAll(".transline")
+                    .style("display", "block");
             });
 
         svg.append("svg:image")
