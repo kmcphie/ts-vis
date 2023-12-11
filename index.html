@@ -109,13 +109,14 @@
 
     <div class="d-flex col-md-3 flex-column">
         <div id="chart-trigger"></div>
-        <button id="reset-btn" class="btn btn-primary mt-3">Reset</button>
+        <button id="reset-btn" class="btn mt-3">Reset</button>
 
-        <p data-aos="fade-left" data-aos-duration="1500" class="plain-text mt-3">
+        <p data-aos="fade-left" data-aos-duration="1500" class="plain-text mt-3" style="padding: 15px 0 15px 0;">
             Let's take a look at how Swift has stacked up against her peers in the music industry in this time.
             Below is a graph outlining the Billboard Music Charts ranking of the Top 20 Artists of 2023, and the
             progression of their chart ranking from 2017 to now.
         </p>
+
         <label for="artist-select" class="mt-3 mb-3">Select Artist to Compare with Taylor:</label>
         <select id="artist-select" class="mb-2"></select>
     </div>
@@ -245,7 +246,7 @@
     </div>
     <br>
     <div class="flex-col right">
-        <p class="plain-text plain-text-box" style="background: #88D9E6;" data-aos="fade-left" data-aos-duration="2000">
+        <p class="plain-text plain-text-box" style="background: #0CA3BAFF;" data-aos="fade-left" data-aos-duration="2000">
             In her 1989 (Taylor's Version) prologue, she writes, "When I was 24, I decided to completely reinvent
             myself." She did this by chopping her long curly hair, moving to New York City,
             and writing one of the most awarded pop albums of all time — 1989. This era for Swift was defined by
@@ -308,7 +309,7 @@
     <!-- LYRIC THEMES VISUALIZATION	-->
     <div id="lyric-themes">
         <div class="flex-col left mb-20">
-            <p class="plain-text plain-text-box" style="background: #0CA3BAFF;" data-aos="fade-right" data-aos-duration="2000">
+            <p class="plain-text plain-text-box" style="background: #E43977FF;" data-aos="fade-right" data-aos-duration="2000">
                 Swift's mark as a musician has always been the fact that she is a songwriter on all of her songs.
                 Following her 2010 Album of the Year Grammy win for her album Fearless, critics claimed that she would not have been able to win without the help of her co-writers.
                 In response, Swift penned her next album, Speak Now, entirely by herself.
@@ -331,7 +332,17 @@
             Check out the themes that Taylor leverages most in her music. <br>
             <i>Click on any bubble to see an example of a lyric that falls under that particular theme.</i>
         </p>
-        <button class="theme-button" onClick="moveToAlbumClusters()" data-aos="fade-left" data-aos-duration="2000">Click to explore themes individually by album.</button>
+
+        <div id="theme-container">
+            <button class="theme-button" onClick="moveToAlbumClusters()" data-aos="fade-left" data-aos-duration="2000">
+                Click to explore themes individually by album.
+            </button>
+            <button class="theme-button" onClick="moveToTotalClusters()" data-aos="fade-left" data-aos-duration="2000">
+                Click to explore all themes across all albums.
+            </button>
+        </div>
+
+
     </div>
     <div id="theme-count-vis" class="col-md-8" data-aos="fade-up" style="height: 105vh;">
         <div class="container-fluid row">
@@ -388,7 +399,7 @@
             <div class="flex col-md-3 mt-2">
                 <button id="reset-button-1">Reset Songs</button>
 
-                <div class="definitions" style="font-size: 14px;">
+                <div class="definitions" style="font-size: 16px;">
                     <p><strong>Danceability:</strong> A measure of how suitable a track is for dancing based on a combination of musical elements.</p>
                     <br>
                     <p><strong>Energy:</strong> Represents the intensity and activity of a song. High energy tracks feel fast, loud, and noisy.</p>

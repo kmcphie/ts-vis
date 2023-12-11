@@ -41,24 +41,11 @@ class ClusterVis {
     initVis() {
         let vis = this;
 
-        // // Add an id attribute to the parent element
-        // d3.select("#" + vis.parentElement)
-        //     .attr("id", "cluster-vis-container");
-        //
-        // // Use Intersection Observer to trigger the action when the element is in the viewport
-        // const clusterVisContainer = document.getElementById("cluster-vis-container");
-        //
-        // const observer = new IntersectionObserver((entries, observer) => {
-        //     entries.forEach(entry => {
-        //         if (entry.isIntersecting) {
-        //             // The cluster graph is in the viewport, trigger your action
-        //             vis.wrangleData();
-        //             observer.unobserve(entry.target);
-        //         }
-        //     });
-        // }, { threshold: 0.5 }); // Adjust the threshold as needed
-        //
-        // observer.observe(clusterVisContainer);
+        // clear out the nodes & the svg space
+        d3.select("#" + vis.parentElement).selectAll(".node").remove();
+        d3.select(".lyric-text").remove();
+        d3.selectAll(".album-title").remove();
+        d3.selectAll("#" + vis.parentElement + " svg").remove();
 
         // margin conventions
         vis.margin = {top: 20, right: 0, bottom: 20, left: 0};
@@ -171,8 +158,8 @@ class ClusterVis {
         // clear out the nodes & the svg space
         vis.svg.selectAll(".node").remove();
         d3.select(".lyric-text").remove();
-        d3.select("#" + vis.parentElement + " svg").remove();
-        d3.select(".theme-button").remove();
+        d3.selectAll(".album-title").remove();
+        d3.selectAll("#" + vis.parentElement + " svg").remove();
 
         console.log("cleared!")
 

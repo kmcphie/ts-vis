@@ -46,7 +46,6 @@ class WinBar {
             .append("g")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
-
         // add title
         vis.svg.append('g')
             .attr('class', 'plain-text bar-title')

@@ -125,7 +125,18 @@ Promise.all(promises)
     })
     .catch( function (err){console.log(err)} );
 
+function toggleClusters() {
+    var themeContainer = document.getElementById("theme-container");
+}
 function moveToAlbumClusters() {
+    var otherButton = document.getElementById("theme-container");
+
     // console.log("album clusters!")
     myThemeClusterVis.initAlbumClusters()
+}
+
+function moveToTotalClusters() {
+    myThemeClusterVis.initVis();
+
+
 }
