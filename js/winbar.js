@@ -18,8 +18,6 @@ class WinBar {
     constructor(parentElement, grammyData) {
         this.parentElement = parentElement;
         this.data = grammyData;
-        // this.continentData = continentData;
-        // this.selectedCategory = selectedCategory;
         this.formatDate = d3.timeFormat("%Y");
         this.parseDate = d3.timeParse("%Y");
         this.selArtist = selArtist
@@ -34,11 +32,10 @@ class WinBar {
 
 
         // margin convention with static height and responsive/variable width
-        vis.margin = {}
-        // if(vis.selectedCategory==='Year')
-        //     vis.margin = {top: 20, right: 30, bottom: 40, left: 30};
-        // else
-            vis.margin = {top: 90, right: 30, bottom: 100, left: 30};
+
+        console.log(document.getElementById(vis.parentElement).getBoundingClientRect().width);
+
+        vis.margin = {top: 250, right: 30, bottom: 250, left: 50};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
         vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
 
@@ -52,12 +49,11 @@ class WinBar {
 
         // add title
         vis.svg.append('g')
-            .attr('class', 'title bar-title')
+            .attr('class', 'plain-text bar-title')
             .append('text')
-            .text('Medals won by Year')
-            .attr('font-size', '1.5em')  // Adjust the font size as needed
-            .attr('fill', 'white')       // Set the text color to white
-            .attr('transform', `translate(${vis.width / 2.8}, ${vis.height / 60})`)
+            .text('Click an artist to see their nominations by year')
+            .attr('fill', 'white')
+            .attr('transform', `translate(${vis.width / 2}, ${vis.height + 75})`)
             .attr('text-anchor', 'middle');
 
 
@@ -79,6 +75,7 @@ class WinBar {
         // add y axis
         vis.yAxis = d3.axisLeft()
             .scale(vis.y)
+            .tickFormat(d3.format("d"));
 
         // create axis groups
         vis.xAxisGroup = vis.svg.append("g")
@@ -98,12 +95,12 @@ class WinBar {
     updateData(selArtist) {
         this.selArtist = selArtist;
         this.svg.select('.bar-title text')
-            .text(`Medals won by ${selArtist}`);
+            .text(`Total Grammy Nominations of ${selArtist}`);
         this.wrangleData();
     }
 
 
-    //Collect data for number of medals by year and event for country
+    // Collect data for number of medals by year and event for country
     wrangleData() {
         let vis = this;
 
@@ -155,30 +152,18 @@ class WinBar {
             .attr("fill", "white")
             .on('mouseover', function (event, d) {
                 d3.select(this)
-                    .attr('stroke-width', '2px')
-                    .attr('stroke', 'white')
                     .style("opacity", 1)
-                    .style('fill', '#f6a1d4');
+                    .style('fill', '#F08080FF');
                 vis.tooltip
                     .style("opacity", 1)
-                    .style("left", event.pageX + 10 + "px")
+                    .style("left", event.pageX + "px")
                     .style("top", event.pageY + "px")
-                    .html(`
-                    // <div style="text-align: left; border: thin solid grey; border-radius: 5px; background: lightgrey; padding-top: 10px; padding-right: 10px; padding-left: 10px">
-                    //     <h4>${vis.selectedCategory}: ${d.year}</h4>
-                    //     <p> Wins: ${d.count}</p>
-                    // </div>`);
+                    .html(`<p><strong>${d.year}</strong></p>
+                    <p> Wins: ${d.count}</p>`);
             })
             .on('mouseout', function (event, d) {
                 d3.select(this)
-                    .attr('stroke-width', '0px')
-                    // .style("fill", function () {
-                    //     // Update this part based on your logic
-                    // //     if (selCountry !== 'Worldwide') {
-                    // //         return vis.colors[vis.continentData.find(d => d.Code === selCountry).Continent];
-                    // //     } else
-                    // //         return '#707070';
-                    // // })
+                    .style('fill', '#fff')
                     .style("opacity", 1);
 
                 vis.tooltip
@@ -198,13 +183,6 @@ class WinBar {
                 console.log(`Height for ${d.year}: ${height}`);
                 return Math.max(0, height);
             })
-            // .style("fill", function () {
-            //     // Update this part based on your logic
-            //     if (selCountry !== 'Worldwide') {
-            //         return vis.colors[vis.continentData.find(d => d.Code === selCountry).Continent];
-            //     } else
-            //         return '#707070';
-            // });
 
         // Call axis functions with the new domain
         vis.xAxisGroup

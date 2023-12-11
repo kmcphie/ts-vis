@@ -1,18 +1,20 @@
 let selArtist;
 class TreeVis {
     constructor(targetElementId, data) {
-        this.margin = { top: 10, right: 10, bottom: 10, left: 40 };
-        this.treewidth = 1100 - this.margin.left - this.margin.right;
-        this.treeheight = 800 - this.margin.top - this.margin.bottom;
         this.data = data;
         this.targetElementId = targetElementId;
 
         this.initVis();
-
         this.setupTileClick()
     }
 
     initVis() {
+        let vis = this;
+
+        vis.margin = { top: 10, right: 0, bottom: 10, left: 20 };
+        vis.treewidth = document.getElementById(this.targetElementId).getBoundingClientRect().width - this.margin.left - this.margin.right;
+        vis.treeheight = 800 - this.margin.top - this.margin.bottom;
+
         this.createSVG();
         this.createTreeMap();
     }
@@ -38,18 +40,17 @@ class TreeVis {
         d3.treemap()
             .size([this.treewidth, this.treeheight])
             .paddingTop(28)
-            .paddingRight(7)
-            .paddingInner(3)(root);
+            .paddingInner(4)(root);
 
         var color = d3
             .scaleOrdinal()
-            .domain(['Pop', 'Rock', 'Classical', 'Rock', "Jaz"])
-            .range(["#FF8C94", "#FFDAB9", "#DAA520",
-                "#F0E68C", "#FFE4E1", "#F08080", "#FF6347", "#CD5C5C", "#FF69B4", "#9370DB",
-                "#DDA0DD"]);
+            .domain(['Pop', 'Rock', 'Classical', 'Rock', "Jazz"])
+            .range(["#ffa5b0", "#8a2be2", "#9ad8ea",
+                "#93d8a7", "#1dadc2"]);
 
         var opacity = d3.scaleLinear().domain([10, 30]).range([0.5, 1]);
 
+        // count
         this.treesvg
             .selectAll('rect')
             .data(root.leaves())
@@ -59,10 +60,10 @@ class TreeVis {
             .attr('y', (d) => d.y0)
             .attr('width', (d) => d.x1 - d.x0)
             .attr('height', (d) => d.y1 - d.y0)
-            .style('stroke', 'black')
             .style('fill', (d) => color(d.parent.data.name))
             .style('opacity', (d) => opacity(d.data.value));
 
+        // artist names
         this.treesvg
             .selectAll('text')
             .data(root.leaves())
@@ -74,6 +75,7 @@ class TreeVis {
             .attr('font-size', '14px')
             .attr('fill', 'white');
 
+        // grammy counts
         this.treesvg
             .selectAll('vals')
             .data(root.leaves())
@@ -85,6 +87,7 @@ class TreeVis {
             .attr('font-size', '11px')
             .attr('fill', 'white');
 
+        // genre titles
         this.treesvg
             .selectAll('titles')
             .data(root.descendants().filter((d) => d.depth == 1))
@@ -93,7 +96,7 @@ class TreeVis {
             .attr('x', (d) => d.x0)
             .attr('y', (d) => d.y0 + 21)
             .text((d) => d.data.name)
-            .attr('font-size', '19px')
+            .attr('font-size', '18px')
             .attr('fill', (d) => color(d.data.name));
 
     }
@@ -110,5 +113,6 @@ class TreeVis {
         // Create and dispatch a custom event
         const artistSelectedEvent = new CustomEvent('artistSelected', { detail: artist });
         document.dispatchEvent(artistSelectedEvent);
+
     }
 }

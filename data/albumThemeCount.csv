@@ -1,0 +1,419 @@
+album,theme,count
+Taylor Swift,Apparel and Appearances,3
+Taylor Swift,Arguments and Battles,3
+Taylor Swift,Body Parts,16
+Taylor Swift,Borders and Boundaries,3
+Taylor Swift,Bright Lights and Shiny People,8
+Taylor Swift,Buildings and Rooms,7
+Taylor Swift,Celebrity and Publicity,1
+Taylor Swift,Celestial Objects,5
+Taylor Swift,Cold and Ice,1
+Taylor Swift,Colors and Painting,5
+Taylor Swift,Communication and Silence,4
+Taylor Swift,Dancing,1
+Taylor Swift,"Death, Ghosts, and Haunting",1
+Taylor Swift,Deception and Secrets,3
+Taylor Swift,Dreams,3
+Taylor Swift,Family and Friends,6
+Taylor Swift,Fate and Omens,1
+Taylor Swift,"Films, Performances, and Photos",3
+Taylor Swift,Fire,3
+Taylor Swift,Furniture,1
+Taylor Swift,Growing Up,4
+Taylor Swift,Health and Substance Use,2
+Taylor Swift,Highs and Heights,1
+Taylor Swift,Honor and Integrity,1
+Taylor Swift,Locations,6
+Taylor Swift,Money and Treasure,2
+Taylor Swift,Music and Writing,16
+Taylor Swift,Name Drops,7
+Taylor Swift,Perception,3
+Taylor Swift,Plants,5
+Taylor Swift,Relationships,5
+Taylor Swift,Religion,1
+Taylor Swift,Times and Seasons,8
+Taylor Swift,Transportation and Roads,13
+Taylor Swift,Water,5
+Taylor Swift,Weather,3
+Taylor Swift,Wounds and Weapons,2
+Fearless,Aim and Hunting,2
+Fearless,Apparel and Appearances,18
+Fearless,Arguments and Battles,18
+Fearless,Body Parts,80
+Fearless,Borders and Boundaries,4
+Fearless,Bright Lights and Shiny People,22
+Fearless,Buildings and Rooms,44
+Fearless,Celebrity and Publicity,6
+Fearless,Celestial Objects,12
+Fearless,Cold and Ice,2
+Fearless,Colors and Painting,18
+Fearless,Communication and Silence,24
+Fearless,Crime,4
+Fearless,Dancing,6
+Fearless,"Death, Ghosts, and Haunting",4
+Fearless,Deception and Secrets,12
+Fearless,Dreams,16
+Fearless,Fairytales and Kingdoms,14
+Fearless,Family and Friends,28
+Fearless,"Films, Performances, and Photos",24
+Fearless,Fire,6
+Fearless,Furniture,10
+Fearless,"Games, Winning, and Losing",8
+Fearless,Gender Roles,2
+Fearless,Growing Up,30
+Fearless,Health and Substance Use,8
+Fearless,Highs and Heights,6
+Fearless,Honor and Integrity,12
+Fearless,Locations,18
+Fearless,Money and Treasure,6
+Fearless,Music and Writing,20
+Fearless,Name Drops,20
+Fearless,Perception,8
+Fearless,Plants,8
+Fearless,Relationships,26
+Fearless,Religion,18
+Fearless,School,8
+Fearless,Times and Seasons,80
+Fearless,Transportation and Roads,50
+Fearless,Water,22
+Fearless,Weather,26
+Fearless,Wounds and Weapons,4
+Speak Now,Accidents and Planning,6
+Speak Now,Apparel and Appearances,24
+Speak Now,Arguments and Battles,14
+Speak Now,Body Parts,74
+Speak Now,Borders and Boundaries,24
+Speak Now,Bright Lights and Shiny People,16
+Speak Now,Buildings and Rooms,42
+Speak Now,Celebrity and Publicity,4
+Speak Now,Celestial Objects,6
+Speak Now,Cold and Ice,8
+Speak Now,Colors and Painting,6
+Speak Now,Communication and Silence,44
+Speak Now,Crime,4
+Speak Now,Dancing,8
+Speak Now,"Death, Ghosts, and Haunting",14
+Speak Now,Deception and Secrets,18
+Speak Now,Dreams,6
+Speak Now,Fairytales and Kingdoms,2
+Speak Now,Family and Friends,32
+Speak Now,Fate and Omens,6
+Speak Now,"Films, Performances, and Photos",14
+Speak Now,Fire,18
+Speak Now,Furniture,12
+Speak Now,"Games, Winning, and Losing",12
+Speak Now,Gender Roles,4
+Speak Now,Growing Up,50
+Speak Now,Health and Substance Use,20
+Speak Now,Highs and Heights,20
+Speak Now,Honor and Integrity,6
+Speak Now,Locations,18
+Speak Now,Money and Treasure,4
+Speak Now,Music and Writing,30
+Speak Now,Name Drops,20
+Speak Now,Perception,18
+Speak Now,Plants,4
+Speak Now,Relationships,28
+Speak Now,Religion,18
+Speak Now,School,12
+Speak Now,Times and Seasons,64
+Speak Now,Transportation and Roads,40
+Speak Now,Water,14
+Speak Now,Weather,24
+Speak Now,Wounds and Weapons,26
+Red,Accidents and Planning,8
+Red,Aim and Hunting,8
+Red,Apparel and Appearances,24
+Red,Arguments and Battles,18
+Red,Body Parts,84
+Red,Borders and Boundaries,6
+Red,Bright Lights and Shiny People,24
+Red,Buildings and Rooms,68
+Red,Celebrity and Publicity,24
+Red,Celestial Objects,8
+Red,Cold and Ice,6
+Red,Colors and Painting,40
+Red,Communication and Silence,44
+Red,Crime,2
+Red,Dancing,16
+Red,"Death, Ghosts, and Haunting",12
+Red,Deception and Secrets,4
+Red,Dreams,24
+Red,Family and Friends,16
+Red,Fate and Omens,2
+Red,"Films, Performances, and Photos",18
+Red,Fire,8
+Red,Furniture,16
+Red,"Games, Winning, and Losing",8
+Red,Gender Roles,10
+Red,Growing Up,36
+Red,Health and Substance Use,18
+Red,Highs and Heights,6
+Red,Honor and Integrity,8
+Red,Locations,36
+Red,Money and Treasure,18
+Red,Music and Writing,36
+Red,Name Drops,4
+Red,Perception,18
+Red,Plants,4
+Red,Relationships,20
+Red,Religion,18
+Red,School,4
+Red,STEM,6
+Red,Times and Seasons,156
+Red,Transportation and Roads,80
+Red,Water,4
+Red,Weather,6
+Red,Wounds and Weapons,24
+1989,Accidents and Planning,3
+1989,Aim and Hunting,3
+1989,Apparel and Appearances,12
+1989,Arguments and Battles,8
+1989,Body Parts,28
+1989,Borders and Boundaries,3
+1989,Bright Lights and Shiny People,12
+1989,Buildings and Rooms,9
+1989,Celebrity and Publicity,4
+1989,Celestial Objects,5
+1989,Cold and Ice,1
+1989,Colors and Painting,11
+1989,Communication and Silence,5
+1989,Crime,5
+1989,Dancing,4
+1989,"Death, Ghosts, and Haunting",6
+1989,Deception and Secrets,3
+1989,Dreams,4
+1989,Family and Friends,2
+1989,Fate and Omens,2
+1989,"Films, Performances, and Photos",5
+1989,Fire,6
+1989,Furniture,3
+1989,"Games, Winning, and Losing",6
+1989,Gender Roles,4
+1989,Growing Up,3
+1989,Health and Substance Use,12
+1989,Highs and Heights,2
+1989,Honor and Integrity,1
+1989,Locations,4
+1989,Money and Treasure,4
+1989,Music and Writing,6
+1989,Name Drops,1
+1989,Perception,6
+1989,Plants,4
+1989,Relationships,5
+1989,Religion,5
+1989,School,1
+1989,Times and Seasons,31
+1989,Transportation and Roads,15
+1989,Water,8
+1989,Weather,5
+1989,Wounds and Weapons,15
+reputation,Accidents and Planning,9
+reputation,Aim and Hunting,3
+reputation,Apparel and Appearances,24
+reputation,Arguments and Battles,9
+reputation,Body Parts,84
+reputation,Borders and Boundaries,15
+reputation,Bright Lights and Shiny People,18
+reputation,Buildings and Rooms,24
+reputation,Celebrity and Publicity,36
+reputation,Celestial Objects,3
+reputation,Cold and Ice,9
+reputation,Colors and Painting,39
+reputation,Communication and Silence,12
+reputation,Crime,36
+reputation,"Death, Ghosts, and Haunting",15
+reputation,Deception and Secrets,27
+reputation,Dreams,18
+reputation,Family and Friends,21
+reputation,Fate and Omens,3
+reputation,"Films, Performances, and Photos",21
+reputation,Fire,27
+reputation,Furniture,12
+reputation,"Games, Winning, and Losing",18
+reputation,Gender Roles,9
+reputation,Growing Up,6
+reputation,Health and Substance Use,60
+reputation,Highs and Heights,6
+reputation,Honor and Integrity,3
+reputation,Locations,21
+reputation,Money and Treasure,18
+reputation,Music and Writing,9
+reputation,Name Drops,12
+reputation,Perception,48
+reputation,Plants,6
+reputation,Relationships,21
+reputation,Religion,15
+reputation,School,3
+reputation,STEM,9
+reputation,Times and Seasons,42
+reputation,Transportation and Roads,30
+reputation,Water,18
+reputation,Weather,6
+reputation,Wounds and Weapons,21
+Lover,Accidents and Planning,5
+Lover,Aim and Hunting,3
+Lover,Apparel and Appearances,6
+Lover,Arguments and Battles,7
+Lover,Body Parts,24
+Lover,Borders and Boundaries,2
+Lover,Bright Lights and Shiny People,8
+Lover,Buildings and Rooms,22
+Lover,Celebrity and Publicity,5
+Lover,Celestial Objects,3
+Lover,Cold and Ice,2
+Lover,Colors and Painting,14
+Lover,Communication and Silence,5
+Lover,Crime,3
+Lover,"Death, Ghosts, and Haunting",8
+Lover,Deception and Secrets,3
+Lover,Dreams,2
+Lover,Family and Friends,8
+Lover,Fate and Omens,3
+Lover,"Films, Performances, and Photos",8
+Lover,Fire,4
+Lover,Furniture,6
+Lover,"Games, Winning, and Losing",17
+Lover,Gender Roles,7
+Lover,Growing Up,6
+Lover,Health and Substance Use,16
+Lover,Highs and Heights,3
+Lover,Honor and Integrity,1
+Lover,Locations,24
+Lover,Money and Treasure,4
+Lover,Music and Writing,4
+Lover,Name Drops,3
+Lover,Perception,21
+Lover,Plants,2
+Lover,Relationships,9
+Lover,Religion,13
+Lover,School,8
+Lover,STEM,1
+Lover,Times and Seasons,27
+Lover,Transportation and Roads,21
+Lover,Water,4
+Lover,Weather,5
+Lover,Wounds and Weapons,9
+folklore,Accidents and Planning,6
+folklore,Aim and Hunting,3
+folklore,Apparel and Appearances,27
+folklore,Arguments and Battles,18
+folklore,Body Parts,18
+folklore,Borders and Boundaries,15
+folklore,Bright Lights and Shiny People,27
+folklore,Buildings and Rooms,18
+folklore,Celebrity and Publicity,9
+folklore,Celestial Objects,18
+folklore,Cold and Ice,9
+folklore,Colors and Painting,30
+folklore,Communication and Silence,9
+folklore,Crime,15
+folklore,"Death, Ghosts, and Haunting",33
+folklore,Deception and Secrets,18
+folklore,Dreams,9
+folklore,Family and Friends,33
+folklore,Fate and Omens,6
+folklore,"Films, Performances, and Photos",21
+folklore,Fire,18
+folklore,Furniture,6
+folklore,"Games, Winning, and Losing",12
+folklore,Gender Roles,24
+folklore,Growing Up,12
+folklore,Health and Substance Use,42
+folklore,Highs and Heights,30
+folklore,Honor and Integrity,6
+folklore,Locations,39
+folklore,Money and Treasure,15
+folklore,Music and Writing,9
+folklore,Name Drops,24
+folklore,Perception,45
+folklore,Plants,21
+folklore,Relationships,12
+folklore,Religion,18
+folklore,School,15
+folklore,Times and Seasons,15
+folklore,Transportation and Roads,51
+folklore,Water,27
+folklore,Weather,3
+folklore,Wounds and Weapons,45
+evermore,Accidents and Planning,3
+evermore,Apparel and Appearances,24
+evermore,Arguments and Battles,24
+evermore,Body Parts,27
+evermore,Borders and Boundaries,9
+evermore,Bright Lights and Shiny People,30
+evermore,Buildings and Rooms,24
+evermore,Celebrity and Publicity,12
+evermore,Celestial Objects,27
+evermore,Cold and Ice,21
+evermore,Colors and Painting,39
+evermore,Communication and Silence,12
+evermore,Crime,18
+evermore,"Death, Ghosts, and Haunting",21
+evermore,Deception and Secrets,21
+evermore,Dreams,18
+evermore,Family and Friends,42
+evermore,"Films, Performances, and Photos",12
+evermore,Fire,15
+evermore,Furniture,3
+evermore,"Games, Winning, and Losing",33
+evermore,Gender Roles,6
+evermore,Growing Up,18
+evermore,Health and Substance Use,27
+evermore,Highs and Heights,12
+evermore,Honor and Integrity,3
+evermore,Locations,18
+evermore,Money and Treasure,51
+evermore,Music and Writing,30
+evermore,Name Drops,21
+evermore,Perception,12
+evermore,Plants,27
+evermore,Relationships,45
+evermore,Religion,18
+evermore,School,9
+evermore,Transportation and Roads,54
+evermore,Water,15
+evermore,Weather,6
+evermore,Wounds and Weapons,36
+Midnights,Accidents and Planning,16
+Midnights,Aim and Hunting,6
+Midnights,Apparel and Appearances,10
+Midnights,Arguments and Battles,36
+Midnights,Body Parts,48
+Midnights,Borders and Boundaries,6
+Midnights,Bright Lights and Shiny People,30
+Midnights,Buildings and Rooms,32
+Midnights,Celebrity and Publicity,24
+Midnights,Celestial Objects,26
+Midnights,Cold and Ice,4
+Midnights,Colors and Painting,26
+Midnights,Communication and Silence,18
+Midnights,Crime,18
+Midnights,"Death, Ghosts, and Haunting",22
+Midnights,Deception and Secrets,22
+Midnights,Dreams,10
+Midnights,Family and Friends,24
+Midnights,Fate and Omens,10
+Midnights,"Films, Performances, and Photos",10
+Midnights,Fire,24
+Midnights,Furniture,4
+Midnights,"Games, Winning, and Losing",20
+Midnights,Gender Roles,28
+Midnights,Growing Up,8
+Midnights,Health and Substance Use,50
+Midnights,Highs and Heights,12
+Midnights,Honor and Integrity,4
+Midnights,Locations,16
+Midnights,Money and Treasure,20
+Midnights,Music and Writing,20
+Midnights,Name Drops,6
+Midnights,Perception,38
+Midnights,Plants,22
+Midnights,Relationships,25
+Midnights,Religion,32
+Midnights,School,7
+Midnights,STEM,2
+Midnights,Transportation and Roads,32
+Midnights,Water,23
+Midnights,Weather,16
+Midnights,Wounds and Weapons,36

@@ -108,10 +108,10 @@
 			<button id="reset-btn">Reset</button>
 		</div>
 
-
 		<div class="wrapper" id="at-large" data-aos="fade-up" data-aos-duration="1500"></div>
 
-		<div class="container-fluid mt-20 mb-20">
+
+		<div class="container-fluid mt-5">
 			<p data-aos="fade-left" data-aos-duration="1500" class="plain-text plain-text-box" style="background: #0CA3BAFF">
 				The Grammy Awards are presented by the Recording Academy of the United States to recognize "outstanding" achievements in the music industry.
 				They are regarded by many as the most prestigious and significant awards in the music industry worldwide.
@@ -119,59 +119,59 @@
 				For any artist, a Grammy nomination is an absolute honor, and a Grammy win is a massive milestone.
 			</p>
 
-			<p class="plain-text">
+			<p class="plain-text" data-aos="fade-left" data-aos-duration="1500">
 				Take a look at some of the Grammy's most nominated and awarded artists across major music genres below.
 				<br>
 				<i>Click on any artist to see the breakdown of their nominations by year!</i>
 			</p>
-
-
-
+		</div>
 
 
 			<!-- LINE CHART -->
 <!--			<div id="travel-chart" data-aos="fade-up"></div>-->
 			<!--<img id="timeline-placeholder" src="data/timeline-vis.png" data-aos="fade-up">-->
-		</div>
 
+		<div class="container-fluid flex row">
+			<div class="col-md-7">
+				<div id="tree-vis"></div>
+			</div>
 
-			<div class="row">
-				<div class="col-md-8">
-					<div id="tree-vis">
-						<!-- Your tree visualization content goes here -->
-					</div>
-				</div>
-
-				<div class="col-md-4">
-					<div id="grammy-vis">
-						<!-- Your Grammy visualization content goes here -->
-					</div>
-				</div>
+			<div class="col-md-4">
+				<div id="grammy-vis"></div>
 			</div>
 		</div>
 
 		<!--	TOUR VISUALIZATION	-->
 		<div id="tour" data-aos="fade-up">
 			<h1>Musical Globetrotter</h1>
-			<p class="plain-text plain-text-box" style="background: #8A2BE2FF;" data-aos="fade-left" data-aos-duration="2000">
-				Over the span of her career, the parallels in her storytelling and lyrics over time have amassed Taylor
-				Swift an incredible fan base. Swifties clamor over the opportunity to hear Taylor Swift live in concert.
-				Let's see where in the world Taylor has been, and what makes a Taylor Swift concert so special.
-			</p>
-			<br>
-			<p class="plain-text plain-text-box" style="background: #FFA07AFF;" data-aos="fade-left" data-aos-duration="2000">
-				Taylor Swift is currently on The Eras Tour, the highest grossing tour in history. But even without
-				considering her current tour, Taylor has done 5 different tours across 21 different countries!
-			</p>
-			<p class="plain-text">
-				<i>Click on any country on the globe or any tour (the colorful squares) for more info!</i>
-			</p>
+			<div class="flex-col right">
+				<p class="plain-text plain-text-box" style="background: #8B008BFF;" data-aos="fade-left" data-aos-duration="2000">
+					Over the span of her career, Taylor Swift has garnered an impressive fan base of Swifties, who jump at the
+					chance to see Swift in concert. In 2022, when tickets went on sale for Swift's Eras Tour, nearly 5 million fans swarmed
+					Ticketmaster and completely crashed the site, multiple times. Fans waited in online queues of nearly 15,000+ people
+					for hours just hoping to get a chance to try and buy tickets. Tickets on the resale market sold for as high as $20,000.
+					<br><br>
+					One of our group members personally waited 11 hours on the Ticketmaster website and walked around campus all day with her laptop open so as not to lose her place.
+				</p>
+			</div>
+			<br><br>
+
+			<div class="flex-col left mb-3">
+				<p class="plain-text plain-text-box left" style="background: #FF769FFF;" data-aos="fade-right" data-aos-duration="2000">
+					The Eras Tour is the highest grossing tour of all time, and it's not even halfway done. It will continue throughout the entirety of 2024, exploring multiple cities in
+					in Europe, Asia, Australia, and North America (again).
+				</p>
+			</div>
+
+			<p class="plain-text" data-aos="fade-up" data-aos-duration="1500">Prior to her Eras Tour, Taylor has toured in 21 different countries, though a majority of her shows have been in the United States.<br>
+				<i>Take a look at the maps below to see where she's toured, and click on different countries to find out more!</i></p>
+
 			<div class="row">
 				<div class="col-md-6">
 					<div class="tour-vis" id="globe-vis" data-aos="fade-up"></div>
 				</div>
 				<div class="col-md-6">
-					<div id="tour-country-info"></div>
+					<div id="tour-country-info" class="p-4"></div>
 				</div>
 			</div>
 			<div class="row">
@@ -197,48 +197,69 @@
 			</div>
 		</div>
 
-		<!-- PLACES TAYLOR LIKES TO SING ABOUT VISUALIZATION -->
-		<div id="places" data-aos="fade-up" data-aos-duration="2000">
-			<h1>Taylor's Favorite Places</h1>
-			<p class="plain-text plain-text-box" style="background: #88D9E6;" data-aos="fade-left" data-aos-duration="2000">
-				Taylor Swift is known for including references to real places in her lyrics. What city do you think
-				she's mentioned the most? (Hint: Welcome to ______.)
-			</p>
-			<br>
-			<p class="plain-text plain-text-box" style="background: #856fd2;" data-aos="fade-right" data-aos-duration="2000">
-				More than any other place, Taylor Swift references <b>New York</b> in her lyrics! There's the obvious
-				"Welcome to New York," but a lot of other songs include New York references as well.
-			</p>
-			<br>
-			<p class="plain-text" data-aos="fade-left" data-aos-duration="2000">
-				Take a look at the map below to see some specific places within New York that Taylor Swift has referenced.
-			</p>
-			<div class="row">
-				<div class="col-md-6 map-bg" data-aos="fade-right" data-aos-duration="2000">
-					<div id="ny-vis"></div>
-				</div>
-				<div class="col-md-6" data-aos="fade-left" data-aos-duration="2000">
-					<div class="place-img" id="ny-place-img"></div>
-					<p class="lyrics" id="ny-lyrics">Click on a location on the map to see the song lyric associated with it! Zoom out to see more locations.</p>
-				</div>
+		<div>
+			<div class="flex-col left mb-20">
+				<p class="plain-text plain-text-box" style="background: #FFA07AFF;" data-aos="fade-right" data-aos-duration="2000">
+					Swift is known for her autobiographical storytelling (though her pandemic albums, <i>folklore</i> and <i>evermore</i> were an unexpected and
+					sharp departure from this pattern). At a young age, Swift's family moved from Reading, PA to Nashville, TN in hopes of helping her kickstart her music career.
+					Having spent the early part of her career as an incredibly successful country artist, she made the unprecedented decision in 2014 to fully transition to the pop genre.
+				</p>
 			</div>
 			<br>
-			<p class="plain-text plain-text-box" style="background: #8B008BFF;" data-aos="fade-left" data-aos-duration="2000">
-				London is another city that Taylor Swift has mentioned a lot! Her songs "Come Back...Be Here" and "Message
-				in a Bottle" both include a general London reference, and the map below shows specific locations referenced
-				within London. You'll notice that all the references are from the same album, and even the same song: London Boy.
-			</p>
-			<br>
-			<div class="row">
-				<div class="col-md-6 map-bg" data-aos="fade-right" data-aos-duration="2000">
-					<div id="london-vis"></div>
-				</div>
-				<div class="col-md-6" data-aos="fade-left" data-aos-duration="2000">
-					<div class="place-img" id="london-place-img"></div>
-					<p class="lyrics" id="london-lyrics">Click on a location on the map to see the song lyric associated with it! Zoom out to see more locations.</p>
-				</div>
+			<div class="flex-col right">
+				<p class="plain-text plain-text-box" style="background: #88D9E6;" data-aos="fade-left" data-aos-duration="2000">
+					In her 1989 (Taylor's Version) prologue, she writes, "When I was 24, I decided to completely reinvent myself." She did this by chopping her long curly hair, moving to New York City,
+					and writing one of the most awarded pop albums of all time — 1989. This era for Swift was defined by paparazzi photos in the streets of New York City and girl groups, and it reflected
+					in the music she wrote.
+					<br><br>
+					More than any other place, Taylor Swift references New York in her lyrics. There's the obvious
+					"Welcome to New York," but songs like "Mean," "Come Back," "Holy Ground," "False God,"
+					"Daylight" and "Hoax" all include a generic New York reference as well.
+				</p>
 			</div>
 		</div>
+
+		<!-- PLACES TAYLOR LIKES TO SING ABOUT VISUALIZATION -->
+		<div data-aos="fade-right" data-aos-duration="2000">
+			<h1>Welcome to New York</h1>
+			<p class="plain-text">
+				<i>Take a look at the map of New York City below and click on a location to see the lyric that references it!</i>
+			</p>
+		</div>
+
+		<div class="container-fluid row m-3">
+			<div class="col-md-8">
+				<div id="ny-vis" data-aos="fade-right" data-aos-duration="2000"></div>
+			</div>
+			<div class="col-md-4" >
+				<div id="ny-place-img"></div>
+				<p id="ny-lyrics">Try to find all 10 locations!<br><br>(Hint: zoom out!)</p>
+			</div>
+		</div>
+		<br><br>
+		<p class="plain-text plain-text-box" data-aos="fade-left" data-aos-duration="2000">
+			London is another city that Taylor Swift has mentioned a lot! Her songs "Come Back...Be Here" and "Message
+			in a Bottle" both include a general London reference, and the map below shows specific locations referenced
+			within London. You'll notice that all the references are from the same album, and even the same song: London Boy.
+		</p>
+
+		<div data-aos="fade-right" data-aos-duration="2000">
+			<h1>She Loves a London Boy</h1>
+			<p class="plain-text">
+				<i>Take a look at the map of New York City below and click on a location to see the lyric that references it!</i>
+			</p>
+		</div>
+
+		<div class="container-fluid row">
+			<div class="col-md-8">
+				<div id="london-vis" data-aos="fade-right" data-aos-duration="2000"></div>
+			</div>
+			<div class="col-md-4">
+				<div id="london-place-img"></div>
+				<p id="london-lyrics">Click on a location on the map to see the song lyric associated with it! Zoom out to see more locations.</p>
+			</div>
+		</div>
+		<br><br>
 
 		<!-- LYRIC THEMES VISUALIZATION	-->
 		<div id="lyric-themes">
@@ -263,24 +284,30 @@
 			<p data-aos="fade-left" class="plain-text" data-aos-duration="1500">
 				Check out the themes that Taylor leverages most in her music. Click on any bubble to see an example of a lyric that falls under that particular theme.
 			</p>
-			<div class="flex row">
-				<div id="theme-count-vis" class="col-md-8" data-aos="fade-up">
-					<div id="theme-details-box" class="col-md-4"></div>
-				</div>
-			</div>
+<!--			<button class="theme-button" onClick="moveToAlbumClusters()">Click to explore themes individually by album.</button>-->
 		</div>
 
-
-
-
-
-		<!-- TIMES TAYLOR LIKES TO SING ABOUT -->
-<!--		<div id="times" data-aos="fade-up">-->
-<!--			<h1>What time is it, Taylor?</h1>-->
-<!--			<div id="time-vis">-->
-<!--				<img src="img/Taylor_Swift.jpg">-->
-<!--			</div>-->
-<!--		</div>-->
+		<div class="container-fluid" style="height: 100vh;">
+			<div id="theme-count-vis" class="col-md-8" data-aos="fade-up">
+				<div id="theme-details-box" class="col-md-4"></div>
+<!--				<div class="container-fluid row">-->
+<!--					<div id="taylor-swift" class="col-md-3"></div>-->
+<!--					<div id="fearless" class="col-md-3"></div>-->
+<!--					<div id="speak-now" class="col-md-3"></div>-->
+<!--				</div>-->
+<!--				<div class="container-fluid row">-->
+<!--					<div id="red" class="col-md-3"></div>-->
+<!--					<div id="I989" class="col-md-3"></div>-->
+<!--					<div id="reputation" class="col-md-3"></div>-->
+<!--					<div id="lover" class="col-md-3"></div>-->
+<!--				</div>-->
+<!--				<div class="container-fluid row">-->
+<!--					<div id="folklore" class="col-md-3"></div>-->
+<!--					<div id="evermore" class="col-md-3"></div>-->
+<!--					<div id="midnights" class="col-md-3"></div>-->
+<!--				</div>-->
+			</div>
+		</div>
 
 
 		<!-- RADIAL CHART VISUALIZATION -->

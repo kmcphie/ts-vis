@@ -47,6 +47,7 @@ body, html {
     margin: 0;
     padding: 0;
     height: 100%;
+    width: 100vw;
     color: white;
 /*     need overflow-x: hidden; in order to get rid of the horizontal scroll but it just stops all vis from showing up */
 }
@@ -62,7 +63,7 @@ h1 {
     font-weight: bold;
     margin-top: 50px;
     margin-left: 50px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     font-size: 60px;
     color: #FFA5B0;
 }
@@ -314,7 +315,7 @@ h2 {
 }
 
 .marker-with-border {
-    border: 2px solid #000;
+    border: 2px solid #1d1d1d;
 }
 
 .leaflet-popup-content {
@@ -432,12 +433,6 @@ h2 {
     font-family: 'Century Gothic', 'sans-serif';
     font-size: 24px;
 }
-
-/*body {*/
-/*    font-family:'Futura','Helvetica',sans-serif;*/
-/*    box-sizing:border-box;*/
-/*    -webkit-box-sizing:border-box;*/
-/*}*/
 
 .wrapper {
     width:100%;

@@ -5,7 +5,10 @@
 // init global variables
 let myGlobeVis,
     myMapVis,
-    myThemeClusterVis;
+    myThemeClusterVis,
+    treeVis,
+    winBar
+;
 
 // load data using promises
 let promises = [
@@ -15,7 +18,6 @@ let promises = [
     d3.csv("data/uscities.csv"),
 
     // LYRIC VIS
-    // d3.csv("data/argumentsTheme.csv"),
     d3.csv("data/themeCount.csv", d => {
         d.item_count = +d.item_count;
         return d;
@@ -25,8 +27,12 @@ let promises = [
 
     d3.json("data/wins.json"),
     d3.csv("data/grammyAwards.csv"),
-    d3.csv("data/Tour_Info.csv")
+    d3.csv("data/Tour_Info.csv"),
 
+    d3.csv("data/albumThemeCount.csv", d => {
+        d.count = +d.count;
+        return d;
+    })
 ];
 
 Promise.all(promises)
@@ -86,37 +92,43 @@ Promise.all(promises)
             const countryCounts = d3.rollup(tourData, v => v.length, d => d.Country);
         });
 
-        console.log("TOUR DATA:");
-        console.log(data[0]);
-        console.log("GEO DATA WORLD:");
-        console.log(data[1]);
-        console.log("GEO DATA USA:");
-        console.log(data[2]);
-        console.log("CITY DATA:");
-        console.log(data[3]);
-        console.log("TOUR INFO:");
-        console.log(data[8]);
+        // console.log("TOUR DATA:");
+        // console.log(data[0]);
+        // console.log("GEO DATA WORLD:");
+        // console.log(data[1]);
+        // console.log("GEO DATA USA:");
+        // console.log(data[2]);
+        // console.log("CITY DATA:");
+        // console.log(data[3]);
+        // console.log("TOUR INFO:");
+        // console.log(data[8]);
 
 
 
         myGlobeVis = new GlobeVis("globe-vis", data[0], data[1], data[8]);
         myMapVis = new MapVis("map-vis", data[0], data[2], data[3]);
-        treeVis = new TreeVis('tree-vis', data[6])
-        console.log(data[7])
-        winBar = new WinBar('grammy-vis', data[7])
-
-        console.log("grammy data:", data[7])
-
-        // myMapVis.wrangleData();
 
         // LYRIC VISUALIZATION
-        console.log("LYRIC THEME COUNT DATA: ")
-        console.log(data[4])
+        // console.log("LYRIC THEME COUNT DATA: ")
+        // console.log(data[4])
         console.log('LYRIC THEMES DATA: ')
         console.log(data[5]);
 
-        myThemeClusterVis = new ClusterVis("theme-count-vis", data[4], data[5]);
+        myThemeClusterVis = new ClusterVis("theme-count-vis", data[4], data[5], data[9]);
+
+        treeVis = new TreeVis('tree-vis', data[6])
+        // console.log(data[7])
+        winBar = new WinBar('grammy-vis', data[7])
+        // console.log("grammy data:", data[7])
+
+        console.log("INDIVIDUAL ALBUM THEME COUNT: ")
+        console.log(data[9]);
 
 
     })
     .catch( function (err){console.log(err)} );
+
+function moveToAlbumClusters() {
+    console.log("album clusters!")
+    myThemeClusterVis.initClusterAlbums();
+}
