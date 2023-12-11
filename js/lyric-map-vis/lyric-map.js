@@ -146,7 +146,7 @@ class LyricMap {
                 .attr('class', 'place-1')
                 .attr("xlink:href", place_img_path);
         } else {
-            NYLyricsDiv.innerHTML = '<p>No lyrics available for this location.</p>';
+            NYLyricsDiv.innerHTML = '<p>Click on a location to see the lyric that references it!</p>';
         }
         const londonLyricsDiv = document.getElementById('london-lyrics');
         if (selectedLyric && vis.mapName === "London") {
@@ -164,7 +164,7 @@ class LyricMap {
                 .attr('class', 'place-1')
                 .attr("xlink:href", place_img_path);
         } else {
-            londonLyricsDiv.innerHTML = '<p>No lyrics available for this location.</p>';
+            londonLyricsDiv.innerHTML = '<p>Click on a location to see the lyric that references it!</p>';
         }
     }
 
