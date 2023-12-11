@@ -35,14 +35,14 @@ class WinBar {
 
         console.log(document.getElementById(vis.parentElement).getBoundingClientRect().width);
 
-        vis.margin = {top: 250, right: 30, bottom: 250, left: 50};
+        vis.margin = {top: 100, right: 30, bottom: 10, left: 50};
         vis.width = document.getElementById(vis.parentElement).getBoundingClientRect().width - vis.margin.left - vis.margin.right;
-        vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom;
+        vis.height = document.getElementById(vis.parentElement).getBoundingClientRect().height - vis.margin.top - vis.margin.bottom - 200;
 
         // // SVG drawing area
         vis.svg = d3.select("#" + vis.parentElement).append("svg")
-            .attr("width", vis.width + vis.margin.left + vis.margin.right)
-            .attr("height", vis.height + vis.margin.top + vis.margin.bottom)
+            .attr("width", vis.width + vis.margin.left + vis.margin.right + 200)
+            .attr("height", vis.height + vis.margin.top + vis.margin.bottom + 200)
             .append("g")
             .attr("transform", "translate(" + vis.margin.left + "," + vis.margin.top + ")");
 
@@ -53,7 +53,7 @@ class WinBar {
             .append('text')
             .text('Click an artist to see their nominations by year')
             .attr('fill', 'white')
-            .attr('transform', `translate(${vis.width / 2}, ${vis.height + 75})`)
+            .attr('transform', `translate(${vis.width / 2}, ${vis.height + 100})`)
             .attr('text-anchor', 'middle');
 
 
@@ -74,8 +74,7 @@ class WinBar {
 
         // add y axis
         vis.yAxis = d3.axisLeft()
-            .scale(vis.y)
-            .tickFormat(d3.format("d"));
+            .scale(vis.y);
 
         // create axis groups
         vis.xAxisGroup = vis.svg.append("g")
@@ -84,6 +83,8 @@ class WinBar {
 
         vis.yAxisGroup = vis.svg.append("g")
             .attr("class", "y-axis axis axisWhite");
+
+        // Call axis functions with the new domain
 
         // add tooltip area
         vis.tooltip = d3.select("body").append('div')
@@ -185,6 +186,17 @@ class WinBar {
             })
 
         // Call axis functions with the new domain
+        // vis.xAxisGroup
+        //     .transition()
+        //     .duration(1000)
+        //     .call(vis.xAxis)
+        //     .selectAll('text')
+        //     .attr('x', '-0.5em')
+        //     .attr('y', '0.2em')
+        //     .attr('text-anchor', 'end')
+        //     .attr('transform', 'rotate(-45)')
+        //     .attr('fill', 'white');
+
         vis.xAxisGroup
             .transition()
             .duration(1000)
@@ -194,11 +206,25 @@ class WinBar {
             .attr('y', '0.2em')
             .attr('text-anchor', 'end')
             .attr('transform', 'rotate(-45)')
-            .attr('fill', 'white');
+            .attr('fill', 'white')
+            .attr('font-size', '14px');  // Adjust the font size as needed
+            // .call(removeDuplicateTicks);  // Call the function to remove duplicate ticks
 
         vis.yAxisGroup
             .transition()
             .duration(1000)
-            .call(vis.yAxis);
+            .call(vis.yAxis)
+            .attr('font-size', '14px')
+            .call(removeDuplicateTicks);
+
+// Function to remove duplicate ticks
+        function removeDuplicateTicks(selection) {
+            selection.each(function(_, i) {
+                if (i % 2 !== 0) {
+                    d3.select(this).remove();
+                }
+            });
+        }
+
     }
 }

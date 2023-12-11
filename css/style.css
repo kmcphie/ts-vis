@@ -725,6 +725,18 @@ span[data="car"] {background-image:url("https://github.com/goeuro/static_content
     opacity: 0.4;
 }
 
+#reset-btn {
+    background-color: #a651a6; /* Your desired color */
+    color: white; /* Text color, adjust as needed */
+}
+
+#artist-select {
+    background-color: #a651a6;
+    color: white; /* Text color, adjust as needed for visibility */
+    text-align: center;
+}
+
+
 .image-border-mask {
     fill: none;
     stroke: none;

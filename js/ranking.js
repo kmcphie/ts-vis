@@ -65,13 +65,6 @@ document.addEventListener("DOMContentLoaded", function() {
             .tickSizeOuter(0)  // Hide the outer ticks
             .tickFormat(d3.format("d"));
 
-        // if (ww < 700) {
-        //     var xAxis = d3.axisBottom(x)
-        //         .ticks(5)
-        //         .tickSize(10)  // Increase the inner tick size
-        //         .tickSizeOuter(0)  // Hide the outer ticks
-        //         .tickFormat(d3.format("d"));
-        // }
 
 
         var yAxis = d3.axisLeft(y);
@@ -297,9 +290,9 @@ document.addEventListener("DOMContentLoaded", function() {
             .append("text") // X-axis label
             .attr("class", "axis-label")
             .attr("x", width / 2)
-            .attr("y", 60) // Adjust the position as needed
+            .attr("y", 70) // Adjust the position as needed
             .style("text-anchor", "middle")
-            .style("font-size", "18px")
+            // .style("font-size", "24px")
             .text("Years")
             .attr("fill", "#a651a6");
 
@@ -312,16 +305,33 @@ document.addEventListener("DOMContentLoaded", function() {
             .attr("y", -margin.left + 80) // Adjust the position as needed
             .attr("x", -height / 2)
             .style("text-anchor", "middle")
-            .style("font-size", "18px")
+            // .style("font-size", "24px")
             .text("Billboard Rankings")
             .attr("fill", "#a651a6");
 
-        var city = svg.selectAll(".city")
+        // Modify the font family of X-axis tick labels
+        // Modify the font size of X-axis tick labels
+        svg.selectAll(".x.axis-1 text")
+            .style("font-family", "'Century Gothic', sans-serif")
+            .style("font-size", "20px");  // Adjust the font size as needed
+
+// Modify the font size of Y-axis tick labels
+        svg.selectAll(".y.axis text")
+            .style("font-family", "'Century Gothic', sans-serif")
+            .style("font-size", "24px");  // Adjust the font size as needed
+
+// Modify the font size of Billboard rankings and years
+        svg.selectAll(".axis-label")
+            .style("font-family", "'Century Gothic', sans-serif")
+            .style("font-size", "40px")  // Adjust the font size as needed
+            .attr("fill", "#a651a6");  // Assuming you want the same fill color
+
+        var person = svg.selectAll(".person")
             .data(artists)
             .enter().append("g")
             .attr("class", "city");
 
-        city.append("path")
+        person.append("path")
             .attr("class", "transline")
             .attr('fill', 'none')
             .attr("id", function(d) { return d.name; }) // ID of transport type
@@ -334,11 +344,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
         // Modify the font size of X-axis tick labels
         svg.selectAll(".x.axis-1 text")
-            .style("font-size", "20px");  // Adjust the font size as needed
+            .style("font-size", "24px");  // Adjust the font size as needed
 
 // Modify the font size of Y-axis tick labels
         svg.selectAll(".y.axis text")
-            .style("font-size", "18px");  // Adjust the font size as needed
+            .style("font-size", "24px");  // Adjust the font size as needed
 
 
 
@@ -411,11 +421,19 @@ document.addEventListener("DOMContentLoaded", function() {
             .enter()
             .append("option")
             .text(function (d) {
-                return d.name;
+                // Check if the name contains a dash
+                if (d.name.includes("-")) {
+                    // If it contains a dash, return the name without the dash
+                    return d.name.replace("-", " ");
+                } else {
+                    // If it doesn't contain a dash, return the original name
+                    return d.name;
+                }
             })
             .attr("value", function (d) {
                 return d.name;
             });
+
 
 
         artistSelect.on("change", function () {
