@@ -28,8 +28,37 @@ class ClusterVis {
         this.initVis()
     }
 
+    isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
     initVis() {
         let vis = this;
+
+        // // Add an id attribute to the parent element
+        // d3.select("#" + vis.parentElement)
+        //     .attr("id", "cluster-vis-container");
+        //
+        // // Use Intersection Observer to trigger the action when the element is in the viewport
+        // const clusterVisContainer = document.getElementById("cluster-vis-container");
+        //
+        // const observer = new IntersectionObserver((entries, observer) => {
+        //     entries.forEach(entry => {
+        //         if (entry.isIntersecting) {
+        //             // The cluster graph is in the viewport, trigger your action
+        //             vis.wrangleData();
+        //             observer.unobserve(entry.target);
+        //         }
+        //     });
+        // }, { threshold: 0.5 }); // Adjust the threshold as needed
+        //
+        // observer.observe(clusterVisContainer);
 
         // margin conventions
         vis.margin = {top: 20, right: 0, bottom: 20, left: 0};

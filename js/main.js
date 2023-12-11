@@ -7,8 +7,7 @@ let myGlobeVis,
     myMapVis,
     myThemeClusterVis,
     treeVis,
-    winBar,
-    myAlbumClusterVis
+    winBar
 ;
 
 // load data using promises
@@ -127,7 +126,6 @@ Promise.all(promises)
     .catch( function (err){console.log(err)} );
 
 function moveToAlbumClusters() {
-    console.log("album clusters!")
+    // console.log("album clusters!")
     myThemeClusterVis.initAlbumClusters()
-   // myAlbumClusterVis = new AlbumClusterVis("theme-count-vis", data[9], data[5]);
 }
