@@ -202,19 +202,19 @@
 
     <div class="row">
         <div class="col-md-4">
-            <div class="tour-vis" id="globe-vis" data-aos="fade-up"></div>
             <div id="tour-info" class="p-4"></div>
+            <div class="tour-vis" id="globe-vis" data-aos="fade-right" data-aos-duration="2000"></div>
         </div>
         <div class="col-md-8">
             <div class="row">
                 <div class="col-md-6">
-                    <div id="tour-legend"></div>
+                    <div id="tour-legend" data-aos="fade-up" data-aos-duration="2000"></div>
                 </div>
                 <div class="col-md-6">
-                    <div id="filter-container">
+                    <div id="filter-container" data-aos="fade-up" data-aos-duration="2000">
                         <label for="tour-filter">Filter by Tour:</label>
                         <select id="tour-filter">
-                            <option value="all">All Tours</option>
+                            <option value="All Tours">All Tours</option>
                             <option value="Red">Red</option>
                             <option value="Reputation">Reputation</option>
                             <option value="Speak Now">Speak Now</option>
@@ -225,7 +225,7 @@
                 </div>
             </div>
             <div id="country-info" class="p-4"></div>
-            <div class="tour-vis" id="map-vis"></div>
+            <div class="tour-vis" id="map-vis" data-aos="fade-left" data-aos-duration="2000"></div>
         </div>
     </div>
 </div>
@@ -275,7 +275,7 @@
     </div>
     <div class="col-md-4">
         <div id="ny-place-img"></div>
-        <p id="ny-lyrics">Try to find all 10 locations!<br><br>(Hint: zoom out!)</p>
+        <p class="lyrics" id="ny-lyrics">Try to find all 10 locations!<br><br>(Hint: zoom out!)</p>
     </div>
 </div>
 <br><br>
@@ -300,7 +300,7 @@
     </div>
     <div class="col-md-4">
         <div id="london-place-img"></div>
-        <p id="london-lyrics">Try to find all 7 locations!</p>
+        <p class="lyrics" id="london-lyrics">Try to find all 7 locations!</p>
     </div>
 </div>
 

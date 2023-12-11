@@ -103,8 +103,9 @@ class MapVis {
         });
 
         // Filter by tour dropdown
-        d3.select("#tour-legend")
+        d3.select("#tour-filter")
             .on("change", function () {
+                console.log("change");
                 vis.wrangleData();
                 vis.updateVis();
             });
@@ -121,6 +122,7 @@ class MapVis {
 
         // Filter the displayData based on the selection box
         const selectedTour = document.getElementById('tour-filter').value;
+        console.log(selectedTour);
         if (selectedTour !== 'All Tours') {
             vis.displayData = vis.displayData.filter(d => d.Tour === selectedTour);
         }

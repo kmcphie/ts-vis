@@ -285,7 +285,7 @@ h2 {
 }
 
 .lyrics {
-    padding: 20px;
+    padding: 50px;
 }
 
 #ny-place {
@@ -315,18 +315,10 @@ h2 {
 }
 
 
-/* Times Taylor Likes To Sing About Visualization */
-
-#times {
-    height: 80vh;
-    width: 100%;
-}
-
-
 /* Tour Visualization */
 
 #tour {
-    height: 230vh;
+    height: 170vh;
     width: 100%;
 }
 
